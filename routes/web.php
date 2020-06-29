@@ -20,4 +20,20 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('admin','AdminController');
+
+Route::group([], function(){
+
+    Route::resource('/admin','AdminController');
+    Route::resource('admin/homepage/users','UserAdminController');
+    Route::resource('/admin/homepage/products','ProductAdminController');
+    Route::resource('/admin/homepage/blog','BlogAdminController');
+    Route::resource('/admin/homepage/portfolio','PortfolioAdminController');
+    Route::resource('/admin/homepage/jobs','JobAdminController');
+    Route::resource('/admin/homepage/policy','PolicyAdminController');
+    Route::resource('/admin/homepage/faqs','FaqAdminController');
+    Route::get('live',['as'=>'live', 'uses'=>'ProductAdminController@live']);
+    Route::get('active',['as'=>'active', 'uses'=>'ProductAdminController@active']);
+    Route::get('sold',['as'=>'sold', 'uses'=>'ProductAdminController@sold']);
+
+
+});

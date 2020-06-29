@@ -10,8 +10,9 @@
     <link href="{{asset('fonts/style.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <link rel="stylesheet" href="assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
+    @yield('styles')
     <script src="https://kit.fontawesome.com/7432138d16.js" crossorigin="anonymous"></script>
-    <title></title>
+    <title>@yield('title')</title>
 </head>
 <body>
 <!-- ============================================================== -->
@@ -81,10 +82,10 @@
                             <div id="submenu-2" class="collapse submenu" style="">
                                 <ul class="nav flex-column">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">Accounts</a>
+                                        <a class="nav-link" href="{{route('users.index')}}">Accounts</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">Add user</a>
+                                        <a class="nav-link" href="{{route('users.create')}}">Add user</a>
                                     </li>
 
                                 </ul>
@@ -98,7 +99,7 @@
                                         <a class="nav-link" href="#">Orders</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">Products</a>
+                                        <a class="nav-link" href="{{route('products.index')}}">Products</a>
                                     </li>
                                 </ul>
                             </div>
@@ -108,10 +109,10 @@
                             <div id="submenu-4" class="collapse submenu" style="">
                                 <ul class="nav flex-column">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">Posts</a>
+                                        <a class="nav-link" href="{{route('blog.index')}}">Posts</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">Create Post</a>
+                                        <a class="nav-link" href="{{route('blog.create')}}">Create Post</a>
                                     </li>
                                 </ul>
                             </div>
@@ -121,10 +122,10 @@
                             <div id="submenu-5" class="collapse submenu" style="">
                                 <ul class="nav flex-column">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">Posts</a>
+                                        <a class="nav-link" href="{{route('portfolio.index')}}">Projects</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">Create Post</a>
+                                        <a class="nav-link" href="{{route('portfolio.create')}}">Add Project</a>
                                     </li>
                                 </ul>
                             </div>
@@ -149,10 +150,10 @@
                             <div id="submenu-7" class="collapse submenu" style="">
                                 <ul class="nav flex-column">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">All Jobs</a>
+                                        <a class="nav-link" href="{{route('jobs.index')}}">All Jobs</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">Create Jobs</a>
+                                        <a class="nav-link" href="{{route('jobs.create')}}">Create Jobs</a>
                                     </li>
                                 </ul>
                             </div>
@@ -162,10 +163,10 @@
                             <div id="submenu-8" class="collapse submenu" style="">
                                 <ul class="nav flex-column">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">Policy</a>
+                                        <a class="nav-link" href="{{route('policy.index')}}">Policy</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">Create Policy</a>
+                                        <a class="nav-link" href="{{route('policy.create')}}">Create Policy</a>
                                     </li>
                                 </ul>
                             </div>
@@ -175,11 +176,16 @@
             </nav>
         </div>
     </div>
+
+
     <!-- ============================================================== -->
     <!-- end left sidebar -->
     <!-- ============================================================== -->
     <div class="dashboard-wrapper">
-@yield('content')
+        <div class="container-fluid dashboard-content">
+        @yield('content')
+
+        </div>
 
 
     <!-- ============================================================== -->
@@ -189,7 +195,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                    Copyright © 2018 Concept. All rights reserved. Dashboard by <a href="https://colorlib.com/wp/">Colorlib</a>.
+                    Copyright © {{now()->year}}&nbsp; Cerve Kenya</a>.
                 </div>
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                     <div class="text-md-right footer-links d-none d-sm-block">
@@ -201,17 +207,20 @@
             </div>
         </div>
     </div>
+
     <!-- ============================================================== -->
     <!-- end footer -->
     <!-- ============================================================== -->
-</div>
+    </div>
 <!-- ============================================================== -->
 <!-- end wrapper  -->
 <!-- ============================================================== -->
+
 </div>
 <!-- ============================================================== -->
 <!-- end main wrapper  -->
 <!-- ============================================================== -->
+
 <!-- Optional JavaScript -->
 <!-- jquery 3.3.1 -->
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
@@ -221,18 +230,8 @@
 <script src="assets/vendor/slimscroll/jquery.slimscroll.js"></script>
 <!-- main js -->
 <script src="assets/libs/js/main-js.js"></script>
-<!-- chart chartist js -->
-<script src="assets/vendor/charts/chartist-bundle/chartist.min.js"></script>
-<!-- sparkline js -->
-<script src="assets/vendor/charts/sparkline/jquery.sparkline.js"></script>
-<!-- morris js -->
-<script src="assets/vendor/charts/morris-bundle/raphael.min.js"></script>
-<script src="assets/vendor/charts/morris-bundle/morris.js"></script>
-<!-- chart c3 js -->
-<script src="assets/vendor/charts/c3charts/c3.min.js"></script>
-<script src="assets/vendor/charts/c3charts/d3-5.4.0.min.js"></script>
-<script src="assets/vendor/charts/c3charts/C3chartjs.js"></script>
-<script src="assets/libs/js/dashboard-ecommerce.js"></script>
+@yield('scripts')
+
 </body>
 
 </html>
