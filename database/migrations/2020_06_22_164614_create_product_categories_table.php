@@ -17,7 +17,7 @@ class CreateProductCategoriesTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string('name');
-            $table->integer('photo_id')->index()->unsigned();
+
         });
     }
 

@@ -30,7 +30,9 @@ class PortfolioRequest extends FormRequest
             'is_active'=>'required|numeric',
             'category_id'=>'required|numeric',
             'description'=>'required',
-            'video_id'=>''
+            'video_id'=>'',
+            'path'               => '',
+            'path.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ];
     }
 }

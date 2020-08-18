@@ -52,4 +52,8 @@ class User extends Authenticatable
     public function posts(){
         return $this->hasMany('App\Blog');
     }
+
+    public function reviews(){
+        return$this->hasMany('App\Review');
+    }
 }

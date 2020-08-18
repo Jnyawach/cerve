@@ -54,15 +54,18 @@ class PortfolioAdminController extends Controller
 
         }
 
-        $portfolio=Portfolio::create($input);
-
-        if($files=$request->file('portfolio_id')) {
+        if($files=$request->file('path')) {
             foreach ($files as $file){
                 $name = time() . $file->getClientOriginalName();
                 $file->move('images', $name);
-                PortfolioPhoto::create(['path'=>$name, 'portfolio_id'=>$portfolio->id]);
+                $data[]=$name;
+
             }
         }
+
+        $input['path']=json_encode($data);
+
+        Portfolio::create($input);
 
         Session::flash('portfolio_message', 'The Project has been successfully Created');
 
@@ -116,16 +119,22 @@ class PortfolioAdminController extends Controller
 
         }
 
-        $find->update($input);
-
-        if($files=$request->file('product_id')) {
+        if($files=$request->file('path')) {
             foreach ($files as $file){
                 $name = time() . $file->getClientOriginalName();
                 $file->move('images', $name);
-                $photo=PortfolioPhoto::where('portfolio_id', $find->id);
-                $photo->update(['path'=>$name]);
+                $data[]=$name;
+
             }
         }
+         if(!empty($data)){
+             $input['path']=json_encode($data);
+         }
+
+
+
+
+        $find->update($input);
 
         Session::flash('portfolio_message', 'The Project has been successfully Updated');
 
@@ -143,14 +152,13 @@ class PortfolioAdminController extends Controller
     {
         //
         $portfolio=Portfolio::findOrFail($id);
-        $images=$portfolio->photos();
-        foreach ($portfolio->photos() as $image){
-            unlink(public_path(). $image->photo->path);
+        $photos=json_decode($portfoliot->path);
+        foreach ($photos as $photo){
+            unlink(public_path().'/images/'. $photo);
         }
-
-     if($portfolio->video){
-         unlink(public_path(). $portfolio->video->path);
-     }
+        if ($portfolio->video){
+            unlink(public_path(). $portfolio->video->path);
+        }
 
         $portfolio->delete();
 

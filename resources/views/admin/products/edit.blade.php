@@ -50,23 +50,60 @@
 
             </div>
             <div class=" form-group row">
-                <div class="col-sm-12 col-md-6 col-lg-6">
-                    {!!Form::label('price', 'PRICE:')!!}
+                <div class="col-sm-6 col-md-3 col-lg-3">
+                    {!!Form::label('price', 'PRICE(1-10):')!!}
                     {!!Form::text('price', null, ['class'=>'form-control'])!!}
                 </div>
-                <div class="col-sm-12 col-md-6 col-lg-6">
+                <div class="col-sm-6 col-md-3 col-lg-3">
+                    {!!Form::label('price_2', 'PRICE(11-30):')!!}
+                    {!!Form::text('price_2', null, ['class'=>'form-control'])!!}
+                </div>
+                <div class="col-sm-6 col-md-3 col-lg-3">
+                    {!!Form::label('price_3', 'PRICE(31-50)')!!}
+                    {!!Form::text('price_3', null, ['class'=>'form-control'])!!}
+                </div>
+                <div class="col-sm-6 col-md-3 col-lg-3">
+                    {!!Form::label('price_4', 'PRICE:(51+)')!!}
+                    {!!Form::text('price_4', null, ['class'=>'form-control'])!!}
+                </div>
+            </div>
+            <h4>Please add stock per size if apparel</h4>
+            <div class="form-group row">
+
+                <div class="col-sm-6 col-md-2 col-lg-2">
                     {!!Form::label('stock', 'IN STOCK:')!!}
                     {!!Form::text('stock', null, ['class'=>'form-control'])!!}
                 </div>
+                <div class="col-sm-6 col-md-2 col-lg-2">
+                    {!!Form::label('S', 'Small:')!!}
+                    {!!Form::text('S', null, ['class'=>'form-control'])!!}
+                </div>
+                <div class="col-sm-6 col-md-2 col-lg-2">
+                    {!!Form::label('M', 'Medium:')!!}
+                    {!!Form::text('M', null, ['class'=>'form-control'])!!}
+                </div>
+                <div class="col-sm-6 col-md-2 col-lg-2">
+                    {!!Form::label('L', 'Large:')!!}
+                    {!!Form::text('L', null, ['class'=>'form-control'])!!}
+                </div>
+                <div class="col-sm-6 col-md-2 col-lg-2">
+                    {!!Form::label('XL', 'Extra-Large:')!!}
+                    {!!Form::text('XL', null, ['class'=>'form-control'])!!}
+                </div>
+
             </div>
             <div class=" form-group row">
-                <div class="col-sm-12 col-md-6 col-lg-6">
-                    {!!Form::label('product_id', 'PRODUCT IMAGE:')!!}
-                    {!!Form::file('product_id[]',  ['class'=>'form-control-file', 'multiple'=>'multiple'])!!}
+                <div class="col-sm-12 col-md-4 col-lg-4">
+                    {!!Form::label('path', 'PRODUCT IMAGE:')!!}
+                    {!!Form::file('path[]',  ['class'=>'form-control-file', 'multiple'=>'multiple'])!!}
                 </div>
-                <div class="col-sm-12 col-md-6 col-lg-6">
+                <div class="col-sm-12 col-md-4 col-lg-4">
                     {!!Form::label('video_id', 'ASSOCIATED VIDEO:')!!}
                     {!!Form::file('video_id',  ['class'=>'form-control-file'])!!}
+                </div>
+                <div class="col-sm-12 col-md-4 col-lg-4">
+                    {!!Form::label('photo_id', 'BRANDED PHOTO:')!!}
+                    {!!Form::file('photo_id',  ['class'=>'form-control-file'])!!}
                 </div>
 
 

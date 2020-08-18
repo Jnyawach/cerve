@@ -9,6 +9,7 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link href="{{asset('fonts/style.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
+
     <link rel="stylesheet" href="assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
     @yield('styles')
     <script src="https://kit.fontawesome.com/7432138d16.js" crossorigin="anonymous"></script>
@@ -91,6 +92,22 @@
                                 </ul>
                             </div>
                         </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-21" aria-controls="submenu-21"><i class="fa fa-usd" aria-hidden="true"></i>Pricing</a>
+                            <div id="submenu-21" class="collapse submenu" style="">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{route('pricing.index')}}">View Pricing Table</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{route('pricing.create')}}">Add Branding Price</a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </li>
+
                         <li class="nav-item">
                             <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-3" aria-controls="submenu-3"><i class="fa fa-shopping-basket" aria-hidden="true"></i>Brand Shop</a>
                             <div id="submenu-3" class="collapse submenu" style="">
@@ -100,6 +117,9 @@
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="{{route('products.index')}}">Products</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{route('product-category.index')}}">Products Categories</a>
                                     </li>
                                 </ul>
                             </div>
@@ -167,6 +187,19 @@
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="{{route('policy.create')}}">Create Policy</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-9" aria-controls="submenu-9"><i class="far fa-question-circle"></i>Faqs</a>
+                            <div id="submenu-9" class="collapse submenu" style="">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{route('faqs.index')}}">Frequently Asked Question</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{route('faqs.create')}}">Create Faqs</a>
                                     </li>
                                 </ul>
                             </div>

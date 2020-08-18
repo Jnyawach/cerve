@@ -33,8 +33,8 @@ class EditUsersRequest extends FormRequest
             'cellphone' =>'required|digits:10|numeric',
             'country'=> 'min:3|max:50',
             'town'=>'min:3|max:50',
-            'is_active'=>'required',
-            'role_id'=>'required',
+            'is_active'=>'',
+            'role_id'=>'',
             'street'=>'min:3|max:50'
         ];
     }

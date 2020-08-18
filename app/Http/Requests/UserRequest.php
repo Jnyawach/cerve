@@ -35,7 +35,7 @@ class UserRequest extends FormRequest
             'town'=>'min:3|max:50',
             'is_active'=>'required',
             'role_id'=>'required',
-            'street'=>'min:3|max:50'
+            'street'=>'min:3|max:255'
         ];
     }
 }

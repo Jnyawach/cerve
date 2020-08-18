@@ -7,9 +7,12 @@
         </div>
         <div class="card-body">
             <div class="row">
-                @foreach($portfolio->photos as $photo)
+                @foreach(json_decode($portfolio->path) as $photo)
+
                     <div class="col-3 col-sm-3 col-md-3 col-lg-3">
-                        <img src="{{$photo->path? $photo->path:'images/cerve logo.png'}}" class="img-fluid">
+                        <img src="{{url('images/'.$photo)}}" class="img-fluid" title="{{$portfolio->title}}">
+
+
                     </div>
                 @endforeach
             </div>

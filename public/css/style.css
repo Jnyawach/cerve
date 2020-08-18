@@ -156,12 +156,12 @@
    ========================================================================== */
 
 body {
-    font-family: 'Circular Std Book';
+    font-family: 'Avenir Regular';
     font-style: normal;
     font-weight: normal;
-    font-size: 14px;
+    font-size: 18px;
     color: #71748d;
-    background-color: #efeff6;
+
     -webkit-font-smoothing: antialiased;
 }
 
@@ -171,9 +171,10 @@ h3,
 h4,
 h5,
 h6 {
-    color: #3d405c;
+    color: var(--junior);
     margin: 0px 0px 15px 0px;
-    font-family: 'Circular Std Medium';
+    font-family: 'Avenir Medium';
+    font-weight: bold;
 }
 
 h1 {
@@ -190,17 +191,18 @@ h3 {
 }
 
 h4 {
-    font-size: 16px;
+    font-size: 18px;
     line-height: 26px;
 }
 
 h5 {
-    font-size: 15px;
+    font-size: 17px;
     line-height: 26px;
 }
 
 h6 {
-    font-size: 12px;
+    font-size: 17px;
+    font-family: "Avenir Demi";
 }
 
 p {
@@ -216,7 +218,7 @@ a {
 }
 
 a:hover {
-    color: #ff407b;
+    color: #0E0C28;
     text-decoration: none;
 }
 
@@ -283,7 +285,9 @@ input[type=file] {
     font-size: 15px;
 }
 
-input {}
+input {
+
+}
 
 button {}
 
@@ -1256,6 +1260,7 @@ Top Header
     padding: 13px 12px;
     font-size: 16px;
     line-height: 2;
+    color: #0E0C28 !important;
 
 }
 
@@ -2204,12 +2209,8 @@ Pageheader
     right: 20px;
 }
 
-.influence-finder button.btn {
-    height: 47px;
-    width: 110px;
-    border-top-left-radius: 0px;
-    border-bottom-left-radius: 0px;
-}
+
+
 
 
 /* ==========================================================================
@@ -2598,11 +2599,7 @@ clip-path: polygon(10% 25%, 10% 0, 35% 0%, 65% 0%, 90% 0, 90% 25%, 90% 50%, 91% 
 2.2  Buttons
 -------------------------*/
 
-.btn {
-    font-size: 14px;
-    padding: 9px 16px;
-    border-radius: 2px;
-}
+
 
 .btn-wishlist {
     background-color: #efeff6;
@@ -2646,41 +2643,7 @@ clip-path: polygon(10% 25%, 10% 0, 35% 0%, 65% 0%, 90% 0, 90% 25%, 90% 50%, 91% 
 }
 
 
-/*--- btn primary --*/
 
-.btn-primary {
-    color: #fff;
-    background-color: #5969ff;
-    border-color: #5969ff;
-}
-
-.btn-primary:hover {
-    color: #fff;
-    background-color: #4656e9;
-    border-color: #4656e9;
-}
-
-.btn-primary.focus,
-.btn-primary:focus {
-    color: #fff;
-    background-color: #4656e9;
-    border-color: #4656e9;
-    box-shadow: 0 0 0 1px rgb(37, 52, 158);
-}
-
-.btn-primary:not(:disabled):not(.disabled).active:focus,
-.btn-primary:not(:disabled):not(.disabled):active:focus,
-.show>.btn-primary.dropdown-toggle:focus {
-    box-shadow: 0 0 0 0.2rem rgb(37, 52, 158);
-}
-
-.btn-primary:not(:disabled):not(.disabled).active,
-.btn-primary:not(:disabled):not(.disabled):active,
-.show>.btn-primary.dropdown-toggle {
-    color: #fff;
-    background-color: #4656e9;
-    border-color: #4656e9;
-}
 
 
 /*--- btn secondary --*/
@@ -2807,35 +2770,6 @@ clip-path: polygon(10% 25%, 10% 0, 35% 0%, 65% 0%, 90% 0, 90% 25%, 90% 50%, 91% 
 }
 
 
-/*--- btn info --*/
-
-.btn-info {
-    color: #fff;
-    background-color: #25d5f2;
-    border-color: #25d5f2;
-}
-
-.btn-info:hover {
-    color: #fff;
-    background-color: #17c0dc;
-    border-color: #17c0dc;
-}
-
-.btn-info.focus,
-.btn-info:focus {
-    color: #fff;
-    background-color: #17c0dc;
-    border-color: #17c0dc;
-    box-shadow: 0 0 0 1px rgb(238, 184, 22);
-}
-
-.btn-info:not(:disabled):not(.disabled).active,
-.btn-info:not(:disabled):not(.disabled):active,
-.show>.btn-info.dropdown-toggle {
-    color: #fff;
-    background-color: #17c0dc;
-    border-color: #17c0dc;
-}
 
 
 /*--- btn light --*/

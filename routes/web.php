@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'CerveController@homepage');
 
 Auth::routes();
 
@@ -31,9 +29,40 @@ Route::group([], function(){
     Route::resource('/admin/homepage/jobs','JobAdminController');
     Route::resource('/admin/homepage/policy','PolicyAdminController');
     Route::resource('/admin/homepage/faqs','FaqAdminController');
+    Route::resource('/admin/homepage/product-category','ProductCategoryController');
     Route::get('live',['as'=>'live', 'uses'=>'ProductAdminController@live']);
     Route::get('active',['as'=>'active', 'uses'=>'ProductAdminController@active']);
     Route::get('sold',['as'=>'sold', 'uses'=>'ProductAdminController@sold']);
+    Route::resource('/admin/homepage/pricing','PricingController');
+
+});
+
+Route::group([], function (){
+    Route::get('about-us',['as'=>'about-us', 'uses'=>'CerveController@about']);
+    Route::get('blog',['as'=>'blog', 'uses'=>'CerveController@blog']);
+    Route::get('post/{slug}',['as'=>'post', 'uses'=>'CerveController@post']);
+    Route::get('work-with-us',['as'=>'work', 'uses'=>'CerveController@work']);
+    Route::get('/faqs',['as'=>'faqs', 'uses'=>'CerveController@faqs']);
+    Route::get('/faqs/show/{id}',['as'=>'questions', 'uses'=>'CerveController@questions']);
+    Route::get('privacy-policy',['as'=>'policy', 'uses'=>'CerveController@policy']);
+    Route::get('terms-and-conditions',['as'=>'terms', 'uses'=>'CerveController@terms']);
+    Route::get('/portfolio',['as'=>'portfolio', 'uses'=>'CerveController@portfolio']);
+    Route::get('/portfolio/show/{id}',['as'=>'previousWork', 'uses'=>'CerveController@previousWork']);
+    Route::resource('brand-shop', 'BrandShopController');
+    Route::resource('cart', 'CartController');
+    Route::get('brand-shop/category/{slug}',['as'=>'category', 'uses'=>'BrandShopController@category']);
 
 
+
+});
+
+Route::group([], function(){
+    Route::resource('account', 'AccountController');
+    Route::resource('account/homepage/profile', 'ProfileController');
+    Route::resource('account/homepage/career', 'CareerController');
+    Route::resource('account/homepage/career', 'CareerController');
+    Route::resource('account/homepage/wishlist', 'UserWishlistController');
+    Route::resource('account/homepage/review', 'ReviewController');
+    Route::resource('contact-us', 'ContactController');
+    Route::resource('branding', 'BrandingController');
 });

@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Faq;
+use App\FaqCategory;
+use App\Http\Requests\FaqRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class FaqAdminController extends Controller
 {
@@ -14,6 +18,9 @@ class FaqAdminController extends Controller
     public function index()
     {
         //
+        $faqs=Faq::all();
+        $categories=FaqCategory::all();
+        return view('admin.faqs.index', compact('categories', 'faqs'));
     }
 
     /**
@@ -24,6 +31,8 @@ class FaqAdminController extends Controller
     public function create()
     {
         //
+        $category=FaqCategory::pluck('name', 'id')->all();
+        return view('admin.faqs.create' , compact('category'));
     }
 
     /**
@@ -32,9 +41,13 @@ class FaqAdminController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(FaqRequest $request)
     {
         //
+        $faq=Faq::create($request->all());
+        Session::flash('faq_message', 'The Faq has been successfully Added');
+
+        return redirect('/admin/homepage/faqs');
     }
 
     /**
@@ -46,6 +59,11 @@ class FaqAdminController extends Controller
     public function show($id)
     {
         //
+        $faqs=Faq::where('category_id', $id)->get();
+        $categories=FaqCategory::all();
+        return view('admin.faqs.show', compact('categories', 'faqs'));
+
+
     }
 
     /**
@@ -57,6 +75,9 @@ class FaqAdminController extends Controller
     public function edit($id)
     {
         //
+        $faq=Faq::findOrFail($id);
+        $category=FaqCategory::pluck('name', 'id')->all();
+        return view('admin.faqs.edit', compact('category', 'faq'));
     }
 
     /**
@@ -69,6 +90,10 @@ class FaqAdminController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $faq=Faq::findOrFail($id)->update($request->all());
+        Session::flash('faq_message', 'The Faq has been successfully Updated');
+
+        return redirect('/admin/homepage/faqs');
     }
 
     /**
@@ -80,5 +105,9 @@ class FaqAdminController extends Controller
     public function destroy($id)
     {
         //
+        $faq=Faq::findOrFail($id)->delete();
+        Session::flash('faq_message', 'The Faq has been successfully Deleted');
+
+        return redirect('/admin/homepage/faqs');
     }
 }

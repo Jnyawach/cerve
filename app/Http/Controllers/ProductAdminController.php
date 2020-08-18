@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProductRequest;
+use App\Photo;
+use App\PortfolioPhoto;
 use App\Product;
 use App\ProductCategory;
 use App\ProductPhotos;
@@ -53,16 +55,26 @@ class ProductAdminController extends Controller
             $input['video_id'] = $video->id;
 
         }
+        if($file=$request->file('photo_id')) {
+            $name = time() . $file->getClientOriginalName();
+            $file->move('images', $name);
+            $photo = Photo::create(['path' => $name]);
+            $input['photo_id'] = $photo->id;
 
-        $product=Product::create($input);
+        }
 
-        if($files=$request->file('product_id')) {
+        if($files=$request->file('path')) {
             foreach ($files as $file){
                 $name = time() . $file->getClientOriginalName();
                 $file->move('images', $name);
-                ProductPhotos::create(['path'=>$name, 'product_id'=>$product->id]);
+                $data[]=$name;
+
             }
         }
+
+        $input['path']=json_encode($data);
+
+       Product::create($input);
 
         Session::flash('product_message', 'The Product has been successfully Created');
 
@@ -111,6 +123,7 @@ class ProductAdminController extends Controller
         //
         $find=Product::findOrFail($id);
         $input= $request->all();
+        $input= $request->all();
         if($file=$request->file('video_id')) {
             $name = time() . $file->getClientOriginalName();
             $file->move('videos', $name);
@@ -118,17 +131,28 @@ class ProductAdminController extends Controller
             $input['video_id'] = $video->id;
 
         }
+        if($file=$request->file('photo_id')) {
+            $name = time() . $file->getClientOriginalName();
+            $file->move('images', $name);
+            $photo = Photo::create(['path' => $name]);
+            $input['photo_id'] = $photo->id;
 
-        $find->update($input);
+        }
 
-        if($files=$request->file('product_id')) {
+        if($files=$request->file('path')) {
             foreach ($files as $file){
                 $name = time() . $file->getClientOriginalName();
                 $file->move('images', $name);
-                $photo=ProductPhotos::where('product_id', $find->id);
-                $photo->update(['path'=>$name]);
+                $data[]=$name;
+
             }
         }
+
+        if(!empty($data)){
+            $input['path']=json_encode($data);
+        }
+
+        $find->update($input);
 
         Session::flash('product_message', 'The Product has been successfully Updated');
 
@@ -145,15 +169,17 @@ class ProductAdminController extends Controller
     {
         //
         $product=Product::findOrFail($id);
-        $images=$product->photos();
-        foreach ($product->photos() as $image){
-            unlink(public_path(). $image->photo->path);
+        $photos=json_decode($product->path);
+        foreach ($photos as $photo){
+            unlink(public_path().'/images/'. $photo);
         }
-
-
         if ($product->video){
             unlink(public_path(). $product->video->path);
         }
+        if ($product->photo){
+            unlink(public_path(). $product->photo->path);
+        }
+
 
         $product->delete();
 

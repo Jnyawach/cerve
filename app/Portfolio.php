@@ -34,14 +34,15 @@ class Portfolio extends Model
         'category_id',
         'description',
         'video_id',
-        'slug'
+        'slug',
+        'path'
     ];
 
     public function video(){
-        return$this->belongsTo('App\Video');
+        return $this->belongsTo('App\Video');
     }
     public function photos(){
-        return$this->hasMany('App\PortfolioPhoto');
+        return $this->hasMany('App\PortfolioPhoto');
     }
 
     public  function category(){

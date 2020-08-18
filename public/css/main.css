@@ -1,0 +1,525 @@
+:root{
+    --primary: #11054E;
+    --secondary: #040017;
+    --junior:#28177B;
+    --dark: #e8f1f2;
+    --gray: #E8F1F2;
+}
+.color-primary-0 { color: #11054E }	/* Main Primary color */
+.color-primary-1 { color: #28177B }
+.color-primary-2 { color: #1A0B66 }
+.color-primary-3 { color: #0A0233 }
+.color-primary-4 { color: #040017 }
+
+body{
+    background-color: white;
+}
+/*#######################BUTTONS##############################*/
+.btn {
+    font-size: 16px;
+    padding: 12px 18px;
+    border-radius: 5px !important;
+    font-family: "Avenir Demi";
+
+
+}
+/*--- btn primary --*/
+
+.btn-primary {
+    color: #fff;
+    background-color: #11054E;
+    border-color: #11054E;
+}
+
+.btn-primary:hover {
+    color: #fff !important;
+    background-color: var(--junior);
+    border-color: var(--junior);
+}
+
+.btn-primary.focus,
+.btn-primary:focus {
+    color: #fff !important;
+    background-color: var(--junior);
+    border-color: var(--junior);
+    box-shadow: 0 0 0 1px rgb(37, 52, 158);
+}
+
+.btn-primary:not(:disabled):not(.disabled).active:focus,
+.btn-primary:not(:disabled):not(.disabled):active:focus,
+.show>.btn-primary.dropdown-toggle:focus {
+    box-shadow: 0 0 0 0.2rem rgb(37, 52, 158);
+}
+
+.btn-primary:not(:disabled):not(.disabled).active,
+.btn-primary:not(:disabled):not(.disabled):active,
+.show>.btn-primary.dropdown-toggle {
+    color: #fff;
+    background-color: #4656e9;
+    border-color: #4656e9;
+}
+
+/*--- btn info --*/
+
+.btn-info {
+    color: #fff;
+    background-color: var(--junior);
+    border-color: var(--junior);
+}
+
+.btn-info:hover {
+    color: #fff !important;
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+
+.btn-info.focus,
+.btn-info:focus {
+    color: #fff !important;
+    background-color: var(--primary);
+    border-color: var(--primary);
+    box-shadow: 0 0 0 1px rgb(238, 184, 22);
+}
+
+.btn-info:not(:disabled):not(.disabled).active,
+.btn-info:not(:disabled):not(.disabled):active,
+.show>.btn-info.dropdown-toggle {
+    color: #fff;
+    background-color: #17c0dc;
+    border-color: #17c0dc;
+}
+/*--- btn block --*/
+
+.btn-block {
+    color: #fff;
+    background-color: var(--junior);
+    border-color: var(--junior);
+}
+
+.btn-block:hover {
+    color: #fff !important;
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+
+.btn-block.focus,
+.btn-block:focus {
+    color: #fff !important;
+    background-color: var(--primary);
+    border-color: var(--primary);
+    box-shadow: 0 0 0 1px rgb(238, 184, 22);
+}
+
+.btn-block:not(:disabled):not(.disabled).active,
+.btn-block:not(:disabled):not(.disabled):active,
+.show>.btn-block.dropdown-toggle {
+    color: #fff;
+    background-color: #17c0dc;
+    border-color: #17c0dc;
+}
+
+label{
+    color: var(--junior);
+    font-family: "Avenir Demi";
+}
+ input{
+    height: 45px !important;
+     border-radius: 5px !important;
+}
+
+
+
+/*################################HOMME PAGE ######################*/
+.navbar{
+    background: white;
+    box-shadow: 0 2px 2px -2px rgba(0,0,0,.2);
+}
+.navbar-nav li>a{
+    color: #1A1C51 !important;
+    font-size: 17px;
+   font-family: 'Avenir Demi';
+}
+
+footer h5{
+    color: var(--junior) !important;
+}
+a:hover{
+    color: var(--primary) !important;
+}
+.intro{
+    background-color: var(--gray);
+}
+.intro h1{
+    color: var(--junior) !important;
+}
+.services{
+    background-color: white;
+}
+.services h6{
+    color: var(--primary);
+
+}
+.serve img{
+    height: 60px;
+
+}
+.client{
+    background-color: var(--primary);
+}
+
+/*###################ABOUT US PAGE############################*/
+.about{
+    position: relative;
+    align-content: center;
+
+}
+
+.underline{
+    width: 80px;
+    background:var(--primary);
+    padding: 0;
+
+}
+
+
+.symbol{
+    color:var(--primary) ;
+    font-size: 80px;
+}
+.naming h5{
+    font-size: 16px;
+    font-weight: bolder;
+    color:#108df0 ;
+    margin-top: 10px;
+}
+ .our-services ul.dashed > li:before {
+    content: "-";
+    margin-right: 8px;
+    color:var(--primary) ;
+}
+.our-services h3{
+    color:var(--primary) ;
+    font-size: 14px;
+    font-weight: bold;
+
+}
+#map {
+    height: 400px;  /* The height is 400 pixels */
+    width: 100%;  /* The width is the width of the web page */
+}
+.map{
+    background-color: var(--primary);
+}
+.map h1{
+    color: white;
+}
+.map p{
+    color: white;
+    line-height: 35px;
+}
+/*###################################BLOG##############################*/
+.blog h4{
+    color: var(--junior) !important;
+}
+.subscribe{
+    background-color: var(--primary);
+    color: white !important;
+}
+.subscribe btn{
+    color: var(--primary) !important;
+}
+.subscribe h2{
+    font-size: 36px;
+    color: white;
+    line-height: 45px;
+}
+/*#####################BLOG#########################*/
+.summary{
+    font-style: italic;
+    background: #e8f1f2;
+    padding: 15px;
+    border-left: 2px solid var(--primary);
+}
+
+/*##########################USERACCOUNT########################*/
+.user-sidebar .card-header{
+    background-color: var(--junior);
+
+}
+.user-sidebar .card-header h6{
+    color: white;
+}
+.user-head{
+    background-color: var(--junior);
+    color: white;
+}
+.detail h5{
+    color: var(--primary);
+}
+
+/*###############CAREER PAGE####################*/
+.starter{
+    background:var(--dark);
+    padding-bottom: 50px;
+
+}
+
+
+.why h2{
+    color: var(--primary);
+    font-size: 34px;
+}
+.why p{
+
+    font-size: 16px;
+    line-height: 30px;
+}
+.team{
+    background: var(--primary);
+}
+.team h2{
+    color: white;
+    font-size: 34px;
+}
+.team p{
+    color: white;
+    font-size: 16px;
+    line-height: 30px;
+}
+
+/*####################SHOW JOB PAGE#####################*/
+.show-job{
+    background-color: var(--dark);
+}
+
+/*#####################SHOW PORTFOLIO PAGE###############*/
+.portfolio h5{
+
+    color: var(--junior);
+    word-spacing: 5px;
+    font-size: 14px;
+}
+.portfolio h2{
+    color: var(--primary);
+}
+.portfolio p{
+    line-height: 26px;
+    text-align: left;
+}
+/*###############################CONTACT US PAGE######################*/
+.contact{
+    background-color: var(--dark);
+}
+.contact-form h4:before {
+    content: "-";
+    margin-right: 8px;
+    color:var(--primary) ;
+    width: 30px;
+}
+.contact-form h4{
+    font-size: 20px;
+    margin-left: 15px;
+}
+.contact-form  hr{
+    background-color: var(--junior);
+}
+.contact-form p{
+
+    color: var(--primary);
+    font-size: 38px;
+    line-height: 45px;
+}
+.side-contact{
+    background-color: var(--dark);
+}
+.form-side{
+    background-color: white;
+}
+/*###############################SHOP PAGE###########################*/
+
+.shop .navbar form input[type=search] {
+    width:450px;
+}
+
+.cart .badge{
+    background: var(--danger);
+    color: white;
+}
+.side-nav .nav-link{
+    font-size: 15px !important;
+    color: black !important;
+
+}
+.side-nav img{
+    height: 20px;
+}
+
+.shop-car .col{
+    display: table-cell;
+}
+
+.shop-home .card{
+    border: none;
+}
+.shop-home .card-header{
+    border: none;
+}
+.saved{
+    position: absolute;
+    top: 2%;
+    right: 3%;
+}
+
+.saved form button {
+    font-size: 28px;
+    color: var(--primary);
+}
+.saved form button:hover{
+    color: var(--junior);
+}
+.shop-home .card-header a, .shop-home .card-header a:hover{
+    color: var(--primary) !important;
+    font-size: 16px !important;
+    padding: 0px;
+}
+
+.shop-info{
+    background-color: var(--dark);
+   border: 3px solid white;
+
+
+}
+.shop-info p{
+    color: var(--junior) !important;
+    font-family: "Avenir Demi";
+    font-size: 16px;
+}
+.shop-info h4{
+    font-size: 17px;
+}
+.shop-info img{
+    height: 60px;
+}
+.carousel-caption{
+    position: absolute;
+    left: 5%;
+    right: auto;
+    top: 20%;
+}
+.carousel-caption h1{
+  font-family: 'Sketch_PersonalUseOnly';
+    font-size: 75px;
+    font-weight: normal;
+}
+.shop-car .carousel-indicators li {
+    width: 18px;
+    height: 18px;
+    border-radius: 100%;
+    background-color: var(--junior);
+
+}
+.shop-car p{
+    color: gray;
+}
+.shop-home .card-header{
+    background-color: var(--dark);
+}
+.shop-category{
+    border-bottom: 1px solid var(--junior);
+}
+
+/*###############PRODUCT#############*/
+
+.product-temp{
+    background: white;
+
+
+}
+.product-temp img{
+    border: 1px solid lightgray;
+}
+
+.describe p{
+    font-size: 15px !important;
+    padding: 2px;
+}
+
+.product-description form button:hover{
+    color: var(--purple);
+
+}
+.add-review{
+    background: #F3F3F3;
+}
+.quantity{
+
+    border: 1px solid var(--primary);
+}
+
+/*###carousel*/
+
+#carousel-custom .carousel-indicators {
+    margin: 10px 0 0;
+    overflow: auto;
+    position: static;
+    text-align: left;
+    white-space: nowrap;
+    width: 100%;
+}
+#carousel-custom .carousel-indicators li {
+    background-color: transparent;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    display: inline-block;
+    height: auto;
+    margin: 0 !important;
+    width: auto;
+}
+#carousel-custom .carousel-indicators li img {
+    display: block;
+    opacity: 0.5;
+    width: 120px;
+    margin: 5px;
+}
+#carousel-custom .carousel-indicators li.active img {
+    opacity: 1;
+}
+#carousel-custom .carousel-indicators li:hover img {
+    opacity: 0.75;
+}
+#carousel-custom .carousel-outer {
+    position: relative;
+}/*end of carousel*/
+.product-description form{
+    right: 1%;
+}
+
+
+.wish a, .wish a:hover{
+    color: var(--primary) !important;
+    font-size: 16px !important;
+}
+.thumb{
+    margin-top: 5px;
+}
+.thumb img{
+    height: 80px;
+    margin: 5px;
+
+}
+.box{
+    background: var(--dark);
+    padding: 20px;
+    margin-top: 20px;
+}
+.box form textarea{
+    width: 100%;
+}
+.box h6{
+    font-size: 20px;
+}
+
+
+
+
+

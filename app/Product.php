@@ -38,17 +38,43 @@ class Product extends Model
         'description',
         'features',
         'price',
+        'price_2',
+        'price_3',
+        'price_4',
         'stock',
+        'S',
+        'M',
+        'L',
+        'XL',
         'brand',
-        'video_id'
+        'video_id',
+        'path',
+        'photo_id'
     ];
     public  function category(){
         return $this->belongsTo('App\ProductCategory');
     }
-    public function photos(){
-        return$this->hasMany('App\ProductPhotos');
-    }
+
     public function video(){
         return$this->belongsTo('App\Video');
     }
+
+    public  function photo(){
+        return $this->belongsTo('App\Photo');
+    }
+
+    public function wishlist(){
+        return$this->hasMany('App\Wishlist');
+    }
+
+    public function reviews(){
+        return$this->hasMany('App\Review');
+    }
+public  function lastImage($path){
+        $data=json_decode($path, true);
+    $keys = array_keys($data);
+    return $last_key = array_pop($keys);
+}
+
+
 }

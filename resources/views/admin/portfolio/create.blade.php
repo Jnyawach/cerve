@@ -31,8 +31,8 @@
         </div>
         <div class="form-group row">
             <div class="col-sm-12 col-md-6 col-lg-6">
-                {!!Form::label('portfolio_id', 'PORTFOLIO IMAGE:')!!}
-                {!!Form::file('portfolio_id[]',  ['class'=>'form-control-file', 'multiple'=>'multiple'])!!}
+                {!!Form::label('path', 'PORTFOLIO IMAGE:')!!}
+                {!!Form::file('path[]',  ['class'=>'form-control-file', 'multiple'=>'multiple'])!!}
             </div>
             <div class="col-sm-12 col-md-6 col-lg-6">
             {!!Form::label('video_id', 'ASSOCIATED VIDEO:')!!}
