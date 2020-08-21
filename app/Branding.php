@@ -8,4 +8,7 @@ class Branding extends Model
 {
     //
     protected $fillable=['name','quantity_1','quantity_2','quantity_3'];
+    public  function costs(){
+        return $this->hasMany('App\ProductPrinting');
+    }
 }

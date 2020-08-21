@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Branding;
 use App\Http\Requests\ProductRequest;
 use App\Photo;
 use App\PortfolioPhoto;
 use App\Product;
 use App\ProductCategory;
 use App\ProductPhotos;
+use App\ProductPrinting;
 use App\Video;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -34,8 +36,9 @@ class ProductAdminController extends Controller
     public function create()
     {
         //
+
         $category=ProductCategory::pluck('name', 'id')->all();
-        return view('admin.products.create', compact('category'));
+        return view('admin.products.create', compact('category','branding'));
     }
 
     /**
@@ -74,7 +77,7 @@ class ProductAdminController extends Controller
 
         $input['path']=json_encode($data);
 
-       Product::create($input);
+       $product=Product::create($input);
 
         Session::flash('product_message', 'The Product has been successfully Created');
 
@@ -199,6 +202,43 @@ class ProductAdminController extends Controller
         $products=Product::where('stock',0)->get();
         return view('sold', compact('products'));
     }
+
+    public  function costing($id){
+        $product=Product::findBySlugOrFail($id);
+        $branding=Branding::pluck('name', 'id')->all();
+
+        return view('costing', compact('product','branding'));
+    }
+
+    public  function costStore(Request $request){
+        $cost=$request->all();
+        ProductPrinting::create($cost);
+        Session::flash('print_message', 'Printing cost successfully created');
+        return redirect()->back();
+
+    }
+    public  function costDelete($id){
+        $product=ProductPrinting::findOrFail($id);
+        $product->delete();
+        Session::flash('print_message', 'Printing cost successfully deleted');
+        return redirect()->back();
+
+    }
+
+    public  function costUpdate($id){
+        $cost=ProductPrinting::findOrFail($id);
+        $branding=Branding::pluck('name', 'id')->all();
+        return view('cost_update', compact('cost','branding'));
+    }
+
+    public  function costUpdated(Request $request, $id ){
+        $cost=ProductPrinting::findOrFail($id);
+
+       $cost->update($request->all());
+        Session::flash('print_message', 'Printing cost successfully deleted');
+        return redirect()->back();
+    }
+
 
 
 }

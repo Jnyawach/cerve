@@ -518,6 +518,10 @@ a:hover{
 .box h6{
     font-size: 20px;
 }
+/*#############BRANDING-GUIDELINE PAGE#################*/
+.broken{
+    border-top: 1px dashed var(--primary);
+}
 
 
 

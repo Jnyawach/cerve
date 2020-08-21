@@ -108,7 +108,6 @@
 
 
             </div>
-
             <div class="form-group">
                 {!!Form::submit('Update Product', ['class'=>'btn btn-primary'])!!}
             </div>

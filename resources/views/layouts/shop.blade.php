@@ -69,8 +69,8 @@
                 @endauth
                 <li class="nav-item cart ml-3 position-relative">
                     <a href="{{route('cart.index')}}" class="nav-link"><i class="fas fa-shopping-basket"></i>&nbsp;&nbsp;Basket
-                        @if(Cart::instance('default')->count()>0)
-                            <span class="badge badge-pill badge-danger" style="font-size: 10px; top:-5px">{{Cart::instance('default')->count()}}</span>
+                        @if(Cart::getcontent()->count()>0)
+                            <span class="badge badge-pill badge-danger" style="font-size: 10px; top:-5px">{{Cart::getcontent()->count()}}</span>
                         @endif
                     </a>
 

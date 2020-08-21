@@ -33,6 +33,11 @@ Route::group([], function(){
     Route::get('live',['as'=>'live', 'uses'=>'ProductAdminController@live']);
     Route::get('active',['as'=>'active', 'uses'=>'ProductAdminController@active']);
     Route::get('sold',['as'=>'sold', 'uses'=>'ProductAdminController@sold']);
+    Route::get('costing/{id}',['as'=>'costing', 'uses'=>'ProductAdminController@costing']);
+    Route::post('costing',['as'=>'costing.store', 'uses'=>'ProductAdminController@costStore']);
+    Route::delete('costing/{id}',['as'=>'costing.delete', 'uses'=>'ProductAdminController@costDelete']);
+    Route::get('costing_update/{id}',['as'=>'costing-update', 'uses'=>'ProductAdminController@costUpdate']);
+    Route::patch('costing_update/{id}',['as'=>'costing-updated', 'uses'=>'ProductAdminController@costUpdated']);
     Route::resource('/admin/homepage/pricing','PricingController');
 
 });

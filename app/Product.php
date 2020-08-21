@@ -70,11 +70,9 @@ class Product extends Model
     public function reviews(){
         return$this->hasMany('App\Review');
     }
-public  function lastImage($path){
-        $data=json_decode($path, true);
-    $keys = array_keys($data);
-    return $last_key = array_pop($keys);
-}
+   public  function costs(){
+        return$this->hasMany('App\ProductPrinting');
+    }
 
 
 }

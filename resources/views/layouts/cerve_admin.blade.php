@@ -33,7 +33,7 @@
                 <ul class="navbar-nav ml-auto navbar-right-top">
 
                     <li class="nav-item dropdown notification">
-                        <a class="nav-link nav-icons" href="#" id="navbarDropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Joshua<i class="fa fa-caret-down ml-2" aria-hidden="true"></i> </a>
+                        <a class="nav-link nav-icons" href="#" id="navbarDropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{Auth::user()->name}}<i class="fa fa-caret-down ml-2" aria-hidden="true"></i> </a>
                         <ul class="dropdown-menu dropdown-menu-right notification-dropdown">
                             <li>
                                 <div class="list-footer">

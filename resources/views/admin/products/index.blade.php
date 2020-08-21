@@ -62,6 +62,7 @@
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                                 <a class="dropdown-item" href="{{route('products.edit', $product->id)}}">Edit<i class="fa fa-pencil-square-o ml-2" aria-hidden="true"></i></a>
                                                 <a class="dropdown-item" href="{{route('products.show', $product->slug)}}">View <i class="fa fa-bookmark ml-2" aria-hidden="true"></i></a>
+                                                <a class="dropdown-item" href="{{route('costing',$product->slug)}}">Add printing guideline <i class="fa fa-print ml-2" aria-hidden="true"></i></a>
                                                 {!!Form::open(['method'=>'DELETE','class'=>'dropdown-item', 'action'=>['ProductAdminController@destroy', $product->id]])!!}
                                                 <button type="submit" class="btn btn-block">Delete <i class="fa fa-trash-o ml-2" aria-hidden="true"></i> </button>
 

@@ -127,6 +127,7 @@
                 <div class="form-group ">
                     {!! Form::hidden('id', $product->id) !!}
                     {!! Form::hidden('name', $product->name) !!}
+                    
                     {!! Form::hidden('price', $product->price) !!}
                 </div>
                 @if($product->brand)

@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Product;
-use Gloudemans\Shoppingcart\Facades\Cart;
+use App\ProductPrinting;
+
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class CartController extends Controller
@@ -40,15 +43,17 @@ class CartController extends Controller
     public function store(Request $request)
     {
         //
+
         if ($request->branding==1){
-            Cart::instance('branding')->destroy();
+
+            \Cart::session('branding')->clear();
             $product=Product::findOrFail($request->id);
-            $price=$request->price;
+            $price=$product->price;
             $quantity=$request->quantity_small+$request->quantity_medium+$request->quantity_large+$request->quantity_extralarge;
             $qty=$quantity;
 
             switch ($price){
-                case $quantity=1 && $quantity<=10:
+                case $quantity>=1 && $quantity<=10:
                     $price=$product->price;
                     break;
                 case $quantity>=11 && $quantity<=30:
@@ -61,27 +66,47 @@ class CartController extends Controller
                     $price=$product->price_4;
                     break;
             }
+
+
+
             //storing the order data to session before putting it to cart
-            Cart::instance('branding')->add($request->id, $request->name, $qty, $price,['small'=>$request->quantity_small,
-                'medium'=>$request->quantity_medium, 'large'=>$request->quantity_large,'extra_large'=>$request->quantity_extralarge])->associate('App\Product');
+            $userId=Auth::id();
+            $rowId=$request->id;
+            $totalPrice=$qty*$price;
+            $printing=0;
+            $totalPrinting=$printing*$qty;
+            $item= \Cart::session('branding')->add(array(
+                'id'=> $rowId,
+                'name'=> $request->name,
+                'price'=> $price,
+                'quantity'=>$qty,
+                'attributes'=>array(
+                    'small'=>$request->quantity_small,
+                    'medium'=>$request->quantity_medium,
+                    'large'=>$request->quantity_large,
+                    'extra_large'=>$request->quantity_extralarge,
+                    'totalPrice'=>$totalPrice,
+                    'printing'=>$printing,
+                    'totalPrinting'=>$totalPrinting
+                ),
+                'associatedModel'=>$product
+
+            ));
             Session::flash('cart_message', 'Please add the branding guideline');
             return redirect('branding');
 //if the user decided not to brand, the add to cart direct
         }else{
-            $duplicate=Cart::search(function ($cartItem, $rowId)use($request){
-                return $cartItem->id===$request->id;
-            });
-            if($duplicate->isNotEmpty()){
+
+            if($duplicate=\Cart::session(Auth::id())->get($request->id)) {
                 Session::flash('cart_message', 'Product is already added to cart');
                 return redirect('cart');
             }else{
-                $product=Product::findOrFail($request->id);
-                $price=$request->price;
-                $quantity=$request->quantity_small+$request->quantity_medium+$request->quantity_large+$request->quantity_extralarge;
-                $qty=$quantity;
-
-                switch ($price){
-                    case $quantity=1 && $quantity<=10:
+            $product=Product::findOrFail($request->id);
+            $quantity=$request->quantity_small+$request->quantity_medium+$request->quantity_large+$request->quantity_extralarge;
+            $qty=$quantity;
+            $price=$product->price;
+            switch ($price){
+                    case $quantity>=1 && $quantity<=10:
                         $price=$product->price;
                         break;
                     case $quantity>=11 && $quantity<=30:
@@ -94,10 +119,40 @@ class CartController extends Controller
                         $price=$product->price_4;
                         break;
                 }
-               Cart::add($request->id, $request->name, $qty, $price,['small'=>$request->quantity_small,
-                    'medium'=>$request->quantity_medium, 'large'=>$request->quantity_large,'extra_large'=>$request->quantity_extralarge])->associate('App\Product');
+                $order=$request->all();
+                $user=Auth::user();
+                $order['price']=$price;
+                $order['product_id']=$request->id;
+                $order['quantity']=$qty;
+                $order['total_price']=$price*$qty;
+                $user->orders()->create($order);
 
-                Session::flash('cart_message', 'Product successfully added to cart');
+             $userId=Auth::id();
+             $product=Product::findOrFail($request->id);
+             $rowId=$request->id;
+             $totalPrice=$qty*$price;
+             $printing=0;
+             $totalPrinting=$printing*$qty;
+               $item= \Cart::session($userId)->add(array(
+                    'id'=> $rowId,
+                    'name'=> $request->name,
+                    'price'=> $price,
+                    'quantity'=>$qty,
+                    'attributes'=>array(
+                        'small'=>$request->quantity_small,
+                        'medium'=>$request->quantity_medium,
+                        'large'=>$request->quantity_large,
+                        'extra_large'=>$request->quantity_extralarge,
+                        'totalPrice'=>$totalPrice,
+                        'printing'=>$printing,
+                        'totalPrinting'=>$totalPrinting
+                    ),
+                   'associatedModel'=>$product
+
+                    ));
+
+
+               Session::flash('cart_message', 'Product successfully added to cart');
                 return redirect('cart');
             }
         }
@@ -149,7 +204,8 @@ class CartController extends Controller
     public function destroy($id)
     {
         //
-        Cart::remove($id);
+        \Cart::session(Auth::id())->remove($id);
+
         Session::flash('cart_message', 'Product successfully removed from cart');
 
         return redirect()->back();
