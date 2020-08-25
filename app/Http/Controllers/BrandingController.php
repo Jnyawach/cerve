@@ -56,10 +56,10 @@ class BrandingController extends Controller
 //Branding Price
         switch ($brand_price){
             case $quantity>=1 && $quantity<=3:
-                $brand_price=$printing->cost_1;
+                $brand_price=$printing->cost_1/$quantity;
                 break;
             case $quantity>=4 && $quantity<=15:
-                $brand_price=$printing->cost_2;
+                $brand_price=$printing->cost_2/$quantity;
                 break;
             case $quantity>=16 && $quantity<=50:
                 $brand_price=$printing->cost_3;
@@ -97,48 +97,51 @@ class BrandingController extends Controller
                 $price=$product->price_4;
                 break;
         }
-        if($file=@$request->file('artwork_id')){
-            $name= time().$file->getClientOriginalName();
-            $file->move('documents', $name);
-            $artwork=Document::create(['path'=>$name]);
-            $order['artwork_id'] = $artwork->id;
+        if($duplicate=\Cart::session(Auth::id())->get($request->id)) {
+            Session::flash('cart_message', 'Product is already added to cart');
+            return redirect('cart');
+        }else {
+            if ($file = @$request->file('artwork_id')) {
+                $name = time() . $file->getClientOriginalName();
+                $file->move('documents', $name);
+                $artwork = Document::create(['path' => $name]);
+                $order['artwork_id'] = $artwork->id;
+            }
+            $order['brand_price'] = $brand_price;
+            $userId = Auth::id();
+            $rowId = $request->product_id;
+            $branding = new \Darryldecode\Cart\CartCondition(array(
+                'name' => 'branding',
+                'type' => 'printing',
+                'target' => 'subtotal',
+                'order' => 1,
+                'value' => '+' . $brand_price,
+            ));
+
+
+            $item = \Cart::session($userId)->add(array(
+                'id' => $rowId,
+                'name' => $request->name,
+                'price' => $price,
+                'quantity' => $request->quantity,
+                'attributes' => array(
+                    'small' => $request->small,
+                    'medium' => $request->medium,
+                    'large' => $request->large,
+                    'extra_large' => $request->extra_large,
+                    'totalPrice' => $request->total_price,
+                    'printing' => $brand_price,
+                    'totalPrinting' => $totalBrandPrice,
+                   'artwork'=>$artwork->id
+                ),
+                'conditions' => $branding,
+                'associatedModel' => $product
+
+            ));
+            \Cart::session('branding')->clear();
+            Session::flash('cart_message', 'Product successfully added to cart');
+            return redirect('cart');
         }
-        $order['brand_price']=$brand_price;
-
-        $user->orders()->create($order);
-        $userId=Auth::id();
-        $rowId=$request->product_id;
-        $branding = new \Darryldecode\Cart\CartCondition(array(
-            'name' => 'branding',
-            'type' => 'printing',
-            'target' => 'subtotal',
-            'order' => 1,
-            'value' => '+'.$brand_price,
-        ));
-
-
-        $item= \Cart::session($userId)->add(array(
-            'id'=> $rowId,
-            'name'=> $request->name,
-            'price'=> $price,
-            'quantity'=>$request->quantity,
-            'attributes'=>array(
-                'small'=>$request->small,
-                'medium'=>$request->medium,
-                'large'=>$request->large,
-                'extra_large'=>$request->extra_large,
-                'totalPrice'=>$request->total_price,
-                'printing'=>$brand_price,
-                'totalPrinting'=>$totalBrandPrice
-            ),
-            'conditions'=>$branding,
-            'associatedModel'=>$product
-
-        ));
-        \Cart::session('branding')->clear();
-       Session::flash('cart_message', 'Product successfully added to cart');
-        return redirect('cart');
-
     }
 
     /**

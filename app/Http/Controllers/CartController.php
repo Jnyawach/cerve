@@ -119,15 +119,7 @@ class CartController extends Controller
                         $price=$product->price_4;
                         break;
                 }
-                $order=$request->all();
-                $user=Auth::user();
-                $order['price']=$price;
-                $order['product_id']=$request->id;
-                $order['quantity']=$qty;
-                $order['total_price']=$price*$qty;
-                $user->orders()->create($order);
-
-             $userId=Auth::id();
+                $userId=Auth::id();
              $product=Product::findOrFail($request->id);
              $rowId=$request->id;
              $totalPrice=$qty*$price;
@@ -145,7 +137,8 @@ class CartController extends Controller
                         'extra_large'=>$request->quantity_extralarge,
                         'totalPrice'=>$totalPrice,
                         'printing'=>$printing,
-                        'totalPrinting'=>$totalPrinting
+                        'totalPrinting'=>$totalPrinting,
+
                     ),
                    'associatedModel'=>$product
 
@@ -209,5 +202,9 @@ class CartController extends Controller
         Session::flash('cart_message', 'Product successfully removed from cart');
 
         return redirect()->back();
+    }
+
+    public function checkout(){
+        return view('cart/checkout');
     }
 }

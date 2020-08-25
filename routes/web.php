@@ -56,6 +56,7 @@ Route::group([], function (){
     Route::resource('brand-shop', 'BrandShopController');
     Route::resource('cart', 'CartController');
     Route::get('brand-shop/category/{slug}',['as'=>'category', 'uses'=>'BrandShopController@category']);
+    Route::get('cart/homepage/checkout', ['as'=>'checkout','uses'=>'CartController@checkout']);
 
 
 
@@ -69,5 +70,6 @@ Route::group([], function(){
     Route::resource('account/homepage/wishlist', 'UserWishlistController');
     Route::resource('account/homepage/review', 'ReviewController');
     Route::resource('contact-us', 'ContactController');
+    Route::resource('payment', 'PaymentController');
     Route::resource('branding', 'BrandingController');
 });

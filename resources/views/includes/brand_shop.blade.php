@@ -69,5 +69,5 @@
         </div>
 
     @endif
-    <a href="#" title="Brand Shop"><h4>Discover More Products<i class="fa fa-arrow-right ml-2" aria-hidden="true"></i></h4></a>
+    <a href="{{route('brand-shop.index')}}" title="Brand Shop" class="mt-5"><h4>Discover More Products<i class="fa fa-arrow-right ml-2" aria-hidden="true"></i></h4></a>
 </section>

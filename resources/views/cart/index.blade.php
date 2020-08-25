@@ -124,7 +124,7 @@
                                                     {!!Form::open(['method'=>'DELETE', 'action'=>['CartController@destroy',$item->id],'class'=>'form-inline my-2 my-lg-0'])!!}
                                                     <div class="form-group">
 
-                                                        <button type="submit" class="btn text-danger"><i class="fas fa-trash-alt mr-2"></i>Remove</button>
+                                                        <button type="submit" class="btn text-danger"><i class="fas fa-trash-alt mr-2"></i>Remove from cart</button>
                                                     </div>
                                                     {!!Form::close()!!}
                                                 </div>
@@ -135,7 +135,10 @@
                                 </div>
                                 <div >
                                     <a href="{{route('brand-shop.index')}}" title="Continue Shopping" class="btn btn-primary ml-3 mr-3"><i class="fas fa-shopping-basket mr-2"></i>Continue Shopping</a>
-                                    <a href="#" title="Continue Shopping" class="btn btn-primary">Proceed to Checkout<i class="fas fa-arrow-right ml-2"></i></a>
+                                    @if(Cart::session(Auth::id())->getContent()->count()>0)
+
+                                    <a href="{{route('checkout')}}" title="Continue Shopping" class="btn btn-primary">Proceed to Checkout<i class="fas fa-arrow-right ml-2"></i></a>
+                               @endif
                                 </div>
 
 

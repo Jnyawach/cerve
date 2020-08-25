@@ -164,7 +164,11 @@ a:hover{
 
 }
 .client{
-    background-color: var(--primary);
+    background-color: #fafafa;
+
+}
+.client h3{
+    color: #a7a7a7;
 }
 
 /*###################ABOUT US PAGE############################*/

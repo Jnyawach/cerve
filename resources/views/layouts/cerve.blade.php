@@ -97,7 +97,7 @@
 <footer class="pt-5 footer">
     <div class="container">
         <div class="row">
-            <div class="col-6 col-md-4 col-lg-3 mx-auto" >
+            <div class="col-6 col-md-4 col-lg-4 mx-auto" >
                 <h5 class="text-uppercase">ABOUT COMPANY</h5>
 
                 <ul class="list-unstyled">
@@ -115,7 +115,7 @@
 
 
             </div>
-            <div class="col-6 col-md-4 col-lg-3 mx-auto">
+            <div class="col-6 col-md-4 col-lg-4 mx-auto">
 
                 <!-- Links -->
                 <h5 class="text-uppercase">SUPPORT</h5>
@@ -136,7 +136,7 @@
                 </ul>
 
             </div>
-            <div class="col-6 col-md-4 col-lg-3 mx-auto">
+            <div class="col-6 col-md-4 col-lg-4 mx-auto">
 
                 <!-- Links -->
                 <h5 class="text-uppercase">RESOURCES</h5>
@@ -157,28 +157,6 @@
                 </ul>
 
             </div>
-            <div class="col-6 col-md-4 col-lg-3 mx-auto">
-
-                <!-- Links -->
-                <h5 class="text-uppercase">SERVICES</h5>
-
-                <ul class="list-unstyled">
-                    <li>
-                        <a href="#">Branding</a>
-                    </li>
-                    <li>
-                        <a href="#">Printing</a>
-                    </li>
-                    <li>
-                        <a href="#">Embroidey</a>
-                    </li>
-                    <li>
-                        <a href="#">Design</a>
-                    </li>
-                </ul>
-
-            </div>
-
 
         </div>
     </div>
