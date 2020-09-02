@@ -91,4 +91,19 @@ class OrdersAdminController extends Controller
         $pending=Order::where('is_active',0)->get();
         return view('admin/orders/pending', compact('pending'));
     }
+
+    public function  process(){
+        $pending=Order::where('is_active',1)->get();
+        return view('admin/orders/processing', compact('pending'));
+    }
+
+    public function  complete(){
+        $pending=Order::where('is_active',2)->get();
+        return view('admin/orders/complete', compact('pending'));
+    }
+
+    public function  cancel(){
+        $pending=Order::where('is_active',3)->get();
+        return view('admin/orders/cancelled', compact('pending'));
+    }
 }

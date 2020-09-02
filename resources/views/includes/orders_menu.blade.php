@@ -8,7 +8,7 @@
             <li class="nav-item {{ (request()->is('admin/homepage/orders')) ? 'active' : '' }}">
                 <a class="nav-link" href="{{route('orders.index')}}">All</a>
             </li>
-            <li class="nav-item {{ (request()->is('admin/homepage/orders/pending')) ? 'active' : '' }}">
+            <li class="nav-item {{ (request()->is('admin/orders/pending')) ? 'active' : '' }}">
                 <a class="nav-link" href="{{route('pending.order')}}">Pending
                     @if($pending->count()>0)
                         <span class="badge badge-pill badge-danger" style="font-size: 10px; top:-5px">{{$pending->count()}}</span>
@@ -17,13 +17,13 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ (request()->is('admin/homepage/printing/process')) ? 'active' : '' }}" href="{{route('process.print')}}">Processing</a>
+                <a class="nav-link {{ (request()->is('admin/orders/processing')) ? 'active' : '' }}" href="{{route('process.order')}}">Processing</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ (request()->is('admin/homepage/printing/complete')) ? 'active' : '' }}" href="{{route('complete.print')}}">Completed</a>
+                <a class="nav-link {{ (request()->is('admin/orders/complete')) ? 'active' : '' }}" href="{{route('complete.order')}}">Completed</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ (request()->is('admin/homepage/printing/complete')) ? 'active' : '' }} " href="{{route('cancel.print')}}">Cancelled</a>
+                <a class="nav-link {{ (request()->is('admin/orders/cancelled')) ? 'active' : '' }} " href="{{route('cancel.order')}}">Cancelled</a>
             </li>
         </ul>
     </div>

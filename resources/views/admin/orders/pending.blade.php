@@ -13,7 +13,7 @@
 
         <div class="card">
             <div class="card-header">
-                <h5 class="mb-0">Product Details <a href="{{route('products.create')}}" class="float-right"> <i class="fa fa-pencil-square-o mr-2" aria-hidden="true"></i>Add Product</a> </h5>
+                <h5 class="mb-0">Order Details</h5>
                 @if(Session::has('product_message'))
                     <p class="text-success">{{session('product_message')}}</p>
                 @endif
@@ -60,7 +60,7 @@
                                             </a>
 
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                <a class="dropdown-item" href="{{route('products.edit', $order->id)}}">Edit<i class="fa fa-pencil-square-o ml-2" aria-hidden="true"></i></a>
+                                                <a class="dropdown-item" href="{{route('orders.show', $order->id)}}">View<i class="fa fa-pencil-square-o ml-2" aria-hidden="true"></i></a>
                                                 {!!Form::open(['method'=>'DELETE','class'=>'dropdown-item', 'action'=>['ProductAdminController@destroy', $order->id]])!!}
                                                 <button type="submit" class="btn btn-block">Delete <i class="fa fa-trash-o ml-2" aria-hidden="true"></i> </button>
 

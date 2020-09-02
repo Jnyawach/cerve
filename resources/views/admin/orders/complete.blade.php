@@ -1,5 +1,5 @@
 @extends('layouts.cerve_admin')
-@section('title', 'Orders')
+@section('title', 'Pending Orders')
 @section('styles')
     <link rel="stylesheet" type="text/css" href="{{asset('datatables/css/dataTables.bootstrap4.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('datatables/css/buttons.bootstrap4.css')}}">
@@ -34,8 +34,8 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @if($orders->count()>0)
-                            @foreach($orders as $order)
+                        @if($pending->count()>0)
+                            @foreach($pending as $order)
                                 <tr>
                                     <td>CER{{$order->id}}</td>
                                     <td>{{$order->created_at->isoFormat('Y-m-d')}}</td>
@@ -45,13 +45,13 @@
                                     <td>{{$order->quantity}}</td>
                                     <td>@if($order->is_active==0 )
                                             <p class="text-danger">Pending</p>
-                                            @elseif($order->is_active==1)
+                                        @elseif($order->is_active==1)
                                             <p>Processing</p>
                                         @elseif($order->is_active==2)
                                             <p>Completed</p>
-                                            @else
-                                            <p>Cancelled</p>
-                                    @endif
+                                        @else
+                                            <p>Completed</p>
+                                        @endif
                                     </td>
                                     <td>
                                         <div class="dropdown show">
@@ -110,4 +110,6 @@
 
 
 @endsection
+
+
 

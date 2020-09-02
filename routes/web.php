@@ -31,6 +31,9 @@ Route::group([], function(){
     Route::resource('/admin/homepage/faqs','FaqAdminController');
     Route::resource('/admin/homepage/orders','OrdersAdminController');
     Route::get('admin/orders/pending',['as'=>'pending.order', 'uses'=>'OrdersAdminController@pending']);
+    Route::get('admin/orders/processing',['as'=>'process.order', 'uses'=>'OrdersAdminController@process']);
+    Route::get('admin/orders/complete',['as'=>'complete.order', 'uses'=>'OrdersAdminController@complete']);
+    Route::get('admin/orders/cancelled',['as'=>'cancel.order', 'uses'=>'OrdersAdminController@cancel']);
     Route::get('admin/homepage/printing/active',['as'=>'active.print', 'uses'=>'AdminPrintOnDemandController@active']);
     Route::get('admin/homepage/printing/processing',['as'=>'process.print', 'uses'=>'AdminPrintOnDemandController@processing']);
     Route::get('admin/homepage/printing/complete',['as'=>'complete.print', 'uses'=>'AdminPrintOnDemandController@complete']);
