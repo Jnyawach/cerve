@@ -527,6 +527,14 @@ a:hover{
     border-top: 1px dashed var(--primary);
 }
 
+/*######################PRINT ON DEMAND#####################*/
+.order h1{
+    font-size: 50px;
+}
+.order{
+    font-size: 20px;
+}
+
 
 
 

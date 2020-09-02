@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Career;
+use App\Document;
+use App\Http\Requests\CareerRequest;
 use App\Job;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class CareerController extends Controller
 {
@@ -15,6 +20,9 @@ class CareerController extends Controller
     public function index()
     {
         //
+        $user=Auth::user()->id;
+        $jobs=Career::where('user_id', $user)->paginate(10);
+        return view('account.career.index',compact('jobs'));
     }
 
     /**
@@ -25,6 +33,8 @@ class CareerController extends Controller
     public function create()
     {
         //
+
+        return view('account.career.create');
     }
 
     /**
@@ -33,9 +43,22 @@ class CareerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CareerRequest $request)
     {
         //
+        $input=$request->all();
+        $user=Auth::user();
+        if($file=@$request->file('resume_id')){
+            $name= time().$file->getClientOriginalName();
+            $file->move('documents', $name);
+            $photo=Document::create(['path'=>$name]);
+            $input['resume_id'] = $photo->id;
+        }
+
+        $user->career()->create($input);
+        Session::flash('job_message', 'Your application has been successfully submitted');
+
+        return redirect('account/homepage/career');
     }
 
     /**
@@ -47,8 +70,8 @@ class CareerController extends Controller
     public function show($id)
     {
         //
-        $career=Job::findBySlugOrFail($id);
-        return  view('account.career.show', compact('career'));
+        $job=Career::findOrFail($id);
+        return  view('account.career.show', compact('job'));
     }
 
     /**
@@ -60,6 +83,8 @@ class CareerController extends Controller
     public function edit($id)
     {
         //
+        $job=Career::findOrFail($id);
+        return view('account.career.edit', compact('job'));
     }
 
     /**
@@ -72,6 +97,20 @@ class CareerController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $input= $request->all();
+        if($file=@$request->file('resume_id')){
+            $name= time().$file->getClientOriginalName();
+            $file->move('documents', $name);
+            $photo=Document::create(['path'=>$name]);
+            $input['resume_id'] = $photo->id;
+        }
+
+        Auth::user()->career()->whereId($id)->first()->update($input);
+
+        Session::flash('job_message', 'Your application has been successfully updated');
+
+        return redirect('account/homepage/career');
+
     }
 
     /**
@@ -83,5 +122,17 @@ class CareerController extends Controller
     public function destroy($id)
     {
         //
+        $job=Career::findOrFail($id);
+        unlink(public_path(). $job->resume->path);
+        $job->delete();
+
+        Session::flash('job_message', 'The application has been deleted');
+
+        return redirect('account/homepage/career');
+    }
+
+    public function application($id){
+        $job=Job::findBySlugOrFail($id);
+        return view('application', compact('job'));
     }
 }

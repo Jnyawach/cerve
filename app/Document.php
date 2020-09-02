@@ -16,4 +16,8 @@ class Document extends Model
     public function product(){
         return $this->hasMany('App\Order');
     }
+
+    public function resume(){
+        return $this->hasMany('App\Career');
+    }
 }

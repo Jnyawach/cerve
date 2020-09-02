@@ -33,10 +33,6 @@ class CerveController extends Controller
         return view('post', compact('post', 'blogs','products'));
     }
 
-    public  function work(){
-        $careers=Job::all();
-        return view('work-with-us', compact('careers'));
-    }
 
     public  function faqs(){
         $categories=FaqCategory::all();

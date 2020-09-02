@@ -123,6 +123,6 @@ class BlogAdminController extends Controller
 
         Session::flash('post_issue', 'The post has been deleted');
 
-        return redirect('admin/homepage/blos');
+        return redirect('admin/homepage/blog');
     }
 }

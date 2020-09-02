@@ -28,7 +28,9 @@ class JobRequest extends FormRequest
             'title'=>'required',
             'description'=>'required',
             'duration'=>'required',
-            'is_active'=>'required'
+            'is_active'=>'required',
+            'town'=>'required',
+            'country'=>'required'
         ];
     }
 }

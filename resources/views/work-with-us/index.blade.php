@@ -52,7 +52,7 @@
                     <h2 >Current Openings</h2>
                     @foreach($careers as $index=>$career)
                         <div >
-                            <a href="{{route('career.show', $career->slug)}}" class="brand" title="click to view opening"> {{$index+1}}.&nbsp;&nbsp;{{$career->title}}</a>
+                            <a href="{{route('work-with-us.show', $career->slug)}}" class="brand" title="click to view opening"> {{$index+1}}.&nbsp;&nbsp;{{$career->title}}</a>
                         </div>
                     @endforeach
                 </div>
@@ -62,3 +62,4 @@
         @endif
     </section>
 @endsection
+

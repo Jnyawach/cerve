@@ -108,12 +108,7 @@
 
 
                 </div>
-                <h4>Printing types</h4>
-                <div class="form-group">
-                    {!!Form::label('category_id', 'PRINTING TYPES:')!!}
-                    {!!Form::select('category_id',[''=>'Choose Category']+$branding, null, ['class'=>'form-control','multiple'])!!}
 
-                </div>
 
 
                 <div class="form-group">

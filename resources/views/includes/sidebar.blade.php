@@ -12,9 +12,9 @@
                     <li class="list-group-item"><a href="{{route('profile.index')}}" title="My account"><i class="far fa-user mr-3"></i> My Account</a> </li>
                     <li class="list-group-item"><a href="#" title="Orders"><i class="fas fa-shopping-basket mr-3"></i> Orders</a></li>
                     <li class="list-group-item"><a href="{{route('wishlist.index')}}" title="Wish list"><i class="far fa-heart mr-3"></i> Saved Items</a></li>
-                    <li class="list-group-item"><a href="#" title="#"><i class="far fa-comment-alt mr-3"></i> Reviews</a></li>
-                    <li class="list-group-item"><a href="#" title="#"><i class="far fa-newspaper mr-3"></i> Newsletter Preference</a></li>
-                    <li class="list-group-item"><a href="#" title="#"><i class="fas fa-briefcase mr-3"></i> Jobs</a></li>
+                    <li class="list-group-item"><a href="{{route('review.index')}}" title="Reviews"><i class="far fa-comment-alt mr-3"></i> Reviews</a></li>
+                    <li class="list-group-item"><a href="{{route('project.index')}}" title="#"><i class="far fa-newspaper mr-3"></i> Print On Demand</a></li>
+                    <li class="list-group-item"><a href="{{route('career.index')}}" title="Careers"><i class="fas fa-briefcase mr-3"></i> Jobs</a></li>
 
                 </ul>
 

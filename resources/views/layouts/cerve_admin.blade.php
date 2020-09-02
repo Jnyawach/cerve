@@ -14,6 +14,9 @@
     @yield('styles')
     <script src="https://kit.fontawesome.com/7432138d16.js" crossorigin="anonymous"></script>
     <title>@yield('title')</title>
+    <link rel = "icon" href =
+    "{{asset('images/icon-04.png')}}"
+          type = "image/x-icon">
 </head>
 <body>
 <!-- ============================================================== -->
@@ -113,7 +116,7 @@
                             <div id="submenu-3" class="collapse submenu" style="">
                                 <ul class="nav flex-column">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">Orders</a>
+                                        <a class="nav-link" href="{{route('orders.index')}}">Orders</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="{{route('products.index')}}">Products</a>
@@ -156,11 +159,10 @@
                             <div id="submenu-6" class="collapse submenu" style="">
                                 <ul class="nav flex-column">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">Projects</a>
+                                        <a class="nav-link" href="{{route('printing.index')}}">Print orders
+                                        </a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">Print Orders</a>
-                                    </li>
+
                                 </ul>
                             </div>
                         </li>

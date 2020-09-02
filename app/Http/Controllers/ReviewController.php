@@ -18,6 +18,9 @@ class ReviewController extends Controller
     public function index()
     {
         //
+        $user=Auth::id();
+        $reviews=Review::where('user_id',$user)->paginate(10);
+        return view('account.review.index', compact('reviews'));
     }
 
     /**
@@ -39,9 +42,12 @@ class ReviewController extends Controller
     public function store(RatingRequest $request)
     {
         //
-        $rating=Review::create($request->all());
-        Session::flash('rating_message', 'Thank you for rating. Your feedback is very important to us');
-        return redirect()->back();
+        if (Auth::check()) {
+            $rating = Review::create($request->all());
+            Session::flash('rating_message', 'Thank you for rating. Your feedback is very important to us');
+            return redirect()->back();
+        }
+        return redirect('login');
 
 
 
@@ -90,5 +96,9 @@ class ReviewController extends Controller
     public function destroy($id)
     {
         //
+        $review=Review::findOrFail($id);
+        $review->delete();
+        Session::flash('rating_message', 'Your review has been successfully deleted');
+        return redirect()->back();
     }
 }

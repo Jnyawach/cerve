@@ -29,6 +29,13 @@ Route::group([], function(){
     Route::resource('/admin/homepage/jobs','JobAdminController');
     Route::resource('/admin/homepage/policy','PolicyAdminController');
     Route::resource('/admin/homepage/faqs','FaqAdminController');
+    Route::resource('/admin/homepage/orders','OrdersAdminController');
+    Route::get('admin/orders/pending',['as'=>'pending.order', 'uses'=>'OrdersAdminController@pending']);
+    Route::get('admin/homepage/printing/active',['as'=>'active.print', 'uses'=>'AdminPrintOnDemandController@active']);
+    Route::get('admin/homepage/printing/processing',['as'=>'process.print', 'uses'=>'AdminPrintOnDemandController@processing']);
+    Route::get('admin/homepage/printing/complete',['as'=>'complete.print', 'uses'=>'AdminPrintOnDemandController@complete']);
+    Route::get('admin/homepage/printing/cancel',['as'=>'cancel.print', 'uses'=>'AdminPrintOnDemandController@cancel']);
+    Route::resource('/admin/homepage/printing','AdminPrintOnDemandController');
     Route::resource('/admin/homepage/product-category','ProductCategoryController');
     Route::get('live',['as'=>'live', 'uses'=>'ProductAdminController@live']);
     Route::get('active',['as'=>'active', 'uses'=>'ProductAdminController@active']);
@@ -46,7 +53,6 @@ Route::group([], function (){
     Route::get('about-us',['as'=>'about-us', 'uses'=>'CerveController@about']);
     Route::get('blog',['as'=>'blog', 'uses'=>'CerveController@blog']);
     Route::get('post/{slug}',['as'=>'post', 'uses'=>'CerveController@post']);
-    Route::get('work-with-us',['as'=>'work', 'uses'=>'CerveController@work']);
     Route::get('/faqs',['as'=>'faqs', 'uses'=>'CerveController@faqs']);
     Route::get('/faqs/show/{id}',['as'=>'questions', 'uses'=>'CerveController@questions']);
     Route::get('privacy-policy',['as'=>'policy', 'uses'=>'CerveController@policy']);
@@ -55,6 +61,7 @@ Route::group([], function (){
     Route::get('/portfolio/show/{id}',['as'=>'previousWork', 'uses'=>'CerveController@previousWork']);
     Route::resource('brand-shop', 'BrandShopController');
     Route::resource('cart', 'CartController');
+    Route::resource('work-with-us', 'WorkWithUsController');
     Route::get('brand-shop/category/{slug}',['as'=>'category', 'uses'=>'BrandShopController@category']);
     Route::get('cart/homepage/checkout', ['as'=>'checkout','uses'=>'CartController@checkout']);
 
@@ -65,6 +72,7 @@ Route::group([], function (){
 Route::group([], function(){
     Route::resource('account', 'AccountController');
     Route::resource('account/homepage/profile', 'ProfileController');
+    Route::get('/application/{id}', ['as'=>'application','uses'=>'CareerController@application']);
     Route::resource('account/homepage/career', 'CareerController');
     Route::resource('account/homepage/career', 'CareerController');
     Route::resource('account/homepage/wishlist', 'UserWishlistController');
@@ -72,4 +80,6 @@ Route::group([], function(){
     Route::resource('contact-us', 'ContactController');
     Route::resource('payment', 'PaymentController');
     Route::resource('branding', 'BrandingController');
+    Route::resource('print-on-demand', 'PrintOnDemandController');
+    Route::resource('account/homepage/project', 'UserPrintOnDemandController');
 });

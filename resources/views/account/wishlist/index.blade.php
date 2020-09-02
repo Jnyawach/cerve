@@ -2,7 +2,7 @@
 @section('title', 'Saved items')
 @section('content')
 <section>
-    <div class="row mt-5">
+    <div class="row mt-4">
         @include('includes.sidebar')
         <div class="col-sm-11 col-md-8 col-lg-8 mx-auto">
             <div class="card shadow-sm">
@@ -24,26 +24,26 @@
                                         </div>
                                         <div class="col-sm-8 col-md-8 col-lg-8">
                                             <h6>{{$wishlist->product->name}}</h6>
-                                            <p>
+                                            <h5 class="mt-2">
+                                                @if($wishlist->product->reviews->count()>0)
+                                                    @for($i = 0; $i < 5; $i++)
+                                                        <span><i class="fa fa-star{{$wishlist->product->reviews->sum('rating')/$wishlist->product->reviews->count()  <= $i ? '-o' : '' }}"></i></span>
+                                                    @endfor
 
-                                                <span><i class="fa fa-star-o"></i></span>
+                                                @else
                                                     <span><i class="fa fa-star-o"></i></span>
                                                     <span><i class="fa fa-star-o"></i></span>
                                                     <span><i class="fa fa-star-o"></i></span>
                                                     <span><i class="fa fa-star-o"></i></span>
+                                                    <span><i class="fa fa-star-o"></i></span>
+                                                @endif
 
-                                                </p>
-                                            <div class="w-100 d-flex">
-                                                {!!Form::open(['method'=>'POST', 'action'=>'BrandShopController@store','class'=>''])!!}
-                                                {!! Form::hidden('id', $wishlist->product->id) !!}
-                                                {!! Form::hidden('name', $wishlist->product->name) !!}
-                                                {!! Form::hidden('price', $wishlist->product->price) !!}
-                                                {!! Form::hidden('quantity', 1) !!}
-                                                <button type="submit" class="btn btn-primary  pr-3 pl-3" style="font-size: 14px">Buy Now &nbsp;&nbsp; KES {{$wishlist->product->price}}</button>
-                                                {!!Form::close()!!}
+                                            </h5>
+                                            <div class="w-100 ">
+                                                <a href="{{route('brand-shop.show', $wishlist->product->slug)}}" class="btn btn-primary">BUY NOW KES {{$wishlist->product->price}}</a>
                                                 {!!Form::open(['method'=>'DELETE', 'action'=>['UserWishlistController@destroy',$wishlist->id],'class'=>'float-right ml-5'])!!}
                                                 <div class="form-group">
-                                                    <button type="submit" class="btn"><i class="far fa-trash-alt mr-2"></i>Remove</button>
+                                                    <button type="submit" class="btn text-danger"><i class="far fa-trash-alt mr-2"></i>Remove</button>
                                                 </div>
                                                 {!!Form::close()!!}
                                             </div>
@@ -53,7 +53,7 @@
 
                                     @endforeach
                                     @else
-                                    <h4 class="text-center">You not saved any products</h4>
+                                    <h4 class="text-center">You have never saved any products</h4>
                                 @endif
                             </div>
                         </div>

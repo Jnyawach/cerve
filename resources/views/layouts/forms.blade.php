@@ -13,6 +13,9 @@
     @yield('styles')
     <script src="https://kit.fontawesome.com/7432138d16.js" crossorigin="anonymous"></script>
     <title>@yield('title')</title>
+    <link rel = "icon" href =
+    "{{asset('images/icon-04.png')}}"
+          type = "image/x-icon">
 </head>
 <body>
 <main>

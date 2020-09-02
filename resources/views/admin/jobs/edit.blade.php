@@ -16,6 +16,23 @@
                 {!!Form::text('title', null, ['class'=>'form-control'])!!}
 
             </div>
+            <div class="form-group">
+                {!!Form::label('type', 'Type:')!!}
+                {!!Form::select('type', array(1=>'PART TIME', 0=>'FULL TIME'), null, ['class'=>'form-control'])!!}
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-12 col-md-6 col-lg-6">
+                    {!!Form::label('town', 'Town:')!!}
+                    {!!Form::text('town', null, ['class'=>'form-control'])!!}
+
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-6">
+                    {!!Form::label('country', 'Country:')!!}
+                    {!!Form::text('country', null, ['class'=>'form-control'])!!}
+
+                </div>
+            </div>
             <div class="form-group row">
                 <div class="col-sm-12 col-md-6 col-lg-6">
                     {!!Form::label('duration', 'Duration:')!!}

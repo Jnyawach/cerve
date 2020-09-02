@@ -32,7 +32,9 @@ class Job extends Model
         'description',
         'duration',
         'is_active',
-        'slug'
+        'slug',
+        'town',
+        'country'
     ];
 
 }

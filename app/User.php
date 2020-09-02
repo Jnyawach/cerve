@@ -60,4 +60,12 @@ class User extends Authenticatable
     public function reviews(){
         return$this->hasMany('App\Review');
     }
+
+    public function prints(){
+        return$this->hasMany('App\PrintOnDemand');
+    }
+
+    public function career(){
+        return$this->hasMany('App\Career');
+    }
 }

@@ -13,6 +13,10 @@
     @yield('styles')
     <script src="https://kit.fontawesome.com/7432138d16.js" crossorigin="anonymous"></script>
     <title> @yield('title')</title>
+    <link rel = "icon" href =
+    "{{asset('images/icon-04.png')}}"
+          type = "image/x-icon">
+
 
 </head>
 <body>
@@ -29,7 +33,7 @@
                     <a class="nav-link" href="{{route('brand-shop.index')}}">Brand Shop</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Print On Demand</a>
+                    <a class="nav-link" href="{{route('print-on-demand.index')}}">Print On Demand</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('portfolio')}}" title="Portfolio">Portfolio</a>
@@ -105,7 +109,7 @@
                         <a href="{{route('about-us')}}" >About Us</a>
                     </li>
                     <li>
-                        <a href="{{route('work')}}">Work with us</a>
+                        <a href="{{route('work-with-us.index')}}">Work with us</a>
                     </li>
                     <li>
                         <a href="#">Testimonials</a>
