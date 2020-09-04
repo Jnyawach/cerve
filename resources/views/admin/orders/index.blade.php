@@ -49,7 +49,7 @@
                                             <p>Processing</p>
                                         @elseif($order->is_active==2)
                                             <p>Completed</p>
-                                            @else
+                                            @elseif($order->is_active==3)
                                             <p>Cancelled</p>
                                     @endif
                                     </td>
@@ -61,6 +61,12 @@
 
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                                 <a class="dropdown-item" href="{{route('orders.show', $order->id)}}">View<i class="fa fa-pencil-square-o ml-2" aria-hidden="true"></i></a>
+                                                {!!Form::model($order,['method'=>'PATCH','class'=>'dropdown-item', 'action'=>['OrdersAdminController@update',$order->id]])!!}
+                                                {!! Form::hidden('is_active', 3) !!}
+                                                <div class="form-group">
+                                                    <button class="btn btn-block my-2 my-sm-0" type="submit">Cancel</button>
+                                                </div>
+                                                {!!Form::close()!!}
                                                 {!!Form::open(['method'=>'DELETE','class'=>'dropdown-item', 'action'=>['ProductAdminController@destroy', $order->id]])!!}
                                                 <button type="submit" class="btn btn-block">Delete <i class="fa fa-trash-o ml-2" aria-hidden="true"></i> </button>
 

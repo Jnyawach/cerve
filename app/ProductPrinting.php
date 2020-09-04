@@ -23,4 +23,8 @@ class ProductPrinting extends Model
         return $this->belongsTo('App\Branding');
     }
 
+    public  function orders(){
+        return $this->hasMany('App\Order');
+    }
+
 }

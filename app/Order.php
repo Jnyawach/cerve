@@ -32,4 +32,12 @@ class Order extends Model
     public  function user(){
         return $this->belongsTo('App\User');
     }
+
+    public  function artwork(){
+        return $this->belongsTo('App\Document');
+    }
+
+    public  function  printing(){
+        return $this->belongsTo('App\ProductPrinting');
+    }
 }

@@ -84,5 +84,6 @@ Route::group([], function(){
     Route::resource('payment', 'PaymentController');
     Route::resource('branding', 'BrandingController');
     Route::resource('print-on-demand', 'PrintOnDemandController');
+    Route::resource('account/homepage/customer', 'UserOrdersController');
     Route::resource('account/homepage/project', 'UserPrintOnDemandController');
 });

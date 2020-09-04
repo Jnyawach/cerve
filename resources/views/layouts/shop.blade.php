@@ -48,7 +48,7 @@
                         <div class="dropdown-menu shadow" aria-labelledby="navbarDropdownMenuLink">
                             <a class="dropdown-item" href="{{route('account.index')}}"><i class="far fa-user-circle mr-3"></i> Account</a>
                             <a class="dropdown-item" href="{{route('wishlist.index')}}"><i class="far fa-heart mr-3"></i>Saved Items</a>
-                            <a class="dropdown-item" href="#"><i class="fas fa-shopping-basket mr-3"></i> Orders</a>
+                            <a class="dropdown-item" href="{{route('customer.index')}}"><i class="fas fa-shopping-basket mr-3"></i> Orders</a>
                             <span class="dropdown-item">
 
                             @if(Route::has('login'))

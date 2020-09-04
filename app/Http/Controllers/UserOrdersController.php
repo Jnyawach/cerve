@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Order;
-use App\ProductPrinting;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
-class OrdersAdminController extends Controller
+class UserOrdersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +17,8 @@ class OrdersAdminController extends Controller
     public function index()
     {
         //
-        $pending_count=Order::where('is_active',0)->get();
-        $orders=Order::all();
-        return  view('admin.orders.index', compact('orders','pending_count'));
+        $orders=Order::where('user_id', Auth::id())->paginate(5);
+        return  view('account.customer.index', compact('orders'));
     }
 
     /**
@@ -51,15 +51,6 @@ class OrdersAdminController extends Controller
     public function show($id)
     {
         //
-        $pending_count=Order::where('is_active',0)->get();
-        $order=Order::findOrFail($id);
-        if ($order->printing){
-            $printing=ProductPrinting::findOrFail($order->printing);
-        }
-
-
-
-        return  view('admin.orders.show', compact('pending_count','order', 'printing'));
     }
 
     /**
@@ -86,8 +77,8 @@ class OrdersAdminController extends Controller
         $input=$request->is_active;
         $order=Order::findOrFail($id);
         $order->update(['is_active'=>$input]);
+        Session::flash('order_message', 'The Order has been successfully Cancelled');
         return  redirect()->back();
-
     }
 
     /**
@@ -99,29 +90,5 @@ class OrdersAdminController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function  pending(){
-        $pending_count=Order::where('is_active',0)->get();
-        $pending=Order::where('is_active',0)->get();
-        return view('admin/orders/pending', compact('pending','pending_count'));
-    }
-
-    public function  process(){
-        $pending=Order::where('is_active',1)->get();
-        $pending_count=Order::where('is_active',0)->get();
-        return view('admin/orders/processing', compact('pending','pending_count'));
-    }
-
-    public function  complete(){
-        $pending=Order::where('is_active',2)->get();
-        $pending_count=Order::where('is_active',0)->get();
-        return view('admin/orders/complete', compact('pending','pending_count'));
-    }
-
-    public function  cancel(){
-        $pending=Order::where('is_active',3)->get();
-        $pending_count=Order::where('is_active',0)->get();
-        return view('admin/orders/cancelled', compact('pending','pending_count'));
     }
 }

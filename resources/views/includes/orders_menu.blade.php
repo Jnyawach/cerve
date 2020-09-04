@@ -10,8 +10,8 @@
             </li>
             <li class="nav-item {{ (request()->is('admin/orders/pending')) ? 'active' : '' }}">
                 <a class="nav-link" href="{{route('pending.order')}}">Pending
-                    @if($pending->count()>0)
-                        <span class="badge badge-pill badge-danger" style="font-size: 10px; top:-5px">{{$pending->count()}}</span>
+                    @if($pending_count->count()>0)
+                        <span class="badge badge-pill badge-danger" style="font-size: 10px; top:-5px">{{$pending_count->count()}}</span>
                     @endif
 
                 </a>
