@@ -14,7 +14,7 @@ class PaymentController extends Controller
     public function index()
     {
         //
-        return view('payment.index');
+        return view('account.payment.index');
     }
 
     /**
@@ -36,7 +36,7 @@ class PaymentController extends Controller
     public function store(Request $request)
     {
         //
-        return redirect('payment');
+        return redirect('account/homepage/payment');
     }
 
     /**

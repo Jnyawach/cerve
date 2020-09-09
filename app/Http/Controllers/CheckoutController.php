@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Order;
+use App\Http\Requests\CheckoutRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
-class UserOrdersController extends Controller
+class CheckoutController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +17,6 @@ class UserOrdersController extends Controller
     public function index()
     {
         //
-        $orders=Order::where('user_id', Auth::id())->paginate(5);
-        return  view('account.customer.index', compact('orders'));
     }
 
     /**
@@ -37,9 +35,43 @@ class UserOrdersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CheckoutRequest $request)
     {
         //
+
+
+        if ($request->shipping==1){
+
+            $shipping = new \Darryldecode\Cart\CartCondition(array(
+                'name' => 'Shipping',
+                'type' => 'shipping',
+                'target' => 'subtotal',
+                'order' => 1,
+                'value' => +0,
+            ));
+            \Cart::session(Auth::id())->condition($shipping);
+
+        }elseif ($request->shipping==2){
+            $shipping = new \Darryldecode\Cart\CartCondition(array(
+                'name' => 'Shipping',
+                'type' => 'shipping',
+                'target' => 'subtotal',
+                'order' => 1,
+                'value' => +0,
+            ));
+            \Cart::session(Auth::id())->condition($shipping);
+
+        }else{
+            Session::flash('checkout_message', 'Please select a valid shipping Method');
+            return redirect()->back();
+        }
+
+        if($request->payment==1){
+            return view('account.checkout.index');
+        }elseif($request->payment==2){
+            return view('account/checkout/transfer');
+        }
+
     }
 
     /**
@@ -51,8 +83,6 @@ class UserOrdersController extends Controller
     public function show($id)
     {
         //
-        $order=Order::findOrFail($id);
-        return view('account.customer.show', compact('order'));
     }
 
     /**
@@ -76,11 +106,6 @@ class UserOrdersController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $input=$request->is_active;
-        $order=Order::findOrFail($id);
-        $order->update(['is_active'=>$input]);
-        Session::flash('order_message', 'The Order has been successfully Cancelled');
-        return  redirect()->back();
     }
 
     /**

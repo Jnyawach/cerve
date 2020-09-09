@@ -9,7 +9,7 @@
         <section>
             <div class="row mt-4 p-2">
 
-                <div class="col-sm-11 col-md-7 col-lg-8 mx-auto">
+                <div class="col-sm-11 col-md-7 col-lg-9 mx-auto">
                     <div class="card shadow-sm">
                         <h6 class="card-header p-3 bg-light" style="font-size: 18px" >Basket<span class="float-right">{{Cart::session(Auth::id())->getContent()->count()}}&nbsp;Item(s)</span> </h6>
                         <div class="card-body">
@@ -28,7 +28,7 @@
                                                 @if($item->model->category->name=='Clothing/Apparel')
                                                     <div class="col-sm-12 col-md-12 col-lg-12 text-center ">
 
-                                                        <table class="table" >
+                                                        <table class="table table-responsive" >
                                                             <thead class="thead thead-light">
                                                             <tr>
                                                                 <th scope="col"><h4 class="p-0 m-0">Quantity</h4></th>
@@ -55,7 +55,7 @@
                                                             </tbody>
                                                         </table>
                                                       <form>
-                                                        <table class="table mt-4" >
+                                                        <table class="table mt-4 " >
                                                             <thead class="thead thead-light">
                                                             <tr>
                                                                 <th scope="col"><h4 class="p-0 m-0">Size(s)</h4></th>
@@ -85,7 +85,7 @@
                                                     </div>
 
                                                 @else
-                                                    <table class="table" >
+                                                    <table class="table table-responsive" >
                                                         <thead class="thead thead-light">
                                                         <tr>
                                                             <th scope="col"><h4 class="p-0 m-0">Quantity</h4></th>

@@ -1,5 +1,5 @@
 @extends('layouts.forms')
-
+@section('title','Login')
 @section('content')
 <div class="container pt-5 contact-form">
     <div class="row shadow  m-5 rounded ">

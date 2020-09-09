@@ -2,6 +2,9 @@
 @section('title','Checkout')
 @section('content')
     <section>
+        @if(Session::has('checkout_message'))
+            <p class="text-danger">{{session('checkout_message')}}</p>
+        @endif
         <div class="row mt-4">
             <div class="col-sm-10 col-md-7 col-lg-7 mx-auto mt-2">
                 <div class="row">
@@ -30,30 +33,50 @@
                     <div class="col-12">
                         <div class="card shadow-sm mt-2 ">
                             <div class="card-header  " >
-                                <h6>2. Delivery Method</h6>
+                                <h6>2. Delivery Method & Payment</h6>
                             </div>
                             <div class="card-body" >
                                 <div class="row">
+                                    @include('includes.form_error')
+                                </div>
+                                <div class="row">
                                     <div class="col-12 mx-auto m-2 ">
-                                        {!!Form::open(['method'=>'POST', 'action'=>'PaymentController@store'])!!}
-                                        {!! Form::hidden('shipping', Auth::id())!!}
+                                        {!!Form::open(['method'=>'POST', 'action'=>'CheckoutController@store'])!!}
+
                                         <div class="form-check-inline">
-                                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                            <label class="form-check-label" for="exampleCheck1">  <h5 class="p-0 m-0">Pick Up at Cerve Offices</h5></label>
+                                            <input class="form-check-input d-block" type="radio" name="shipping" id="shipping" value="1" style="height:20px; width:20px; vertical-align: middle;" required>
+                                            <label class="form-check-label " for="shipping">  <h5 class="p-0 m-0">Pick Up at Cerve Offices</h5></label>
 
                                         </div>
                                         <p>Winglobal Hse. Keekorok Rd. Nairobi</p>
                                         <div class="form-check-inline">
-                                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                            <label class="form-check-label" for="exampleCheck1">  <h5 class="p-0 m-0">Delivery</h5></label>
+                                            <input class="form-check-input d-block" type="radio" name="shipping" id="shipping1" disabled value="2" style="height:20px; width:20px; vertical-align: middle;" required>
+                                            <label class="form-check-label" for="shipping1">  <h5 class="p-0 m-0">Local Delivery</h5></label>
 
                                         </div>
                                         <div class="form-group">
                                             <img src="{{asset('images/wells_fargo.jpg')}}" class="img-fluid" style="height: 50px">
-                                            <p>Wells Fargo</p>
+                                            <p>Wells Fargo <span class="text-danger"> Not available now</span></p>
+
+                                        </div>
+                                        <hr>
+                                        <h3>Payment Method</h3>
+                                        <h6>How do you want to pay for you order?</h6>
+                                        <div class="form-check-inline">
+                                            <input class="form-check-input d-block" type="radio" name="payment" id="exampleRadios1" value="1" style="height:20px; width:20px; vertical-align: middle;" required>
+                                            <label class="form-check-label" for="exampleRadios1">
+                                               <img src="{{asset('images/mpesa_logo.png')}}"class="img-fluid" alt="Mpesa">
+                                            </label>
                                         </div>
 
-                                        <div class="form-group row">
+                                        <div class="form-check-inline">
+                                            <input class="form-check-input d-block" type="radio" name="payment" id="exampleRadios2" value="2" style="height:20px; width:20px; vertical-align: middle;" required>
+                                            <label class="form-check-label" for="exampleRadios2">
+                                               Bank Transfer
+                                            </label>
+                                        </div>
+
+                                        <div class="form-group row mt-5">
                                             <div class="col-4">
                                                 <a href="{{route('cart.index')}}" class="btn btn-primary">Back to Cart</a>
                                             </div>
@@ -72,6 +95,7 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
 
             </div>
@@ -125,4 +149,13 @@
             </div>
         </div>
     </section>
+
+@endsection
+@section('scripts')
+    <script type="text/javascript">
+        for (i=0; i<document.test.shipping.length; i++){
+            if (document.test.shipping[i].checked !=true)
+                document.test.shipping[i].disabled='true';
+        }
+    </script>
 @endsection

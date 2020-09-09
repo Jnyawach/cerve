@@ -127,7 +127,7 @@
                 <div class="form-group ">
                     {!! Form::hidden('id', $product->id) !!}
                     {!! Form::hidden('name', $product->name) !!}
-                    
+
                     {!! Form::hidden('price', $product->price) !!}
                 </div>
                 @if($product->brand)
@@ -170,10 +170,10 @@
                                 <tbody>
                                 <tr>
                                     <th ><h4 class="p-0 m-0">Quantity:</h4></th>
-                                    <th class="font-bold"> <input class="quantity"  required type="number" value="" min="1" max="1500" name="quantity_small"/></th>
-                                    <td class="font-bold"> <input  class="quantity" required type="number" value="" min="1" max="1500" name="quantity_medium"/></td>
-                                    <td class="font-bold"> <input class="quantity"  required type="number" value="" min="1" max="1500" name="quantity_large"/></td>
-                                    <td class="font-bold"> <input class="quantity"  required type="number" value="" min="1" max="1500" name="quantity_extralarge"/></td>
+                                    <th class="font-bold"> <input class="quantity"   type="number" value="" min="1" max="1500" name="quantity_small"/></th>
+                                    <td class="font-bold"> <input  class="quantity"  type="number" value="" min="1" max="1500" name="quantity_medium"/></td>
+                                    <td class="font-bold"> <input class="quantity"   type="number" value="" min="1" max="1500" name="quantity_large"/></td>
+                                    <td class="font-bold"> <input class="quantity"   type="number" value="" min="1" max="1500" name="quantity_extralarge"/></td>
                                 </tr>
 
 
