@@ -7,7 +7,7 @@
     @endif
     @if(Cart::session(Auth::id())->getContent())
         <section>
-            <div class="row mt-4 p-2">
+            <div class="row mt-4 p-5">
 
                 <div class="col-sm-11 col-md-7 col-lg-9 mx-auto">
                     <div class="card shadow-sm">
@@ -165,9 +165,9 @@
             </div>
         </section>
     @else
-        <div class="text-center">
-            <h2 class="text-center m-2" style="font-size: 20px">There are 0 items(s) in your cart!</h2>
-            <a href="{{route('brand-shop.index')}}" class="btn btn-primary text-center">Continue Shopping</a>
+        <div >
+            <h3 class="text-center" style="font-size: 20px">There are 0 items(s) in your cart!</h3>
+            <a href="{{route('brand-shop.index')}}" class="btn btn-primary text-center m-3">Continue Shopping</a>
         </div>
     @endif
     <section>

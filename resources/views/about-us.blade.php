@@ -11,12 +11,15 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 col-md-12 col-lg-12 mx-auto" >
-                    <p class="text-center">Cerve is a company based in Nairobi Kenya offering powerful graphic design,
-                        branding and printing services. Cerve has been thriving through the years with highly
-                        experienced professional employees and good reputation in the market. We provide our
-                        clients with one-stop graphic design package ranging from web development, branding,
-                        print design to UI design. This has kept us amongst the top choice from our competitors
-                        and has made us believe in ourselves.</p>
+                    <p class="text-center">Cerve is a company with its headquarters in
+                        Nairobi Kenya. We are a global leader in printing and branding for more than 5yrs.
+                        We have the inspiration that endures
+                        and gets better with age. This has contributed to our quality, speed, and reputation.
+                    </p>
+                    <p class="text-center">We believe that printing is a way of speaking. Speaking to family, friends,
+                        strangers-speaking to society. This is why we are dedicated to research and
+                        innovation to
+                        ensure that all our clients achieve the best speech in print.</p>
                 </div>
             </div>
 

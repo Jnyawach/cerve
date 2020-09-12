@@ -19,7 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group([], function(){
+Route::group(['middleware'=>'role'], function(){
 
     Route::resource('/admin','AdminController');
     Route::resource('admin/homepage/users','UserAdminController');
@@ -63,16 +63,17 @@ Route::group([], function (){
     Route::get('/portfolio',['as'=>'portfolio', 'uses'=>'CerveController@portfolio']);
     Route::get('/portfolio/show/{id}',['as'=>'previousWork', 'uses'=>'CerveController@previousWork']);
     Route::resource('brand-shop', 'BrandShopController');
-    Route::resource('cart', 'CartController');
     Route::resource('work-with-us', 'WorkWithUsController');
     Route::get('brand-shop/category/{slug}',['as'=>'category', 'uses'=>'BrandShopController@category']);
-    Route::get('cart/homepage/checkout', ['as'=>'checkout','uses'=>'CartController@checkout']);
+
 
 
 
 });
 
-Route::group([], function(){
+Route::group(['middleware'=>'auth'], function(){
+    Route::resource('cart', 'CartController');
+    Route::get('cart/homepage/checkout', ['as'=>'checkout','uses'=>'CartController@checkout']);
     Route::resource('account', 'AccountController');
     Route::resource('account/homepage/profile', 'ProfileController');
     Route::get('/application/{id}', ['as'=>'application','uses'=>'CareerController@application']);
