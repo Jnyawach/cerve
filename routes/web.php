@@ -65,6 +65,7 @@ Route::group([], function (){
     Route::resource('brand-shop', 'BrandShopController');
     Route::resource('work-with-us', 'WorkWithUsController');
     Route::get('brand-shop/category/{slug}',['as'=>'category', 'uses'=>'BrandShopController@category']);
+    Route::resource('contact-us', 'ContactController');
 
 
 
@@ -81,7 +82,6 @@ Route::group(['middleware'=>'auth'], function(){
     Route::resource('account/homepage/career', 'CareerController');
     Route::resource('account/homepage/wishlist', 'UserWishlistController');
     Route::resource('account/homepage/review', 'ReviewController');
-    Route::resource('contact-us', 'ContactController');
     Route::resource('account/homepage/payment', 'PaymentController');
     Route::resource('branding', 'BrandingController');
     Route::resource('print-on-demand', 'PrintOnDemandController');
