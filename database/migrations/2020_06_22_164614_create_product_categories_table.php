@@ -28,6 +28,8 @@ class CreateProductCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product_categories');
+        Schema::table('product_categories', function (Blueprint $table) {
+            //
+        });
     }
 }
