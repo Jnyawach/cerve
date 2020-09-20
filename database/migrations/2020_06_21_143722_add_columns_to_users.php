@@ -15,6 +15,8 @@ class AddColumnsToUsers extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
+            $table->integer('role_id')->defualt(3)->index();
+            $table->integer('is_active')->default(0);
             $table->string('lastname');
             $table->string('cellphone')->nullable();
             $table->string('country')->nullable();
