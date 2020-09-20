@@ -88,7 +88,7 @@
 <footer class="pt-5 footer">
     <div class="container">
         <div class="row">
-            <div class="col-6 col-md-4 col-lg-4 mx-auto" >
+            <div class="col-sm-10 col-md-4 col-lg-4 mx-auto" >
                 <h5 class="text-uppercase">ABOUT COMPANY</h5>
 
                 <ul class="list-unstyled">
@@ -106,14 +106,14 @@
 
 
             </div>
-            <div class="col-6 col-md-4 col-lg-4 mx-auto">
+            <div class="col-sm-10 col-md-4 col-lg-4 mx-auto">
 
                 <!-- Links -->
                 <h5 class="text-uppercase">SUPPORT</h5>
 
                 <ul class="list-unstyled">
                     <li>
-                        <a href="{{route('faqs')}}">Faqs</a>
+                        <a href="{{route('faqs-panel.index')}}">Faqs</a>
                     </li>
                     <li>
                         <a href="{{route('policy')}}">Privacy Policy</a>
@@ -127,7 +127,7 @@
                 </ul>
 
             </div>
-            <div class="col-6 col-md-4 col-lg-4 mx-auto">
+            <div class="col-sm-10 col-md-4 col-lg-4 mx-auto">
 
                 <!-- Links -->
                 <h5 class="text-uppercase">RESOURCES</h5>
@@ -149,8 +149,6 @@
 
             </div>
 
-
-
         </div>
     </div>
 
@@ -158,10 +156,10 @@
     <!-- Copyright -->
     <div class="container text-center py-3">
         <div class="row">
-            <div class="col-6 col-md-4 col-lg-3 mx-auto" >
+            <div class="col-sm-10 col-md-12 col-lg-3 mx-auto" >
                 <a href="/" title="home page">  Cerve Networks |&nbsp;&copy;{{date('Y')}} cerve</a>
             </div>
-            <div class="col-6 col-md-4 col-lg-8 mx-auto text-right ">
+            <div class="col-sm-12 col-md-12 col-lg-8 mx-auto ">
                 <a href="#" class="p-1 "><u>Facebook</u></a>
                 <a href="#" class="p-1 "><u>Instagram</u></a>
                 <a href="#" class="p-1 "><u>Twitter</u></a>
@@ -175,14 +173,18 @@
     <!-- Copyright -->
 
 </footer>
+
+
+
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
-
-
+<script src="assets/vendor/slimscroll/jquery.slimscroll.js"></script>
+<!-- main js -->
+<script src="assets/libs/js/main-js.js"></script>
 @yield('scripts')
 </body>
 </html>

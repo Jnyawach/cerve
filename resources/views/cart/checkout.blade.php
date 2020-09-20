@@ -15,14 +15,14 @@
                             </div>
                             <div class="card-body" >
                                 <div class="row">
-                                    <div class="col-8 mx-auto m-2 ">
+                                    <div class="col-sm-12 col-md-8 col-lg-8 mx-auto m-2 ">
                                         <h6>{{Auth::user()->name}}&nbsp;{{Auth::user()->lastname}}</h6>
                                         <h5 class="p-0">{{Auth::user()->email}},CBD-Nairobi Kenya</h5>
                                         <h5 class="p-0">+254717109280</h5>
                                         <h5></h5>
 
                                     </div>
-                                    <div class="col-3 mx-auto">
+                                    <div class="col-sm-12 col-md-3 col-lg-3 mx-auto">
                                         <a href="{{route('profile.edit',Auth::id())}}" class="btn btn-primary"><i class="fas fa-pen mr-2"></i>Change</a>
                                     </div>
                                 </div>
@@ -77,10 +77,10 @@
                                         </div>
 
                                         <div class="form-group row mt-5">
-                                            <div class="col-4">
+                                            <div class="col-sm-5 m-2">
                                                 <a href="{{route('cart.index')}}" class="btn btn-primary">Back to Cart</a>
                                             </div>
-                                            <div class="col-4">
+                                            <div class="col-sm-5 m-2">
                                                 <button type="submit" class="btn btn-primary">Proceed to Payment</button>
                                             </div>
                                         </div>

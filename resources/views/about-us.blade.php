@@ -22,12 +22,12 @@
                         ensure that all our clients achieve the best speech in print.</p>
                 </div>
             </div>
-
-            <div class="row mt-5">
+        </div>
+            <div class="row mt-5 about-quality ">
                 <div class="col-12 col-md-4 col-lg-3 mx-auto" >
                     <div class="symbol text-center"><i class="far fa-lightbulb"></i></div>
-                    <h5 class="text-center">CREATIVE CONCEPT</h5>
-                    <p class="text-center">Creativity is just a culture at
+                    <h5 class="text-center mt-5">CREATIVE CONCEPT</h5>
+                    <p class="text-center ">Creativity is just a culture at
                         century Studio. Our team is
                         ready to perceive the world in
                         new ways and generate solutions
@@ -35,7 +35,7 @@
                 </div>
                 <div class="col-12 col-md-4 col-lg-3 mx-auto" >
                     <div class="symbol text-center"><i class="far fa-heart"></i></div>
-                    <h5 class="text-center">UNIQUE DESIGN</h5>
+                    <h5 class="text-center mt-5">UNIQUE DESIGN</h5>
                     <p class="text-center">We offer what you will never
                         find anywhere else. Our products
                         and services has a taste
@@ -44,7 +44,7 @@
                 </div>
                 <div class="col-12 col-md-4 col-lg-3 mx-auto" >
                     <div class="symbol text-center"><i class="far fa-star"></i></div>
-                    <h5 class="text-center">GREAT QUALITY</h5>
+                    <h5 class="text-center mt-5">GREAT QUALITY</h5>
                     <p class="text-center">Our standards are raised very
                         high. Our unique designs are
                         emraced with quality. High
@@ -53,19 +53,19 @@
                 </div>
                 <div class="col-12 col-md-4 col-lg-3 mx-auto" >
                     <div class="symbol text-center"><i class="far fa-clock"></i></div>
-                    <h5 class="text-center">SUPPORT 24/7</h5>
+                    <h5 class="text-center mt-5">SUPPORT 24/7</h5>
                     <p class="text-center">Just like life! Time is precious. We are dedicated to
                         delivering to our clients the best quality on the right time</p>
                 </div>
             </div>
 
-        </div>
+
     </section>
     <section class="mt-4">
-        <h3 class="text-center">Our Services and Products</h3>
+        <h2 class="text-center m-5">Our Services and Products</h2>
         <div class="container">
         <div class="our-services row ">
-            <div class="col-sm-12 col-md-3 col-lg-3 mx-auto">
+            <div class="col-sm-6 col-md-3 col-lg-3 mx-auto">
                 <h3 >Publications</h3>
                 <ul class="dashed list-unstyled">
                     <li>Corporate Stationery</li>
@@ -80,7 +80,7 @@
                 </ul>
             </div>
 
-            <div class="col-sm-12 col-md-3 col-lg-3 mx-auto">
+            <div class="col-sm-6 col-md-3 col-lg-3 mx-auto">
                 <h3 >Global Wear</h3>
                 <ul class="dashed list-unstyled">
                     <li>Round Neck T-shirts</li>
@@ -96,7 +96,7 @@
                 </ul>
             </div>
 
-            <div class="col-sm-12 col-md-3 col-lg-3 mx-auto">
+            <div class="col-sm-6 col-md-3 col-lg-3 mx-auto">
                 <h3 >POS Materials</h3>
                 <ul class="dashed list-unstyled">
                     <li>Wobbler</li>
@@ -112,7 +112,7 @@
                 </ul>
             </div>
 
-            <div class="col-sm-12 col-md-3 col-lg-3 mx-auto">
+            <div class="col-sm-6 col-md-3 col-lg-3 mx-auto">
                 <h3 >Drinkware</h3>
                 <ul class="dashed list-unstyled">
                     <li>Thermal Mugs</li>
@@ -125,7 +125,7 @@
                 </ul>
             </div>
 
-            <div class="col-sm-12 col-md-3 col-lg-3 mx-auto">
+            <div class="col-sm-6 col-md-3 col-lg-3 mx-auto">
                 <h3 >Bags</h3>
                 <ul class="dashed list-unstyled">
                     <li>Back Packs</li>
@@ -139,7 +139,7 @@
                 </ul>
             </div>
 
-            <div class="col-sm-12 col-md-3 col-lg-3 mx-auto ">
+            <div class="col-sm-6 col-md-3 col-lg-3 mx-auto ">
                 <h3 >Gift Items</h3>
                 <ul class="dashed list-unstyled">
                     <li>Wrist Bands</li>
@@ -156,7 +156,7 @@
 
 
             </div>
-            <div class="col-sm-12 col-md-3 col-lg-3 mx-auto ">
+            <div class="col-sm-6 col-md-3 col-lg-3 mx-auto ">
                 <h3 >Branded Items</h3>
                 <ul class="dashed list-unstyled">
                     <li>Pens</li>
@@ -171,7 +171,7 @@
                 </ul>
             </div>
 
-            <div class="col-sm-12 col-md-3 col-lg-3 mx-auto ">
+            <div class="col-sm-6 col-md-3 col-lg-3 mx-auto ">
                 <h3 >Diaries</h3>
                 <ul class="dashed list-unstyled">
                     <li>PU Leather</li>

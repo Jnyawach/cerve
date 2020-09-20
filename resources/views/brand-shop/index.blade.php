@@ -4,7 +4,7 @@
 
     <section >
 
-        <div class="row mt-2 p-3">
+        <div class="row mt-2 p-3 d-none d-lg-flex">
             <div class="  col-md-4 col-lg-4 mx-auto shop-info p-2 " >
 
                 <div class="row ">
@@ -94,10 +94,10 @@
 
         @if($products->count()>0)
 
-                <div class="row mt-3 p-5">
+                <div class="row mt-3 p-3 ">
                     <div class="col-sm-12 col-md-3 col-lg-3 mx-auto">
                         <div class="card">
-                            <div class="card-header shadow-none ">
+                            <div class="card-header shadow-none p-3">
                                 <h3 class="p-0 m-0">Category<i class="fa fa-bars float-right" aria-hidden="true"></i></h3>
 
 
@@ -117,28 +117,29 @@
                     <div class="col-sm-12 col-md-9 col-lg-9 mx-auto">
                         <div class="row">
                             @foreach( $products as $product )
-                                <div class="col-6 col-md-4 col-lg-3  text-center">
+                                <div class="col-sm-6 col-md-4 col-lg-3  text-center m-2">
                                     <a href="{{route('brand-shop.show', $product->slug)}}" title="{{$product->slug}}">
                                         <img src="{{url('images/'. json_decode($product->path)[0] )}}" class="img-fluid" title="{{$product->name}}" >
                                     </a>
-                                    <p>
-                                        <span><i class="fa fa-star-o"></i></span>
-                                        <span><i class="fa fa-star-o"></i></span>
-                                        <span><i class="fa fa-star-o"></i></span>
-                                        <span><i class="fa fa-star-o"></i></span>
-                                        <span><i class="fa fa-star-o"></i></span>
+                                    <h5 class="mt-2">
+                                        @if($product->reviews->count()>0)
+                                            @for($i = 0; $i < 5; $i++)
+                                                <span><i class="fa fa-star{{$product->reviews->sum('rating')/$product->reviews->count()  <= $i ? '-o' : '' }}"></i></span>
+                                            @endfor
 
-                                    </p>
+                                        @else
+                                            <span><i class="fa fa-star-o"></i></span>
+                                            <span><i class="fa fa-star-o"></i></span>
+                                            <span><i class="fa fa-star-o"></i></span>
+                                            <span><i class="fa fa-star-o"></i></span>
+                                            <span><i class="fa fa-star-o"></i></span>
+                                        @endif
+
+                                    </h5>
 
                                     <h6 class="text-capitalize text-center m-1">{{$product->name}}</h6>
 
-                                    {!!Form::open(['method'=>'POST', 'action'=>'AdminController@store'])!!}
-                                    {!! Form::hidden('id', $product->id) !!}
-                                    {!! Form::hidden('name', $product->name) !!}
-                                    {!! Form::hidden('price', $product->price) !!}
-                                    {!! Form::hidden('quantity', 1) !!}
-                                    <button type="submit" class="btn btn-primary  pr-3 pl-3" style="font-size: 14px">ADD TO CART &nbsp;&nbsp; KES {{$product->price}}</button>
-                                    {!!Form::close()!!}
+                                    <a href="{{route('brand-shop.show', $product->slug)}}" class="btn btn-primary mt-3">ADD TO CART &nbsp;&nbsp KES {{$product->price}}</a>
 
                                     <div class="saved">
                                         {!!Form::open(['method'=>'POST', 'action'=>'UserWishlistController@store','class'=>'form-inline my-2 my-lg-0'])!!}

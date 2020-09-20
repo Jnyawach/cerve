@@ -1,9 +1,9 @@
 @extends('layouts.forms')
 @section('title','Login')
 @section('content')
-<div class="container pt-5 contact-form">
-    <div class="row shadow  m-5 rounded ">
-        <div class="col-sm-10 col-md-5 col-lg-5 mx-auto side-contact  ">
+<div class=" pt-5 contact-form m-lg-5">
+    <div class="row shadow  m-lg-5 rounded m-2">
+        <div class="col-sm-12 col-md-5 col-lg-5 mx-auto side-contact d-none d-lg-block ">
             <div class="pt-5 mt-5">
                 <h4 class="mt-5 ml-4">Brand Strategist</h4>
                 <p class=" ml-4">Fly your brand high to recognizable heights</p>
@@ -11,10 +11,10 @@
             <img src="{{asset('images/contact.png')}}" class="img-fluid mt-5">
         </div>
 
-        <div class="col-sm-10 col-md-7 col-lg-7 mx-auto  form-side p-5">
+        <div class="col-sm-12 col-md-7 col-lg-7 mx-auto  form-side ">
             <form method="POST" action="{{ route('login') }}">
                         @csrf
-                <h5 class="text-center">Login</h5>
+                <h5 class="text-center mt-3">Please Login to Proceed</h5>
 
                         <div class="form-group required ">
                             <label for="email" class=" control-label">{{ __('Email:') }}</label>
@@ -76,5 +76,6 @@
                 </div>
 
 
+</div>
 </div>
 @endsection

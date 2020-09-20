@@ -1,50 +1,61 @@
-@servers(['prod' => 'omido@64.227.4.190'])
+@servers(['main'=>['deploy@157.230.57.69']])
 
-@story('deploy', ['on' => 'prod'])
-start
+@setup
+    $dir="/var/www/html/cervekenya.com"
+@endsetup
+
+@story('full-deploy')
+site-down
 git
-@if($composer)
-    composer
-@endif
-permissions
-rebuild-cache
-finish
+backend
+frontend
+site-up
+
 @endstory
 
-@task('start')
-cd /var/www/html/cervekenya.com
-php artisan down
-echo 'Updating the production environment...'
-@endtask
+@story('backend-deploy')
+site-down
+git
+backend
+site-up
+@endstory
 
-@task('finish')
-cd /var/www/html/cervekenya.com
-php artisan up
-echo 'All done!'
+@story('frontend-deploy')
+site-down
+git
+frontend
+site-up
+@endstory
+
+@task('site-down')
+    cd {{$dir}}
+    php artisan down
 @endtask
 
 @task('git')
-cd /var/www/html/cervekenya.com
-git pull
+    cd {{$dir}}
+    git checkout master
+    git pull
 @endtask
 
-@task('composer')
-cd /var/www/html/cervekenya.com
-if [ -d "vendor" ]; then
-rm -rf vendor
-fi
-composer install --no-dev
+@task('backend')
+    cd {{$dir}}
+    composer install --no-dev --no-interaction --no-plugins --no-scripts --no-progress --no-suggest --optimize-autoloader
+    php artisan migrate --force
+    php artisan cache:clear
+    php artisan config:cache
+
 @endtask
 
-@task('permissions')
-cd /var/www/html/cervekenya.com
-echo 'File permissions set successfully'
+@task('frontend')
+    cd {{$dir}}
+    source ~/.nvm/nvm.sh
+    npm install --production
+    npm run production
+
 @endtask
 
-@task('rebuild-cache')
-cd /var/www/html/cervekenya.com
-php artisan view:clear
-php artisan route:clear
-php artisan cache:clear
-php artisan config:clear
+@task('site-up')
+    cd {{$dir}}
+    php artisan up
 @endtask

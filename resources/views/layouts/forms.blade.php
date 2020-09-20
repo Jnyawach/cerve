@@ -58,7 +58,7 @@
             <!-- Grid column -->
             <div class="col-md-3 mb-3">
 
-                    <a href="{{route('faqs')}}">Faqs</a>
+                    <a href="{{route('faqs-panel.index')}}">Faqs</a>
 
             </div>
 

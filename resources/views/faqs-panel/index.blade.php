@@ -6,12 +6,12 @@
         <div class="pills-regular shadow">
             <ul class="nav nav-pills mb-1" id="pills-tab" role="tablist">
                 <li class="nav-item ">
-                    <a class="nav-link {{ (request()->is('faqs')) ? 'active' : '' }}" id="pills-home-tab" href="{{route('faqs.index')}}" role="tab" aria-controls="home" aria-selected="true">All</a>
+                    <a class="nav-link {{ (request()->is('faqs-panel')) ? 'active' : '' }}" id="pills-home-tab" href="{{route('faqs-panel.index')}}" role="tab" aria-controls="home" aria-selected="true">All</a>
                 </li>
 
                 @foreach($categories as $category)
                     <li class="nav-item">
-                        <a class="nav-link {{ (request()->is('faqs/'.$category->id)) ? 'active' : '' }}" id="pills-home-tab" href="{{route('questions', $category->id)}}" role="tab" aria-controls="home" aria-selected="true">{{$category->name}}</a>
+                        <a class="nav-link {{ (request()->is('faqs-panel/'.$category->id)) ? 'active' : '' }}" id="pills-home-tab" href="{{route('faqs-panel.show', $category->id)}}" role="tab" aria-controls="home" aria-selected="true">{{$category->name}}</a>
                     </li>
                 @endforeach
 
@@ -50,7 +50,7 @@
                 </div>
             @endforeach
         @else
-            <h4>There is no data available</h4>
+            <h4 class="text-center">There is no data available</h4>
         @endif
 
     </div>

@@ -5,7 +5,7 @@
 
 @endsection
 @section('content')
-    <div class="p-5 d-inline-flex">
+    <div class="pt-5 p-2 d-inline-flex">
         <a href="{{route('brand-shop.index')}}" title="Cerve Brand MarketPlace"><h6>Home</h6></a><h6 class="ml-2 mr-2">|</h6>
         <a href="{{route('category', $product->category->slug)}}" title="Cerve Brand MarketPlace"><h6>{{$product->category->name}}</h6></a><h6 class="ml-2 mr-2">|</h6>
         <h6>{{$product->name}}</h6>
@@ -19,8 +19,8 @@
 
 
     <section class="product  text-left">
-        <div class="row product-temp m-5">
-            <div class="col-sm-8 col-md-8 col-lg-5 mx-auto">
+        <div class="row product-temp m-1">
+            <div class="col-sm-12 col-md-10 col-lg-5 mx-auto">
                 <div id='carousel-custom' class='carousel slide' data-ride='carousel'>
                     <div class='carousel-outer'>
                         <!-- Wrapper for slides -->
@@ -62,8 +62,8 @@
             </div>
 
 
-            <div class="col-sm-11 col-md-12 col-lg-7 mx-auto product-description ">
-                <h4 class="text-capitalize">{{$product->name}}  </h4>
+            <div class="col-sm-12 col-md-12 col-lg-7 mx-auto product-description ">
+                <h4 class="text-capitalize mt-3">{{$product->name}}  </h4>
 
                 <div class="row">
                     <div class="review col-sm-12 col-md-6 col-lg-6">
@@ -142,10 +142,10 @@
                 <div class="form-group row">
                     <div class="col-sm-12 col-md-12 col-lg-12 mb-3" >
                         <div class="row">
-                            <div class="col-2">
+                            <div class="col-sm-12 col-md-2 col-lg-2">
                                 <h5>In stock:{{$product->stock}}</h5>
                             </div>
-                            <div class="col-6">
+                            <div class="col-sm-12 col-md-6 col-lg-6">
                                 <h5 class="text-capitalize">Color:
                                     <svg width="20" height="20">
                                         <rect width="30" height="30" style="fill:{{$product->color}};" />
@@ -182,7 +182,7 @@
                         </div>
 
                         @else
-                        <div class="col-sm-6 col-md-6 col-lg-6 ">
+                        <div class="col-sm-6 col-md-6 col-lg-6 m-2">
                             <label for="quantity">Quantity:</label>
                             <input  id="quantity" class="quantity" name="quantity_small" required type="number" value="" min="1" max="1500" style="width:250px"/>
                             <input   type="hidden" value="0"  name="quantity_medium"/>
@@ -192,7 +192,7 @@
                     @endif
 
                     <div class="col-sm-6 col-md-6 col-lg-6 " >
-                            <button type="submit" class="btn btn-primary  pr-3 pl-3" style="font-size: 12px">ADD TO CART &nbsp;&nbsp; KES {{$product->price}}</button>
+                            <button type="submit" class="btn btn-primary  pr-3 pl-3 m-2" style="font-size: 12px">ADD TO CART &nbsp;&nbsp; KES {{$product->price}}</button>
                     </div>
 
 
@@ -324,7 +324,7 @@
                         <div class="row">
 
                             @foreach( $chunk as $product )
-                                <div class="col-5 col-md-3 col-lg-3 mx-auto text-center">
+                                <div class="col-12 col-md-3 col-lg-3 mx-auto text-center">
                                     <a href="{{route('brand-shop.show', $product->slug)}}" title="{{$product->slug}}">
                                         <img src="{{url('images/'. json_decode($product->path)[0] )}}" class="img-fluid" title="{{$product->name}}" >
                                     </a>

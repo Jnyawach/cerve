@@ -116,7 +116,7 @@
 
     <section id="printing" class="mt-5 container">
         <h3 class="text-center mb-5">Submit your project for printing</h3>
-        {!!Form::open(['method'=>'PATCH', 'action'=>'PrintOnDemandController@update', 'class' =>'mb-5','files'=>true])!!}
+        {!!Form::open(['method'=>'POST', 'action'=>'PrintOnDemandController@store', 'class' =>'mb-5','files'=>true])!!}
 
         <div class="form-group row">
             <div class="col-sm-3 col-md-1 col-lg-1">

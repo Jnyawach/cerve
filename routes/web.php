@@ -56,8 +56,8 @@ Route::group([], function (){
     Route::get('about-us',['as'=>'about-us', 'uses'=>'CerveController@about']);
     Route::get('blog',['as'=>'blog', 'uses'=>'CerveController@blog']);
     Route::get('post/{slug}',['as'=>'post', 'uses'=>'CerveController@post']);
-    Route::get('/faqs',['as'=>'faqs', 'uses'=>'CerveController@faqs']);
-    Route::get('/faqs/show/{id}',['as'=>'questions', 'uses'=>'CerveController@questions']);
+    Route::resource('faqs-panel','FaqsPanelController');
+
     Route::get('privacy-policy',['as'=>'policy', 'uses'=>'CerveController@policy']);
     Route::get('terms-and-conditions',['as'=>'terms', 'uses'=>'CerveController@terms']);
     Route::get('/portfolio',['as'=>'portfolio', 'uses'=>'CerveController@portfolio']);

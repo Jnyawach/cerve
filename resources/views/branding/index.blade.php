@@ -4,7 +4,7 @@
     @include('includes.editor')
 
     <section class="container mt-5">
-        <h5 class="text-center">Printing Guideline</h5>
+        <h5 class="text-center mt-5">Printing Guideline</h5>
         @if(Session::has('cart_message'))
             <p class="text-success text-center p-2">{{session('cart_message')}}</p>
 
@@ -49,8 +49,8 @@
                                             <td class="font-bold">{{$cart->attributes->medium}}</td>
                                             <td class="font-bold">{{$cart->attributes->large}}</td>
                                             <td class="font-bold">{{$cart->attributes->extra_large}}</td>
-                                            <td class="font-bold">{{$cart->qty}}</td>
-                                            <th class="font-bold">{{$cart->subtotal}}</th>
+                                            <td class="font-bold">{{$cart->quantity}}</td>
+                                            <th class="font-bold">{{$cart->price}}</th>
                                             <td class="font-bold">
                                                 <h6 class="text-capitalize">
                                                     <svg width="20" height="20">
@@ -178,16 +178,16 @@
                     </ul>
                     <div>
                         <h6>You don't seem to find what you are looking for?</h6>
-                        <a href="#" title="Request for a quote" class="btn btn-primary" style="font-size: 11px">Contact us</a>
-                        <a href="#" title="Request for a quote" class="btn btn-primary" style="font-size: 11px">Request of a quote</a>
-                        <a href="#" title="Request for a sample" class="btn btn-primary" style="font-size: 11px">Request of a sample</a>
+                        <a href="#" title="Request for a quote" class="btn btn-primary m-2" style="font-size: 11px">Contact us</a>
+                        <a href="#" title="Request for a quote" class="btn btn-primary m-2" style="font-size: 11px">Request of a quote</a>
+                        <a href="#" title="Request for a sample" class="btn btn-primary m-2" style="font-size: 11px">Request of a sample</a>
                     </div>
                     <hr class="broken">
                     <div class="form-group row">
-                        <div class="col-3">
+                        <div class="col-6">
                             <a href="{{ url()->previous() }}" title="Back to Product" class="btn btn-secondary"><i class="fa fa-arrow-left mr-2" aria-hidden="true"></i>Back to product</a>
                         </div>
-                        <div class="col-3">
+                        <div class="col-6">
                             <button type="submit" class="btn btn-info" >Proceed to Cart<i class="fa fa-arrow-right ml-2" aria-hidden="true"></i></button>
                         </div>
                     </div>

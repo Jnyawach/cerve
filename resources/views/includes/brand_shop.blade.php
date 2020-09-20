@@ -14,7 +14,7 @@
                         <div class="row">
 
                             @foreach( $chunk as $product )
-                                <div class="col-5 col-md-3 col-lg-3 mx-auto text-center">
+                                <div class="col-sm-10 col-md-3 col-lg-3 mx-auto text-center m-2">
                                     <a href="{{route('brand-shop.show', $product->slug)}}" title="{{$product->slug}}">
                                         <img src="{{url('images/'. json_decode($product->path)[0] )}}" class="img-fluid" title="{{$product->name}}" >
                                     </a>
@@ -33,16 +33,7 @@
                                         @endif
 
                                     </h5>
-
-                                    <h6 class="text-capitalize text-center m-1">{{$product->name}}</h6>
-
-                                    {!!Form::open(['method'=>'POST', 'action'=>'AdminController@store','class'=>''])!!}
-                                    {!! Form::hidden('id', $product->id) !!}
-                                    {!! Form::hidden('name', $product->name) !!}
-                                    {!! Form::hidden('price', $product->price) !!}
-                                    {!! Form::hidden('quantity', 1) !!}
-                                    <button type="submit" class="btn btn-primary  pr-3 pl-3" style="font-size: 14px">ADD TO CART &nbsp;&nbsp; KES {{$product->price}}</button>
-                                    {!!Form::close()!!}
+                                    <a href="{{route('brand-shop.show', $product->slug)}}" class="btn btn-primary">ADD TO CART &nbsp;&nbsp; KES {{$product->price}}</a>
 
                                     <div class="saved">
                                         {!!Form::open(['method'=>'POST', 'action'=>'UserWishlistController@store','class'=>'form-inline my-2 my-lg-0'])!!}
@@ -69,5 +60,5 @@
         </div>
 
     @endif
-    <a href="{{route('brand-shop.index')}}" title="Brand Shop" class="mt-5"><h4>Discover More Products<i class="fa fa-arrow-right ml-2" aria-hidden="true"></i></h4></a>
+    <a href="{{route('brand-shop.index')}}" title="Brand Shop"><h4 class="mt-5">Discover More Products<i class="fa fa-arrow-right ml-2" aria-hidden="true"></i></h4></a>
 </section>

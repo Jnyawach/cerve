@@ -88,8 +88,8 @@
                                 @foreach( $chunk as $product )
                                     <div class="col-5 col-md-3 col-lg-3 mx-auto text-center">
                                         <a href="#" title="{{$product->slug}}">
-                                            <div class="text-center">  <img height="50px" class="img-fluid m-2" src="{{$product->photos->first() ? $product->photos->first()->path: '/images/person.jpg'}}" alt="{{$product->name}}" style="height: 200px"></div>
-
+                                            <div class="text-center">  <img height="50px" class="img-fluid m-2" src="{{url('images/'. json_decode($product->path)[0] )}}" alt="{{$product->name}}" style="height: 200px"></div>
+                                        </a>
                                             <p>
                                                 <span><i class="fa fa-star-o"></i></span>
                                                 <span><i class="fa fa-star-o"></i></span>
@@ -114,7 +114,7 @@
                                                     <button class="btn" type="submit" title="Add to Wish list"><i class="far fa-heart"></i></button>
                                                 </form>
                                             </div>
-                                        </a>
+
 
                                     </div>
                                 @endforeach

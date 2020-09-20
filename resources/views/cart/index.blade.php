@@ -7,9 +7,9 @@
     @endif
     @if(Cart::session(Auth::id())->getContent())
         <section>
-            <div class="row mt-4 p-5">
+            <div class="row mt-4 p-2">
 
-                <div class="col-sm-11 col-md-7 col-lg-9 mx-auto">
+                <div class="col-sm-12 col-md-7 col-lg-9 mx-auto">
                     <div class="card shadow-sm">
                         <h6 class="card-header p-3 bg-light" style="font-size: 18px" >Basket<span class="float-right">{{Cart::session(Auth::id())->getContent()->count()}}&nbsp;Item(s)</span> </h6>
                         <div class="card-body">
@@ -23,7 +23,7 @@
                                                     <img src="{{url('images/'. json_decode($item->model->path)[0] )}}" alt="{{$item->model->name}}" title="{{$item->model->name}}" class="img-fluid">
                                                 </a>
                                             </div>
-                                            <div class="col-sm-8 col-md-9 col-lg-10">
+                                            <div class="col-sm-12 col-md-12 col-lg-10">
                                                 <h6 class="w-100">{{$item->model->name}}</h6>
                                                 @if($item->model->category->name=='Clothing/Apparel')
                                                     <div class="col-sm-12 col-md-12 col-lg-12 text-center ">
@@ -113,20 +113,24 @@
                                                     </table>
 
                                                 @endif
-                                                <div class="d-flex">
-                                                    {!!Form::open(['method'=>'POST', 'action'=>'UserWishlistController@store','class'=>'form-inline my-2 my-lg-0'])!!}
+                                                <div class="row">
+                                                    <div class="col-sm-12 col-md-6 col-lg-6">
+                                                    {!!Form::open(['method'=>'POST', 'action'=>'UserWishlistController@store'])!!}
                                                     <div class="form-group">
                                                         {!! Form::hidden('product_id',$item->id) !!}
                                                         {!! Form::hidden('user_id', Auth::id()) !!}
                                                         <button type="submit" class="btn text-success"><i class="far fa-heart mr-2"></i>Add to favourites</button>
                                                     </div>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6 col-lg-6">
                                                     {!!Form::close()!!}
-                                                    {!!Form::open(['method'=>'DELETE', 'action'=>['CartController@destroy',$item->id],'class'=>'form-inline my-2 my-lg-0'])!!}
+                                                    {!!Form::open(['method'=>'DELETE', 'action'=>['CartController@destroy',$item->id]])!!}
                                                     <div class="form-group">
 
-                                                        <button type="submit" class="btn text-danger"><i class="fas fa-trash-alt mr-2"></i>Remove from cart</button>
+                                                        <button type="submit" class="btn text-danger "><i class="fas fa-trash-alt mr-2"></i>Remove from cart</button>
                                                     </div>
                                                     {!!Form::close()!!}
+                                                    </div>
                                                 </div>
                                                 <hr class="broken">
                                             </div>
@@ -134,10 +138,10 @@
                                     @endforeach
                                 </div>
                                 <div >
-                                    <a href="{{route('brand-shop.index')}}" title="Continue Shopping" class="btn btn-primary ml-3 mr-3"><i class="fas fa-shopping-basket mr-2"></i>Continue Shopping</a>
+                                    <a href="{{route('brand-shop.index')}}" title="Continue Shopping" class="btn btn-primary m-2"><i class="fas fa-shopping-basket mr-2"></i>Continue Shopping</a>
                                     @if(Cart::session(Auth::id())->getContent()->count()>0)
 
-                                    <a href="{{route('checkout')}}" title="Continue Shopping" class="btn btn-primary">Proceed to Checkout<i class="fas fa-arrow-right ml-2"></i></a>
+                                    <a href="{{route('checkout')}}" title="Continue Shopping" class="btn btn-primary m-2">Proceed to Checkout<i class="fas fa-arrow-right ml-2"></i></a>
                                @endif
                                 </div>
 
@@ -174,9 +178,9 @@
         @if($lover->count()>0)
             <h6 class="text-center p-4">YOU MAY ALSO LOVE</h6>
             <hr>
-            <div class="row">
+            <div class="row p-3">
                 @foreach($lover as $love)
-                    <div class="col-sm-6 col-md-4 col-lg-3 mx-auto text-center">
+                    <div class="col-sm-12 col-md-4 col-lg-3 mx-auto text-center m-2">
                         <a href="{{route('brand-shop.show', $love->slug)}}" title="{{$love->slug}}">
                             <img class="img-fluid"  src="{{url('images/'. json_decode($love->path)[0] )}}" alt="{{$love->name}}">
                         </a>
@@ -195,13 +199,7 @@
                                 @endif
                             </h6>
                             <h6 class="text-capitalize text-center m-1">{{$love->name}}</h6>
-                            {!!Form::open(['method'=>'POST', 'action'=>'CartController@store','class'=>''])!!}
-                            {!! Form::hidden('id', $love->id) !!}
-                            {!! Form::hidden('name', $love->name) !!}
-                            {!! Form::hidden('price', $love->price) !!}
-                            {!! Form::hidden('quantity', 1) !!}
-                            <button type="submit" class="btn btn-primary  pr-3 pl-3" style="font-size: 14px">ADD TO CART &nbsp;&nbsp; KES {{$love->price}}</button>
-                            {!!Form::close()!!}
+                        <a href="{{route('brand-shop.show', $love->slug)}}" class="btn btn-primary mt-3">ADD TO CART &nbsp;&nbsp KES {{$love->price}}</a>
                             <div class="saved">
                                 {!!Form::open(['method'=>'POST', 'action'=>'UserWishlistController@store','class'=>'pull-right'])!!}
                                 <div class="form-group">

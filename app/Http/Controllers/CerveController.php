@@ -33,18 +33,6 @@ class CerveController extends Controller
         return view('post', compact('post', 'blogs','products'));
     }
 
-
-    public  function faqs(){
-        $categories=FaqCategory::all();
-        $faqs=Faq::all();
-        return view('faqs.index', compact('faqs','categories'));
-    }
-
-    public  function questions($id){
-        $categories=FaqCategory::all();
-        $faqs=Faq::where('category_id', $id)->where('is_active', 1)->get();
-        return view('faqs.show', compact('faqs','categories'));
-    }
     public  function policy(){
         $policies=Policy::where('category', 1)->get();
         return view('privacy-policy', compact('policies'));
