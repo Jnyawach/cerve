@@ -16,10 +16,16 @@ class RoleMiddleware
      */
     public function handle($request, Closure $next)
     {
-        $user=Auth::user();
+       if(Auth::check()){
+           $user=Auth::user();
         if (!$user->isAdmin()){
             return redirect()->intended('/');
         }
         return $next($request);
+       }
+
+       return redirect('/');
+
+
     }
 }
