@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Order;
+use App\PrintOnDemand;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -19,7 +21,9 @@ class AdminController extends Controller
     public function index()
     {
         //
-        return view('admin.index');
+        $orders=Order::all();
+        $prints=PrintOnDemand::all();
+        return view('admin.index', compact('orders','prints'));
     }
 
     /**

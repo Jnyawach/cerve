@@ -565,6 +565,25 @@ a:hover{
     font-weight: bold;
 }
 
+/*######################ERROR PAGES#############*/
+/*404*/
+.error-page{
+    margin-top: 80px!important;
+}
+.error-title{
+    margin-top: 120px;
+}
+.error-title hr{
+    width: 4%;
+    background-color: red;
+}
+
+.infomartion h6{
+    font-size: 25px;
+    color: black;
+    margin-top: 30px;
+}
+
 
 
 
