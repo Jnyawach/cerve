@@ -38,7 +38,7 @@ class ProductAdminController extends Controller
         //
 
         $category=ProductCategory::pluck('name', 'id')->all();
-        return view('admin.products.create', compact('category','branding'));
+        return view('admin.products.create', compact('category'));
     }
 
     /**
