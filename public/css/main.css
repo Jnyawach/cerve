@@ -23,6 +23,49 @@ body{
 
 
 }
+/*--- btn light --*/
+
+.btn-light {
+    color: var(--primary);
+    background-color: white;
+    border-color: #f0f0f8;
+}
+
+.btn-light:hover {
+    color: #2e2f39;
+    background-color: #d7d7df;
+    border-color: #d7d7df;
+}
+
+.btn-light.focus,
+.btn-light:focus {
+    color: #2e2f39;
+    background-color: #d7d7df;
+    border-color: #d7d7df;
+    box-shadow: 0 0 0 1px rgb(215, 215, 223);
+}
+/*--- btn outline light --*/
+
+.btn-outline-light {
+    color: white;
+    background-color: transparent;
+    border-color: #e6e6f2;
+}
+
+.btn-outline-light:hover {
+    color: #71748d;
+
+    border-color: #cacae0;
+}
+
+.btn-outline-light.focus,
+.btn-outline-light:focus {
+    color: #71748d;
+    background-color: #f0f0f8;
+    border-color: #cacae0;
+    box-shadow: 0 0 0 1px rgb(235, 235, 237);
+}
+
 /*--- btn primary --*/
 
 .btn-primary {
@@ -117,6 +160,27 @@ body{
     background-color: #17c0dc;
     border-color: #17c0dc;
 }
+/*--- btn outline primary --*/
+
+.btn-outline-primary {
+    color: var(--primary);
+    background-color: transparent;
+    border-color: var(--primary);
+}
+
+.btn-outline-primary:hover {
+    color: #fff !important;
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+
+.btn-outline-primary.focus,
+.btn-outline-primary:focus {
+    color: #fff;
+    background-color: #5969ff;
+    border-color: #5969ff;
+    box-shadow: 0 0 0 1px rgb(65, 77, 167);
+}
 
 label{
     color: var(--junior);
@@ -139,10 +203,25 @@ label{
     font-size: 17px;
    font-family: 'Avenir Demi';
 }
-
+footer{
+    padding: 60px !important;
+}
 footer h5{
     color: var(--junior) !important;
 }
+footer li{
+    margin:15px;
+}
+
+.social-media{
+    background-color:  #fafafa;
+}
+.copyright{
+    background-color:  #E6E6E6;
+
+}
+.copyright p{color: black !important;}
+
 a:hover{
     color: var(--primary) !important;
 }
@@ -154,17 +233,38 @@ a:hover{
 }
 .intro h1{
     color: var(--junior) !important;
+    font-size: 60px !important;
 }
-.services{
-    background-color: white;
-}
-.services h6{
-    color: var(--primary);
 
+.port-serve h6{
+
+    font-size: 28px !important;
+    font-weight: normal !important;
+
+}
+.port-serve{
+    background: linear-gradient(180deg, white 60%, #F7F8FC 80%);
+    clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 0% 100%);
+    padding: 6em;
+
+}
+.services hr{
+    background-color: var(--junior);
+    width: 8%;
 }
 .serve img{
     height: 60px;
 
+}
+#price{
+    border-radius: 0 !important;
+    font-size: 14px!important;
+}
+.port-serve h1{
+    font-weight: bolder;
+    color: var(--junior) !important;
+    font-size: 30px !important;
+    line-height: 60px;
 }
 .client{
     background-color: #fafafa;
@@ -172,6 +272,27 @@ a:hover{
 }
 .client h3{
     color: #a7a7a7;
+}
+
+.choose{
+    background-image: url('/images/choose.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.choose h1{
+    color: white !important;
+    font-size: 43px;
+    font-family: "Avenir Bold" !important;
+}
+.blog .card{
+    height: 400px;
+    background-color: #F7F8FC;
+}
+.blog .card h4{
+    color: gray !important;
+    font-size: 22px;
+    font-family: "Avenir Regular" !important;
+    line-height: 35px;
 }
 
 /*###################ABOUT US PAGE############################*/

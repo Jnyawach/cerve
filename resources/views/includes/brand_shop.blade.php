@@ -1,5 +1,6 @@
-<section class="shop text-center P-5">
+<section class="shop text-center p-5 mt-5">
     <h3 class="mb-5">Brand Shop</h3>
+
 
 
     @if($products->count()>0)
@@ -15,9 +16,13 @@
 
                             @foreach( $chunk as $product )
                                 <div class="col-sm-10 col-md-3 col-lg-3 mx-auto text-center m-2">
+                                    <div class="card shadow">
+
+
                                     <a href="{{route('brand-shop.show', $product->slug)}}" title="{{$product->slug}}">
                                         <img src="{{url('images/'. json_decode($product->path)[0] )}}" class="img-fluid" title="{{$product->name}}" >
                                     </a>
+                                    <h5 class="m-3">{{$product->name}}</h5>
                                     <h5 class="mt-2">
                                         @if($product->reviews->count()>0)
                                             @for($i = 0; $i < 5; $i++)
@@ -33,7 +38,7 @@
                                         @endif
 
                                     </h5>
-                                    <a href="{{route('brand-shop.show', $product->slug)}}" class="btn btn-primary">ADD TO CART &nbsp;&nbsp; KES {{$product->price}}</a>
+
 
                                     <div class="saved">
                                         {!!Form::open(['method'=>'POST', 'action'=>'UserWishlistController@store','class'=>'form-inline my-2 my-lg-0'])!!}
@@ -47,8 +52,11 @@
 
 
                                     </div>
+                                        <div class="card-footer p-0">
+                                            <a id=price href="{{route('brand-shop.show', $product->slug)}}" class="rounded-0 btn btn-block m-0 ">ADD TO CART &nbsp;&nbsp; KES {{$product->price}}</a>
+                                        </div>
 
-
+                                    </div>
                                 </div>
                             @endforeach
 
@@ -60,5 +68,4 @@
         </div>
 
     @endif
-    <a href="{{route('brand-shop.index')}}" title="Brand Shop"><h4 class="mt-5">Discover More Products<i class="fa fa-arrow-right ml-2" aria-hidden="true"></i></h4></a>
 </section>
