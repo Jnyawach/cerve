@@ -85,10 +85,13 @@
     </nav>
 </section>
 @yield('content')
-<footer class="pt-5 footer">
-    <div class="container">
+<footer>
+    <div>
         <div class="row">
-            <div class="col-sm-10 col-md-4 col-lg-4 mx-auto" >
+            <div class="col-sm-6 col-md-3 col-lg-3 mx-auto" >
+                <img src="{{asset('images/cerve logo.png')}}" class="img-fluid" style="height: 60px">
+            </div>
+            <div class="col-sm-6 col-md-3 col-lg-3 mx-auto" >
                 <h5 class="text-uppercase">ABOUT COMPANY</h5>
 
                 <ul class="list-unstyled">
@@ -106,7 +109,7 @@
 
 
             </div>
-            <div class="col-sm-10 col-md-4 col-lg-4 mx-auto">
+            <div class="col-sm-6 col-md-3 col-lg-3 mx-auto">
 
                 <!-- Links -->
                 <h5 class="text-uppercase">SUPPORT</h5>
@@ -127,7 +130,7 @@
                 </ul>
 
             </div>
-            <div class="col-sm-10 col-md-4 col-lg-4 mx-auto">
+            <div class="col-sm-6 col-md-3 col-lg-3 mx-auto">
 
                 <!-- Links -->
                 <h5 class="text-uppercase">RESOURCES</h5>
@@ -154,25 +157,28 @@
 
 
     <!-- Copyright -->
-    <div class="container text-center py-3">
-        <div class="row">
-            <div class="col-sm-10 col-md-12 col-lg-3 mx-auto" >
-                <a href="/" title="home page">  Cerve Networks |&nbsp;&copy;{{date('Y')}} cerve</a>
-            </div>
-            <div class="col-sm-12 col-md-12 col-lg-8 mx-auto ">
-                <a href="#" class="p-1 "><u>Facebook</u></a>
-                <a href="#" class="p-1 "><u>Instagram</u></a>
-                <a href="#" class="p-1 "><u>Twitter</u></a>
-                <a href="#" class="p-1 "><u>Pinterest</u></a>
-                <a href="#" class="p-1 "><u>Youtube</u></a>
-            </div>
 
-        </div>
-
-    </div>
     <!-- Copyright -->
 
 </footer>
+<div class=" text-center">
+    <div class="row">
+
+        <div class="col-sm-12 col-md-12 col-lg-12 mx-auto social-media p-4">
+            <a href="#" class="p-1 "><u>Facebook</u></a>
+            <a href="#" class="p-1 "><u>Instagram</u></a>
+            <a href="#" class="p-1 "><u>Twitter</u></a>
+            <a href="#" class="p-1 "><u>Pinterest</u></a>
+            <a href="#" class="p-1 "><u>Youtube</u></a>
+        </div>
+
+        <div class="col-sm-10 col-md-12 col-lg-12 mx-auto copyright p-2" >
+            <p> Cerve Kenya |&nbsp;&copy;{{date('Y')}} cerve</p>
+        </div>
+
+    </div>
+
+</div>
 
 
 

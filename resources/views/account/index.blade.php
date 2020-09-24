@@ -1,7 +1,7 @@
 @extends('layouts.cerve')
 @section('title', 'My Cerve Account')
 @section('content')
-    <section>
+    <section >
         <div class="container">
         <div class="row mt-4">
             @include('includes.sidebar')

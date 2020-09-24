@@ -40,7 +40,7 @@ To Craft Your Visibility')
 
                </div>
                <div class="col-sm-12 col-md-4 col-lg-4 my-auto ">
-                   <a href="{{route('portfolio')}}" class="btn btn-primary float-right">See Portfolio<i class="fa fa-arrow-right ml-5" aria-hidden="true"></i></a>
+                   <a href="{{route('portfolio')}}" class="btn btn-primary float-right">See Portfolio<i class="fa fa-long-arrow-right ml-5" aria-hidden="true"></i></a>
                </div>
            </div>
            <div class="row mt-5 services">

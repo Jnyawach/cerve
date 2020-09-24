@@ -40,6 +40,7 @@ Route::group(['middleware'=>'role'], function(){
     Route::get('admin/homepage/printing/cancel',['as'=>'cancel.print', 'uses'=>'AdminPrintOnDemandController@cancel']);
     Route::resource('/admin/homepage/printing','AdminPrintOnDemandController');
     Route::resource('/admin/homepage/product-category','ProductCategoryController');
+    Route::resource('/admin/homepage/shipping','ShippingAdminController');
     Route::get('live',['as'=>'live', 'uses'=>'ProductAdminController@live']);
     Route::get('active',['as'=>'active', 'uses'=>'ProductAdminController@active']);
     Route::get('sold',['as'=>'sold', 'uses'=>'ProductAdminController@sold']);

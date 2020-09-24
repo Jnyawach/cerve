@@ -59,10 +59,16 @@
 
                     </ol>
                 </div>
+                @if($product->photo)
+                <div class="branded mt-4">
+                    <h4>Branded Sample</h4>
+                    <img src="{{asset($product->photo->path)}}" class="img-fluid" style="height: 400px">
+                </div>
+                    @endif
             </div>
 
 
-            <div class="col-sm-12 col-md-12 col-lg-7 mx-auto product-description ">
+            <div class="col-sm-12 col-md-12 col-lg-6 mx-auto product-description ">
                 <h4 class="text-capitalize mt-3">{{$product->name}}  </h4>
 
                 <div class="row">
@@ -170,10 +176,10 @@
                                 <tbody>
                                 <tr>
                                     <th ><h4 class="p-0 m-0">Quantity:</h4></th>
-                                    <th class="font-bold"> <input class="quantity"   type="number" value="" min="1" max="1500" name="quantity_small"/></th>
-                                    <td class="font-bold"> <input  class="quantity"  type="number" value="" min="1" max="1500" name="quantity_medium"/></td>
-                                    <td class="font-bold"> <input class="quantity"   type="number" value="" min="1" max="1500" name="quantity_large"/></td>
-                                    <td class="font-bold"> <input class="quantity"   type="number" value="" min="1" max="1500" name="quantity_extralarge"/></td>
+                                    <th class="font-bold"> <input class="quantity"   type="number" value="1" min="0" max="1500" name="quantity_small"/></th>
+                                    <td class="font-bold"> <input  class="quantity"  type="number" value="1" min="0" max="1500" name="quantity_medium"/></td>
+                                    <td class="font-bold"> <input class="quantity"   type="number" value="1" min="0" max="1500" name="quantity_large"/></td>
+                                    <td class="font-bold"> <input class="quantity"   type="number" value="1" min="0" max="1500" name="quantity_extralarge"/></td>
                                 </tr>
 
 
@@ -325,6 +331,7 @@
 
                             @foreach( $chunk as $product )
                                 <div class="col-12 col-md-3 col-lg-3 mx-auto text-center">
+                                    <div class="card">
                                     <a href="{{route('brand-shop.show', $product->slug)}}" title="{{$product->slug}}">
                                         <img src="{{url('images/'. json_decode($product->path)[0] )}}" class="img-fluid" title="{{$product->name}}" >
                                     </a>
@@ -344,17 +351,9 @@
 
                                     </h5>
 
-                                    <h6 class="text-capitalize text-center m-1">{{$product->name}}</h6>
+                                    <h6 class="text-capitalize text-center m-1" style=" color: black">{{$product->name}}</h6>
 
-                                    {!!Form::open(['method'=>'POST', 'action'=>'AdminController@store', 'id'=>'better-rating-form'])!!}
-                                    {!! Form::hidden('id', $product->id) !!}
-                                    {!! Form::hidden('name', $product->name) !!}
-                                    {!! Form::hidden('price', $product->price) !!}
-                                    {!! Form::hidden('quantity', 1) !!}
-                                    <button type="submit" class="btn btn-primary  pr-3 pl-3" style="font-size: 14px">ADD TO CART &nbsp;&nbsp; KES {{$product->price}}</button>
-                                    {!!Form::close()!!}
-
-                                    <div class="saved">
+                                        <div class="saved">
                                         {!!Form::open(['method'=>'POST', 'action'=>'UserWishlistController@store','class'=>'form-inline my-2 my-lg-0'])!!}
                                         <div class="form-group">
                                             {!! Form::hidden('product_id', $product->id) !!}
@@ -367,8 +366,11 @@
 
 
                                     </div>
+                                        <div class="card-footer p-0 mt-3">
+                                            <a id=price href="{{route('brand-shop.show', $product->slug)}}" class="rounded-0 btn btn-block m-0 ">ADD TO CART &nbsp;&nbsp; KES {{$product->price}}</a>
+                                        </div>
 
-
+                                    </div>
                                 </div>
                             @endforeach
 

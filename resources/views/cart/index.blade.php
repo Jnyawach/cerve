@@ -5,7 +5,7 @@
         <p class="text-success text-center p-2">{{session('cart_message')}}</p>
 
     @endif
-    @if(Cart::session(Auth::id())->getContent())
+    @if(Cart::session(Auth::id())->getContent()->count()>0)
         <section>
             <div class="row mt-4 p-2">
 
@@ -170,8 +170,8 @@
         </section>
     @else
         <div >
-            <h3 class="text-center" style="font-size: 20px">There are 0 items(s) in your cart!</h3>
-            <a href="{{route('brand-shop.index')}}" class="btn btn-primary text-center m-3">Continue Shopping</a>
+            <h3 class="text-center mt-5 text-success" style="font-size: 20px">There are 0 items(s) in your cart! <a href="{{route('brand-shop.index')}}" >Continue Shopping</a></h3>
+
         </div>
     @endif
     <section>
@@ -180,7 +180,8 @@
             <hr>
             <div class="row p-3">
                 @foreach($lover as $love)
-                    <div class="col-sm-12 col-md-4 col-lg-3 mx-auto text-center m-2">
+                    <div class="col-sm-10 col-md-4 col-lg-3 mx-auto text-center m-2">
+                        <div class="card">
                         <a href="{{route('brand-shop.show', $love->slug)}}" title="{{$love->slug}}">
                             <img class="img-fluid"  src="{{url('images/'. json_decode($love->path)[0] )}}" alt="{{$love->name}}">
                         </a>
@@ -199,7 +200,7 @@
                                 @endif
                             </h6>
                             <h6 class="text-capitalize text-center m-1">{{$love->name}}</h6>
-                        <a href="{{route('brand-shop.show', $love->slug)}}" class="btn btn-primary mt-3">ADD TO CART &nbsp;&nbsp KES {{$love->price}}</a>
+
                             <div class="saved">
                                 {!!Form::open(['method'=>'POST', 'action'=>'UserWishlistController@store','class'=>'pull-right'])!!}
                                 <div class="form-group">
@@ -208,7 +209,13 @@
                                     <button type="submit" class="btn"> <i class="far fa-heart mr-2"></i></button>
                                 </div>
                                 {!!Form::close()!!}
+
                             </div>
+
+                            <div class="card-footer mt-3 p-0">
+                                <a id="price" href="{{route('brand-shop.show', $love->slug)}}" class="btn btn-block">ADD TO CART &nbsp;&nbsp KES {{$love->price}}</a>
+                            </div>
+                        </div>
 
 
                     </div>

@@ -94,7 +94,7 @@
 
         @if($products->count()>0)
 
-                <div class="row mt-3 p-3 ">
+                <div class="row mt-3 p-3">
                     <div class="col-sm-12 col-md-3 col-lg-3 mx-auto">
                         <div class="card">
                             <div class="card-header shadow-none p-3">
@@ -117,7 +117,8 @@
                     <div class="col-sm-12 col-md-9 col-lg-9 mx-auto">
                         <div class="row">
                             @foreach( $products as $product )
-                                <div class="col-sm-6 col-md-4 col-lg-3  text-center m-2">
+                                <div class="col-sm-4 col-md-4 col-lg-3  text-center m-2 mx-auto">
+                                    <div class="card">
                                     <a href="{{route('brand-shop.show', $product->slug)}}" title="{{$product->slug}}">
                                         <img src="{{url('images/'. json_decode($product->path)[0] )}}" class="img-fluid" title="{{$product->name}}" >
                                     </a>
@@ -137,11 +138,8 @@
 
                                     </h5>
 
-                                    <h6 class="text-capitalize text-center m-1">{{$product->name}}</h6>
-
-                                    <a href="{{route('brand-shop.show', $product->slug)}}" class="btn btn-primary mt-3">ADD TO CART &nbsp;&nbsp KES {{$product->price}}</a>
-
-                                    <div class="saved">
+                                    <h6 class="text-capitalize text-center m-2" style="color: black">{{$product->name}}</h6>
+                                        <div class="saved">
                                         {!!Form::open(['method'=>'POST', 'action'=>'UserWishlistController@store','class'=>'form-inline my-2 my-lg-0'])!!}
                                           <div class="form-group">
                                               {!! Form::hidden('product_id', $product->id) !!}
@@ -153,8 +151,11 @@
 
 
                                     </div>
+                                        <div class="card-footer mt-3 p-0">
+                                            <a id="price" href="{{route('brand-shop.show', $product->slug)}}" class="btn btn-block m-0">ADD TO CART &nbsp;&nbsp KES {{$product->price}}</a>
+                                        </div>
 
-
+                                    </div>
                                 </div>
                             @endforeach
                         </div>
