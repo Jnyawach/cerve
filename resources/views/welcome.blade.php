@@ -128,9 +128,8 @@ To Craft Your Visibility')
                                <hr class="float-left" >
                            </div>
 
-                           <p>Did you know that it is possible to order a product with a unique custom
-                               printing and have it delivered to your doorstep? Lots of amazing products
-                               waiting for you. Find out what you need for your next project.
+                           <p>Lots of amazing products-unique custom print waiting for you.
+                               Find out what you need for your next project.
                            </p>
 
                        </div>
