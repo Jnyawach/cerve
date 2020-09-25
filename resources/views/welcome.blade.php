@@ -28,9 +28,8 @@ To Craft Your Visibility')
         </div>
     </section>
    <section class="port-serve">
-       <div  >
-           <div class="row">
-               <div class="col-sm-12 col-md-8 col-lg-8">
+       <div class="row">
+               <div class="col-sm-10 col-md-11 col-lg-8">
                    <h6 >Design, Printing, Branding & Many more</h6>
                    <p>Cerve has got all it takes to help you grow your business. In print
                    is a  means of speech. We ensure that you speak to everyone from all corners.
@@ -39,12 +38,12 @@ To Craft Your Visibility')
                        and shaping the the brightest ideas into memorable and valuable brands</p>
 
                </div>
-               <div class="col-sm-12 col-md-4 col-lg-4 my-auto ">
-                   <a href="{{route('portfolio')}}" class="btn btn-primary float-right">See Portfolio<i class="fa fa-long-arrow-right ml-5" aria-hidden="true"></i></a>
+               <div class="col-sm-11 col-md-4 col-lg-4 mx-auto  my-auto">
+                   <a href="{{route('portfolio')}}" class="btn btn-primary m-2 ">See Portfolio<i class="fa fa-long-arrow-right ml-5" aria-hidden="true"></i></a>
                </div>
            </div>
            <div class="row mt-5 services">
-               <div class="col-sm-12 col-md-4 col-lg-4 mt-3">
+               <div class="col-sm-11 col-md-4 col-lg-4 mt-3 mx-auto">
                    <div class="row">
                        <div class="col-2">
                            <img src="{{asset('images/service-05.png')}}" alt="Brand Shop" class="img-fluid">
@@ -62,7 +61,7 @@ To Craft Your Visibility')
                    </div>
                </div>
 
-               <div class="col-sm-12 col-md-4 col-lg-4 mt-3 ">
+               <div class="col-sm-11 col-md-4 col-lg-4 mt-3 mx-auto">
                    <div class="row">
                        <div class="col-2">
                            <img src="{{asset('images/service-02.png')}}" alt="Brand Shop" class="img-fluid">
@@ -81,7 +80,7 @@ To Craft Your Visibility')
                    </div>
                </div>
 
-               <div class="col-sm-12 col-md-4 col-lg-4 mt-3 ">
+               <div class="col-sm-11 col-md-4 col-lg-4 mt-3 mx-auto">
                    <div class="row">
                        <div class="col-2">
                            <img src="{{asset('images/service-06.png')}}" alt="Brand Shop" class="img-fluid">
@@ -99,7 +98,7 @@ To Craft Your Visibility')
                    </div>
                </div>
 
-               <div class="col-sm-12 col-md-4 col-lg-4 mt-3">
+               <div class="col-sm-11 col-md-4 col-lg-4 mt-3 mx-auto">
                    <div class="row">
                        <div class="col-2">
                            <img src="{{asset('images/service-01.png')}}" alt="Brand Shop" class="img-fluid">
@@ -117,7 +116,7 @@ To Craft Your Visibility')
                    </div>
                </div>
 
-               <div class="col-sm-12 col-md-4 col-lg-4 mt-3">
+               <div class="col-sm-11 col-md-4 col-lg-4 mt-3 mx-auto">
                    <div class="row">
                        <div class="col-2">
                            <img src="{{asset('images/service-03.png')}}" alt="Brand Shop" class="img-fluid">
@@ -136,7 +135,7 @@ To Craft Your Visibility')
                    </div>
                </div>
 
-               <div class="col-sm-12 col-md-4 col-lg-4 mt-3">
+               <div class="col-sm-11 col-md-4 col-lg-4 mt-3 mx-auto">
                    <div class="row pb-5">
                        <div class="col-2">
                            <img src="{{asset('images/service-04.png')}}" alt="Brand Shop" class="img-fluid">
@@ -155,7 +154,7 @@ To Craft Your Visibility')
                    </div>
                </div>
            </div>
-       </div>
+
    </section>
     @include('includes.brand_shop')
 
@@ -186,17 +185,16 @@ To Craft Your Visibility')
         </div>
 
     </section>
-    <section class="choose p-5">
-        <div class="container">
-            <div class="row p-4">
-                <div class="col-10 mx-auto text-center p-3">
+    <section class="choose pt-5 pb-5">
+        <div class="row pt-4 pb-4">
+                <div class="col-12 mx-auto text-center">
                     <h1 class="m-4">Choose a better way to communicate</h1>
                     <a href="{{route('print-on-demand.index')}}" class="btn btn-light m-2">SUBMIT A PROJECT</a>
                     <a href="{{route('contact-us.index')}}" class="btn btn-outline-light m-2">CONTACT SALES</a>
                 </div>
             </div>
 
-        </div>
+
 
     </section>
 @endsection

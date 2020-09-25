@@ -152,7 +152,7 @@
 
                                     </div>
                                         <div class="card-footer mt-3 p-0">
-                                            <a id="price" href="{{route('brand-shop.show', $product->slug)}}" class="btn btn-block m-0">ADD TO CART &nbsp;&nbsp KES {{$product->price}}</a>
+                                            <a id="price" href="{{route('brand-shop.show', $product->slug)}}" class="btn btn-block m-0" style="font-size: 12!important;px">ADD TO CART &nbsp;&nbsp KES {{$product->price}}</a>
                                         </div>
 
                                     </div>

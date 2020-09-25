@@ -19,9 +19,9 @@
 
 
 </head>
-<body class="pt-5">
+<body>
 <header>
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-light">
         <a class="navbar-brand" href="/"><img src="{{asset('images/cerve logo.png')}}" alt="Cerve Logo" style="height: 40px"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -94,7 +94,7 @@
 
 </header>
 
-<main class="pt-5">
+<main>
     @yield('content')
 </main>
 

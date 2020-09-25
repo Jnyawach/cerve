@@ -242,12 +242,28 @@ a:hover{
     font-weight: normal !important;
 
 }
-.port-serve{
-    background: linear-gradient(180deg, white 60%, #F7F8FC 80%);
-    clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 0% 100%);
-    padding: 6em;
+@media (min-width: 1000px) {
+    .port-serve{
+        background: linear-gradient(180deg, white 60%, #F7F8FC 80%);
+        clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 0% 100%);
+        padding-top: 6em;
+        padding-bottom: 6em;
+        padding-right: 3em;
+        padding-left: 3em;
 
+    }
 }
+@media (max-width: 1000px) {
+    .port-serve{
+        background: linear-gradient(180deg, white 60%, #F7F8FC 80%);
+        padding-top: 6em;
+        padding-bottom: 6em;
+        padding-right: 1em!important;
+        padding-left: 1em!important;
+
+    }
+}
+
 .services hr{
     background-color: var(--junior);
     width: 8%;
