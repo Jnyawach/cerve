@@ -55,8 +55,8 @@ To Craft Your Visibility')
                                <hr class="float-left" >
                            </div>
 
-                           <p>Branding is a very significant tool in product and name promotion.
-                               For your product or name to create a major edge in the competitive</p>
+                           <p>Meet the best and experienced graphic designers to help you steer the course.
+                               Highly optimized designs to produce the best quality printing.</p>
 
                        </div>
                    </div>
@@ -73,8 +73,9 @@ To Craft Your Visibility')
                                <hr class="float-left" >
                            </div>
 
-                           <p>Branding is a very significant tool in product and name promotion.
-                               For your product or name to create a major edge in the competitive</p>
+                           <p>Every detail matters, every pixel is worth it.
+                               High-quality pocket-friendly printing.
+                               We ensure the right on-time delivery.</p>
 
                        </div>
                    </div>
@@ -109,8 +110,8 @@ To Craft Your Visibility')
                                <hr class="float-left" >
                            </div>
 
-                           <p>Branding is a very significant tool in product and name promotion.
-                               For your product or name to create a major edge in the competitive</p>
+                           <p> Online presence is one of the key generators of revenue for an organization. We get you out there in style and ensure that you
+                               utilize all the resources to stimulate your growth.</p>
 
                        </div>
                    </div>
@@ -127,8 +128,10 @@ To Craft Your Visibility')
                                <hr class="float-left" >
                            </div>
 
-                           <p>Branding is a very significant tool in product and name promotion.
-                               For your product or name to create a major edge in the competitive</p>
+                           <p>Did you know that it is possible to order a product with a unique custom
+                               printing and have it delivered to your doorstep? Lots of amazing products
+                               waiting for you. Find out what you need for your next project.
+                           </p>
 
                        </div>
                    </div>
@@ -145,8 +148,9 @@ To Craft Your Visibility')
                                <hr class="float-left" >
                            </div>
 
-                           <p>Branding is a very significant tool in product and name promotion.
-                               For your product or name to create a major edge in the competitive</p>
+                           <p>Requesting for samples? Or you want your next print project
+                               done? Submit your artwork and guidelines
+                           </p>
 
                        </div>
                    </div>
