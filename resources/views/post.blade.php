@@ -70,64 +70,7 @@
             </div>
         </div>
     </section>
-    <section class="shop text-center P-5">
-        <h3>Brand Shop</h3>
+    @include('includes.brand_shop')
 
-
-        @if($products->count()>0)
-
-            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-
-
-                <div class="carousel-inner" role="listbox">
-
-                    @foreach($products->chunk(4) as $chunk)
-                        <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
-                            <div class="row">
-
-                                @foreach( $chunk as $product )
-                                    <div class="col-5 col-md-3 col-lg-3 mx-auto text-center">
-                                        <a href="#" title="{{$product->slug}}">
-                                            <div class="text-center">  <img height="50px" class="img-fluid m-2" src="{{url('images/'. json_decode($product->path)[0] )}}" alt="{{$product->name}}" style="height: 200px"></div>
-                                        </a>
-                                            <p>
-                                                <span><i class="fa fa-star-o"></i></span>
-                                                <span><i class="fa fa-star-o"></i></span>
-                                                <span><i class="fa fa-star-o"></i></span>
-                                                <span><i class="fa fa-star-o"></i></span>
-                                                <span><i class="fa fa-star-o"></i></span>
-
-                                            </p>
-
-                                            <h6 class="text-capitalize text-center m-1">{{$product->name}}</h6>
-
-                                            {!!Form::open(['method'=>'POST', 'action'=>'AdminController@store','class'=>''])!!}
-                                            {!! Form::hidden('id', $product->id) !!}
-                                            {!! Form::hidden('name', $product->name) !!}
-                                            {!! Form::hidden('price', $product->price) !!}
-                                            {!! Form::hidden('quantity', 1) !!}
-                                            <button type="submit" class="btn btn-primary  pr-3 pl-3" style="font-size: 14px">ADD TO CART &nbsp;&nbsp; KES {{$product->price}}</button>
-                                            {!!Form::close()!!}
-
-                                            <div class="saved">
-                                                <form>
-                                                    <button class="btn" type="submit" title="Add to Wish list"><i class="far fa-heart"></i></button>
-                                                </form>
-                                            </div>
-
-
-                                    </div>
-                                @endforeach
-
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-
-            </div>
-
-        @endif
-        <a href="#" title="Brand Shop"><h4>Discover More Products<i class="fa fa-arrow-right ml-2" aria-hidden="true"></i></h4></a>
-    </section>
     @include('includes.subscribe')
 @endsection

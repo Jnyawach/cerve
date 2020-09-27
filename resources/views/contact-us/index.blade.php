@@ -79,39 +79,54 @@
                     If you don’t find what you need, fill out our contact form.</p>
 
                 <div>
-                    <h6>Branding</h6>
-                    <a href="#">
-
-                        <p class="brand">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                            Lorem Ipsum has been the industry's standard dummy text ever since</p>
-                    </a>
-                </div>
-                <hr>
-                <div>
                     <h6>Printing</h6>
-                    <a href="#">
-                        <p class="brand">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                            Lorem Ipsum has been the industry's standard dummy text ever since</p>
+                    <a href="{{route('faqs-panel.index')}}">
+
+                        <p class="brand">High-quality pocket-friendly printing.
+                            We ensure the right on-time delivery. Read through and find the solution you need.</p>
+                    </a>
+                </div>
+                <hr>
+                <div><h6>Design</h6>
+                    <a href="{{route('faqs-panel.index')}}">
+                        <p class="brand">Are you having a Problem with the design? Read a list of our
+                        common problems and their solutions</p>
                     </a>
                 </div>
                 <hr>
                 <div>
-                    <h6>Graphic Design</h6>
-                    <a href="#">
-                        <p class="brand">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                            Lorem Ipsum has been the industry's standard dummy text ever since</p>
+                    <h6>Ordering</h6>
+                    <a href="{{route('faqs-panel.index')}}">
+                        <p class="brand">See through problems you are likely to encounter when placing orders</p>
                     </a>
                 </div>
+                <hr>
 
-                <div class="trusted">
-                    <h6>TRUSTED BY</h6>
-                    <img src="images/360.png" class=" img-fluid p-2" alt="360 Studio Logo">
-                    <img src="images/allee-de.png" class=" img-fluid p-2" alt="Allee-DE Logo">
-                    <img src="images/Echo-media.png" class=" img-fluid p-2" alt="Echo Media Logo">
-                    <img src="images/global-desart.png" class="img-fluid p-2" alt="Global Desart Logo">
-                    <img src="images/logo.png" class=" img-fluid p-2" alt="Creative Haven Logo">
-                    <img src="images/ramona.png" class=" img-fluid p-2" alt="Ramona Logo">
 
+                <div class="trusted mt-3">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6 col-lg-3  my-auto">
+                            <h6 class="text-center">TRUSTED BY</h6>
+                        </div>
+
+
+                        <div class="col-sm-3 col-md-2 col-lg-2 mxt-auto">
+                            <img src="{{asset('images/our_clients_03.png')}}" alt="GSM Systems"class="img-fluid" >
+                        </div>
+
+                        <div class="col-sm-3 col-md-2 col-lg-2 mxt-auto">
+                            <img src="{{asset('images/our_clients_08.png')}}" alt="Upstyle"class="img-fluid" >
+                        </div>
+
+                        <div class="col-sm-3 col-md-2 col-lg-2 mxt-auto">
+                            <img src="{{asset('images/our_clients_07.png')}}" alt="Rig"class="img-fluid" >
+                        </div>
+
+                        <div class="col-sm-3 col-md-2 col-lg-2 mxt-auto">
+                            <img src="{{asset('images/our_clients_10.png')}}" alt="Resolution Insurance" class="img-fluid" >
+                        </div>
+
+                    </div>
                 </div>
 
             </div>

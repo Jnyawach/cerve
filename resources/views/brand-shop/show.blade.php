@@ -276,7 +276,7 @@
                                     <hr>
                                 @endforeach
                                 @else
-                                <h3>This product has no reviews</h3>
+                                <h3>Be the first to review this product!</h3>
                                 @endif
                         </div>
                         <div class="tab-pane fade" id="tab-2" role="tabpanel" aria-labelledby="product-tab-2">

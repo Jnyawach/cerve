@@ -16,12 +16,29 @@ To Craft Your Visibility')
         </div>
     </section>
 
-    <section class="client p-3">
+    <section class="client p-1">
         <div class="container">
 
             <div class="row">
-                <div class="col-sm-12 col-md-3 col-lg-3 mxt-auto">
+                <div class="col-sm-12 col-md-6 col-lg-3 mx-auto my-auto">
                     <h3 class="text-center">Trusted By 100+ Businesses</h3>
+                </div>
+
+
+                <div class="col-sm-3 col-md-2 col-lg-2 mxt-auto">
+                    <img src="{{asset('images/our_clients_03.png')}}" alt="GSM Systems"class="img-fluid" >
+                </div>
+
+                <div class="col-sm-3 col-md-2 col-lg-2 mxt-auto">
+                    <img src="{{asset('images/our_clients_08.png')}}" alt="Upstyle"class="img-fluid" >
+                </div>
+
+                <div class="col-sm-3 col-md-2 col-lg-2 mxt-auto">
+                    <img src="{{asset('images/our_clients_07.png')}}" alt="Rig"class="img-fluid" >
+                </div>
+
+                <div class="col-sm-3 col-md-2 col-lg-2 mxt-auto">
+                    <img src="{{asset('images/our_clients_10.png')}}" alt="Resolution Insurance" class="img-fluid" >
                 </div>
 
             </div>
@@ -46,7 +63,7 @@ To Craft Your Visibility')
                <div class="col-sm-11 col-md-4 col-lg-4 mt-3 mx-auto">
                    <div class="row">
                        <div class="col-2">
-                           <img src="{{asset('images/service-05.png')}}" alt="Brand Shop" class="img-fluid">
+                           <img src="{{asset('images/service-05.png')}}" alt="Brand Shop" class="img-fluid" >
                        </div>
                        <div class="col-9">
                            <div class="position-relative mb-5">
