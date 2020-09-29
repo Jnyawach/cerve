@@ -77,9 +77,12 @@
                 @endauth
                 <li class="nav-item cart  position-relative">
                     <a href="{{route('cart.index')}}" class="nav-link"><i class="fas fa-shopping-basket"></i>&nbsp;&nbsp;Basket
-                        @if(Cart::getcontent()->count()>0)
-                            <span class="badge badge-pill badge-danger" style="font-size: 10px; top:-5px">{{Cart::getcontent()->count()}}</span>
+                        @auth
+                        @if(Cart::session(Auth::id())->getContent()->count()>0)
+                            <span class="badge badge-pill badge-danger" style="font-size: 10px; top:-5px">{{Cart::session(Auth::id())->getContent()->count()}}</span>
+
                         @endif
+                            @endauth
                     </a>
 
                 </li>

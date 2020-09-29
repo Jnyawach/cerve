@@ -118,4 +118,8 @@ class CheckoutController extends Controller
     {
         //
     }
+
+    public  function transfer(){
+        return view('account/checkout/transfer');
+    }
 }

@@ -25,19 +25,19 @@ To Craft Your Visibility')
                 </div>
 
 
-                <div class="col-sm-3 col-md-2 col-lg-2 mxt-auto">
+                <div class="col-3 col-sm-3 col-md-2 col-lg-2 mxt-auto">
                     <img src="{{asset('images/our_clients_03.png')}}" alt="GSM Systems"class="img-fluid" >
                 </div>
 
-                <div class="col-sm-3 col-md-2 col-lg-2 mxt-auto">
+                <div class="col-3 col-sm-3 col-md-2 col-lg-2 mxt-auto">
                     <img src="{{asset('images/our_clients_08.png')}}" alt="Upstyle"class="img-fluid" >
                 </div>
 
-                <div class="col-sm-3 col-md-2 col-lg-2 mxt-auto">
+                <div class="col-3 col-sm-3 col-md-2 col-lg-2 mxt-auto">
                     <img src="{{asset('images/our_clients_07.png')}}" alt="Rig"class="img-fluid" >
                 </div>
 
-                <div class="col-sm-3 col-md-2 col-lg-2 mxt-auto">
+                <div class="col-3 col-sm-3 col-md-2 col-lg-2 mxt-auto">
                     <img src="{{asset('images/our_clients_10.png')}}" alt="Resolution Insurance" class="img-fluid" >
                 </div>
 
@@ -182,7 +182,7 @@ To Craft Your Visibility')
             <div class="row mt-5">
                 @if($posts->count()>0)
                     @foreach($posts as $post)
-                <div class="col-sm-12 col-md-4 col-lg-4 mx-auto">
+                <div class="col-12 col-sm-6 col-md-4 col-lg-4 mx-auto">
                     <div class="card">
 
 

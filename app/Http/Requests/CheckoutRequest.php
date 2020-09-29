@@ -25,8 +25,8 @@ class CheckoutRequest extends FormRequest
     {
         return [
             //
-            'shipping'=>'numeric|required|max:1',
-            'payment'=>'numeric|required|max:1',
+            'shipping'=>'numeric|required|max:2',
+            'payment'=>'numeric|required|max:2',
         ];
     }
 }

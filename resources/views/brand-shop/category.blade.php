@@ -14,7 +14,7 @@
         @if($products->count()>0)
         <div class="row m-3">
             @foreach( $products as $product )
-                <div class="col-sm-4 col-md-4 col-lg-3  text-center m-2 mx-auto">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3  text-center m-2 mx-auto">
                     <div class="card">
                         <a href="{{route('brand-shop.show', $product->slug)}}" title="{{$product->slug}}">
                             <img src="{{url('images/'. json_decode($product->path)[0] )}}" class="img-fluid" title="{{$product->name}}" >

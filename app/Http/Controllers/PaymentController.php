@@ -36,6 +36,7 @@ class PaymentController extends Controller
     public function store(Request $request)
     {
         //
+
         return redirect('account/homepage/payment');
     }
 

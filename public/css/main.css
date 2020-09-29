@@ -701,6 +701,10 @@ a:hover{
     color: black;
     font-weight: bold;
 }
+.checkout .card{
+    border-top: 6px solid var(--primary) !important;
+    border-bottom: 6px solid var(--primary) !important;
+}
 
 /*######################ERROR PAGES#############*/
 /*404*/

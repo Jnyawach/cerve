@@ -23,6 +23,10 @@
                                 <h3>SHIP TO</h3>
                                 <p>N/A</p>
                             </div>
+                            <div class="col-sm-12 col-md-3 col-lg-3 justify-content-end">
+                                <h3>INVOICE</h3>
+                                <p>Ref No: 234567</p>
+                            </div>
 
                         </div>
                         <hr class="broken">
@@ -99,6 +103,8 @@
                         </div>
 
                         {!!Form::close()!!}
+                        <hr class="broken mt-3">
+                        <h6 class="text-center">Cerve Limited | Keekorok Rd. Winglobal Hse| Phone:+254717109280 | Email:billing@cervekenya.com| www.cervekenya.com</h6>
                     </div>
                 </div>
 

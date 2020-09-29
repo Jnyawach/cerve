@@ -87,6 +87,7 @@ Route::group(['middleware'=>'auth'], function(){
     Route::resource('branding', 'BrandingController');
     Route::resource('print-on-demand', 'PrintOnDemandController');
     Route::resource('account/checkout', 'CheckoutController');
+    Route::get('account/checkout/transfer', ['as'=>'bank-transfer','uses'=>'CheckoutController@transfer']);
     Route::resource('account/homepage/customer', 'UserOrdersController');
     Route::resource('account/homepage/project', 'UserPrintOnDemandController');
 });
