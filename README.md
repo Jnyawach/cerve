@@ -1,10 +1,3 @@
-## About this project
-
-This is a laravel project that I implemented for those following my series on youtube
-
-- [How to integrate Mpesa into your Website | Laravel](https://www.youtube.com/watch?v=XDBybewqcG8&list=PLU8fN5w-12nNPHuf-OAhZyT2mdhZC5tar).
-
-You are free to tinker with the project as you please.
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
@@ -29,7 +22,7 @@ PROD_CONSUMER_KEY=from-daraja
 PROD_LIPA_NA_MPESA_ONLINE_PASS_KEY=from-daraja
 
 ```
-##C2B
+## C2B
 ##### Register C2B Endpoints
 ```
 URI
@@ -62,7 +55,7 @@ Payload
 	"amount":"some_amount"
 }
 ```
-##STK Push
+## STK Push
 ##### Send simulation request to Safaricom
 ```
 URI
@@ -108,8 +101,8 @@ Payload
 
 } 
 ```
-###Sample Payment Processing
-####C2B
+### Sample Payment Processing
+#### C2B
 ##### Process Payment
 ```
 #Let's say this is the payment processing page
@@ -119,7 +112,7 @@ Payload
 public function processPayment(Request $reqest, Order $order) {
 
     # Update Transaction
-    if( $transaction = Transaction::where('', $request->mpesa_confirmation_code)->first() ) {
+    if( $transaction = Transaction::where('reference', $request->mpesa_confirmation_code)->first() ) {
         
         $transaction->fill(['order_id' => $order->id, 'status' => 'COMPLETED'])->save();
         
