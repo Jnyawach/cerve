@@ -17,3 +17,18 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::group(['prefix' => 'v1/m-ke', 'as' => 'api.mpesa.', 'namespace' => 'Api\V1\Payment\Mpesa'], function () {
+
+    Route::group(['prefix' => 'c2b', 'as' => 'c2b.'], function () {
+        Route::post('register', 'C2BController@register')->name('register');
+        Route::post('simulate', 'C2BController@simulate')->name('simulate');
+        Route::post('confirm/{confirmation_key}', 'C2BController@confirmTrx')->name('confirm');
+        Route::post('validate/{validation_key}', 'C2BController@validateTrx')->name('validate');
+    });
+
+    Route::group(['prefix' => 'stk-push', 'as' => 'stk-push.'], function () {
+        Route::post('simulate', 'STKPushController@simulate')->name('simulate');
+        Route::post('confirm/{confirmation_key}', 'STKPushController@confirm')->name('confirm');
+    });
+});
