@@ -74,6 +74,7 @@ class CartController extends Controller
             $rowId=$request->id;
             $totalPrice=$qty*$price;
             $printing=0;
+            $payment=0;
             $totalPrinting=$printing*$qty;
             $item= \Cart::session('branding')->add(array(
                 'id'=> $rowId,
@@ -87,7 +88,8 @@ class CartController extends Controller
                     'extra_large'=>$request->quantity_extralarge,
                     'totalPrice'=>$totalPrice,
                     'printing'=>$printing,
-                    'totalPrinting'=>$totalPrinting
+                    'totalPrinting'=>$totalPrinting,
+                    'payment'=>$payment
                 ),
                 'associatedModel'=>$product
 

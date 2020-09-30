@@ -110,6 +110,7 @@ class BrandingController extends Controller
             $order['brand_price'] = $brand_price;
             $userId = Auth::id();
             $rowId = $request->product_id;
+            $payment=0;
             $branding = new \Darryldecode\Cart\CartCondition(array(
                 'name' => 'branding',
                 'type' => 'printing',
@@ -132,7 +133,8 @@ class BrandingController extends Controller
                     'totalPrice' => $request->total_price,
                     'printing' => $brand_price,
                     'totalPrinting' => $totalBrandPrice,
-                   'artwork'=>$artwork->id
+                   'artwork'=>$artwork->id,
+                    'payment'=>$payment
                 ),
                 'conditions' => $branding,
                 'associatedModel' => $product

@@ -38,6 +38,7 @@ class CheckoutController extends Controller
     public function store(CheckoutRequest $request)
     {
         //
+        $payment=$request->payment;
 
 
         if ($request->shipping==1){
@@ -66,11 +67,8 @@ class CheckoutController extends Controller
             return redirect()->back();
         }
 
-        if($request->payment==1){
-            return view('account.checkout.index');
-        }elseif($request->payment==2){
-            return view('account/checkout/transfer');
-        }
+      return view('account.checkout.index', compact('payment'));
+
 
     }
 

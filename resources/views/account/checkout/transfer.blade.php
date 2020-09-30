@@ -84,14 +84,54 @@
                             </tbody>
                         </table>
                         <hr class="broken">
+                        <h4>Payment details</h4>
+                        <div class="row">
+                            <div class="col-5">
+                                <form>
+                                    <div class="form-group">
+                                        <label for="name">Name on Card</label>
+                                        <input type="text" class="form-control" id="name1">
 
-                        <h5>Bank Transfer</h5>
-                        <p>Account Name: Cerve Limited<br>
-                        Account Number: 1272685039<br>
-                        Bank: KCB<br>
-                        Branch: River road<br>
-                        BIC/SWIFT: KCBLKENX017 <br>
-                        Reference Number: <span class="text-success">1234567</span></p>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="address">Address</label>
+                                        <input type="text" class="form-control" id="address" >
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="address">Address</label>
+                                        <input type="text" class="form-control" id="address" >
+
+                                    </div>
+
+                                    <div class="row form-group">
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label for="address">Expiry Date</label>
+                                                <input type="text" class="form-control" id="date" placeholder="DD/MM">
+
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                            <div class="form-group">
+                                                <label for="address">CVC code</label>
+                                                <input type="text" class="form-control" id="date" >
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <button type="submit" class="btn btn-block">Complete Order</button>
+                                </form>
+                            </div>
+                        </div>
+
+
+
                         <hr class="broken mt-3">
                         <h6 class="text-center">Cerve Limited | Keekorok Rd. Winglobal Hse| Phone:+254717109280 | Email:billing@cervekenya.com| www.cervekenya.com</h6>
                     </div>

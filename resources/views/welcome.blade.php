@@ -15,6 +15,14 @@ To Craft Your Visibility')
 
         </div>
     </section>
+    <section class="p-5">
+        <h3 class="text-center">HOW IT WORKS</h3>
+        <div class="row">
+            <div class="col-10 col-sm-10 col-md-3 col-lg-3 mx-auto">
+
+            </div>
+        </div>
+    </section>
 
     <section class="client p-1">
         <div class="container">

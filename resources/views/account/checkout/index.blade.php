@@ -1,5 +1,8 @@
 @extends('layouts.cerve')
 @section('title', 'Payment')
+@section('styles')
+    <script src="https://js.stripe.com/v3/"></script>
+    @endsection
 @section('content')
     <section class="container checkout mb-5">
         <div class="row mt-5">
@@ -83,8 +86,10 @@
                             </tbody>
                         </table>
                         <hr class="broken">
+                    <h4>Payment details</h4>
+                        @if($payment==1)
                         <img src="{{asset('images/mpesa_logo.png')}}" class="img-fluid" alt="Lipa Na Mpesa">
-                        <h5>Lipa Na Mpesa</h5>
+                        <h5>Lipa Na Mpesa{{$payment}}</h5>
                         <ol>
                             <li>Go to M-PESA on your phone</li>
                             <li>Select Lipa Na Mpesa</li>
@@ -103,6 +108,37 @@
                         </div>
 
                         {!!Form::close()!!}
+                            @elseif($payment==2)
+                            <div class="row">
+
+                                <div class="col-5">
+                                    <form>
+                                        <img src="{{asset('images/351652.png')}}" class="img-fluid">
+                                        <div class="form-group">
+                                            <label for="name">Name on Card</label>
+                                            <input type="text" class="form-control" id="name1">
+
+                                        </div>
+
+                                       <div class="form-group">
+                                          
+                                           <label>Card
+                                               <div id="card-element"></div>
+                                           </label>
+
+                                           <label for="card-element">Card</label>
+                                           <div id="card-element"></div>
+
+                                           <script>
+                                               cardElement.mount('#card-element');
+                                           </script>
+                                       </div>
+
+                                        <button type="submit" class="btn btn-block">Complete Order</button>
+                                    </form>
+                                </div>
+                            </div>
+                        @endif
                         <hr class="broken mt-3">
                         <h6 class="text-center">Cerve Limited | Keekorok Rd. Winglobal Hse| Phone:+254717109280 | Email:billing@cervekenya.com| www.cervekenya.com</h6>
                     </div>
@@ -114,3 +150,6 @@
         </div>
     </section>
 @endsection
+@section('scripts')
+
+    @endsection
