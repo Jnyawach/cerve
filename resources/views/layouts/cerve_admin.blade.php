@@ -97,6 +97,19 @@
                         </li>
 
                         <li class="nav-item">
+                            <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-25" aria-controls="submenu-25"><i class="fa fa-money" aria-hidden="true"></i>Payment</a>
+                            <div id="submenu-25" class="collapse submenu" style="">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{route('mpesa.index')}}">Accounts</a>
+                                    </li>
+
+
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
                             <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-21" aria-controls="submenu-21"><i class="fa fa-usd" aria-hidden="true"></i>Pricing</a>
                             <div id="submenu-21" class="collapse submenu" style="">
                                 <ul class="nav flex-column">

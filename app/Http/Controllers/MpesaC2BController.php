@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Mpesa;
+use App\MpesaC2B;
 use Illuminate\Http\Request;
 
 class MpesaC2BController extends Controller
@@ -14,7 +16,8 @@ class MpesaC2BController extends Controller
     public function index()
     {
         //
-        return  view('admin.mpesa.index');
+        $payments=MpesaC2B::all();
+        return  view('admin.mpesa.index', compact('payments'));
     }
 
     /**
