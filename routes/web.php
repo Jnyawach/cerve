@@ -50,6 +50,7 @@ Route::group(['middleware'=>'role'], function(){
     Route::get('costing_update/{id}',['as'=>'costing-update', 'uses'=>'ProductAdminController@costUpdate']);
     Route::patch('costing_update/{id}',['as'=>'costing-updated', 'uses'=>'ProductAdminController@costUpdated']);
     Route::resource('/admin/homepage/pricing','PricingController');
+    Route::resource('/admin/homepage/mpesa', 'MpesaC2BController');
 
 });
 
@@ -90,4 +91,5 @@ Route::group(['middleware'=>'auth'], function(){
     Route::get('account/checkout/transfer', ['as'=>'bank-transfer','uses'=>'CheckoutController@transfer']);
     Route::resource('account/homepage/customer', 'UserOrdersController');
     Route::resource('account/homepage/project', 'UserPrintOnDemandController');
+
 });

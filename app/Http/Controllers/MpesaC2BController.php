@@ -14,6 +14,7 @@ class MpesaC2BController extends Controller
     public function index()
     {
         //
+        return  view('admin.mpesa.index');
     }
 
     /**

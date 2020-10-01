@@ -9,6 +9,8 @@
     "license": "MIT",
     "require": {
         "php": "^7.2.5",
+        "ext-curl": "*",
+        "ext-json": "*",
         "cohensive/embed": "dev-master",
         "cviebrock/eloquent-sluggable": "^7.0",
         "darryldecode/cart": "^4.1",
@@ -19,9 +21,7 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
         "laravelcollective/html": "^6.1",
-        "ext-curl": "*",
-        "ext-json": "*",
-        "ext-http": "*"
+        "php-http/curl-client": "^2.1"
     },
     "require-dev": {
         "facade/ignition": "^2.0",
