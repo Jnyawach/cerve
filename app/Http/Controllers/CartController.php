@@ -43,13 +43,15 @@ class CartController extends Controller
     public function store(Request $request)
     {
         //
-
+        $quantity=$request->quantity_small+$request->quantity_medium+$request->quantity_large+$request->quantity_extralarge;
+if ($quantity<=0){
+    return redirect()->back()->with('message','Please Add the Quantity of the size(s)');
+}else{
         if ($request->branding==1){
 
             \Cart::session('branding')->clear();
             $product=Product::findOrFail($request->id);
             $price=$product->price;
-            $quantity=$request->quantity_small+$request->quantity_medium+$request->quantity_large+$request->quantity_extralarge;
             $qty=$quantity;
 
             switch ($price){
@@ -152,7 +154,7 @@ class CartController extends Controller
             }
         }
 
-
+}
 
     }
 

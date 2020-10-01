@@ -148,14 +148,14 @@
                 <div class="form-group row">
                     <div class="col-sm-12 col-md-12 col-lg-12 mb-3" >
                         <div class="row">
-                            <div class="col-sm-12 col-md-2 col-lg-2">
-                                <h5>In stock:{{$product->stock}}</h5>
+                            <div class="col-sm-12 col-md-2 col-lg-4">
+                                <h5>In stock:&nbsp; {{$product->stock}}</h5>
                             </div>
                             <div class="col-sm-12 col-md-6 col-lg-6">
-                                <h5 class="text-capitalize">Color:
+                                <h5 class="text-capitalize">Color:&nbsp;
                                     <svg width="20" height="20">
                                         <rect width="30" height="30" style="fill:{{$product->color}};" />
-                                    </svg>&nbsp;{{$product->color}}</h5>
+                                    </svg>&nbsp;&nbsp;{{$product->color}}</h5>
 
                             </div>
                         </div>
@@ -163,6 +163,7 @@
                     </div>
                     @if($product->category->name=='Clothing/Apparel')
                         <div class="col-sm-12 col-md-12 col-lg-12 text-center ">
+                            <h6 class="text-left"><i class="fa fa-info-circle mr-3" aria-hidden="true"></i>Add Quantity to the size(s) you want</h6>
                             <table class="table" >
                                 <thead class="thead thead-light">
                                 <tr>
@@ -176,15 +177,18 @@
                                 <tbody>
                                 <tr>
                                     <th ><h4 class="p-0 m-0">Quantity:</h4></th>
-                                    <th class="font-bold"> <input class="quantity"   type="number" value="1" min="0" max="1500" name="quantity_small"/></th>
-                                    <td class="font-bold"> <input  class="quantity"  type="number" value="1" min="0" max="1500" name="quantity_medium"/></td>
-                                    <td class="font-bold"> <input class="quantity"   type="number" value="1" min="0" max="1500" name="quantity_large"/></td>
-                                    <td class="font-bold"> <input class="quantity"   type="number" value="1" min="0" max="1500" name="quantity_extralarge"/></td>
+                                    <th class="font-bold"> <input class="quantity"   type="number" value="0" min="0" max="1500" name="quantity_small"/></th>
+                                    <td class="font-bold"> <input  class="quantity"  type="number" value="0" min="0" max="1500" name="quantity_medium"/></td>
+                                    <td class="font-bold"> <input class="quantity"   type="number" value="0" min="0" max="1500" name="quantity_large"/></td>
+                                    <td class="font-bold"> <input class="quantity"   type="number" value="0" min="0" max="1500" name="quantity_extralarge"/></td>
                                 </tr>
-
-
                                 </tbody>
                             </table>
+                            @if(session()->has('message'))
+                                <p class="text-danger">
+                                    {{ session()->get('message') }}
+                                </p>
+                                @endif
                         </div>
 
                         @else

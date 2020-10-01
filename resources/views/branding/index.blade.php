@@ -154,12 +154,12 @@
 
                     <div class="form-group">
                         {!!Form::label('description', 'DESCRIPTION:')!!}
-                        <p class="text-danger" >Please give a detailed description on how this product should be branded. Include the placements, size and color(s)</p>
+                        <h6 ><i class="fa fa-info-circle mr-3" aria-hidden="true"></i> Please give a detailed description on how this product should be branded. Include the placements, size and color(s)</h6>
                         {!!Form::textarea('description', null, ['class'=>'form-control','id'=>'brand-editor','required'])!!}
 
                     </div>
-                    <p class="text-danger">So that we can serve you better attain high print quality we recommend that you submit vector files such as
-                        PDF, SVG, EPS, CDR or AI.</p>
+                    <h6 class="mt-5"><i class="fa fa-info-circle mr-3" aria-hidden="true"></i>So that we can serve you better attain high print quality we recommend that you submit vector files such as
+                        PDF, SVG, EPS, CDR or AI.</h6>
                     <div class="form-group">
                         {!!Form::label('artwork_id', 'ATTACH ARTWORK:')!!}
                         {!!Form::file('artwork_id', null, ['class'=>'form-control-file','required'])!!}
