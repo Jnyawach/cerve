@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Blog;
 use App\Http\Requests\BlogRequest;
 use App\Photo;
+use App\Portfolio;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -46,14 +47,13 @@ class BlogAdminController extends Controller
         //
         $input=$request->all();
         $user=Auth::user();
-        if($file=@$request->file('photo_id')){
-            $name= time().$file->getClientOriginalName();
-            $file->move('images', $name);
-            $photo=Photo::create(['path'=>$name]);
-            $input['photo_id'] = $photo->id;
+        $user->posts()->create($input);
+        if($file=$request->file('photo_id')) {
+
+            $user->addMedia($file)->toMediaCollection('blog_photo');
         }
 
-        $user->posts()->create($input);
+
         Session::flash('post_issue', 'The Post has been Created');
 
         return redirect('admin/homepage/blog');
@@ -96,13 +96,15 @@ class BlogAdminController extends Controller
     {
         //
         $input= $request->all();
-        if($file=@$request->file(photo_id)){
-            $name= time().$file->getClientOriginalName();
-            $file->move('images', $name);
-            $photo=Photo::create(['path'=>$name]);
-            $input['photo_id'] = $photo->id;
+        $result=Blog::findOrFail($id);
+
+        $update=Auth::user()->posts()->whereId($id)->first()->update($input);
+
+        if($file=$request->file('photo_id')) {
+            $result->clearMediaCollection('blog_photo');
+
+            $result->addMedia($file)->toMediaCollection('blog_photo');
         }
-        Auth::user()->posts()->whereId($id)->first()->update($input);
         Session::flash('post_issue', 'The Post has been edited');
 
         return redirect('admin/homepage/blog');

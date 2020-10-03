@@ -39,14 +39,14 @@ class ProductRequest extends FormRequest
             'price_4'                 =>'required|numeric',
             'stock'                 =>'required|numeric',
             'brand'               =>'',
-            'video_id'               =>'',
-            'path'               => '',
-            'path.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'video'               =>'',
+            'photos'               => '',
+            'photos.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'S'               => 'numeric',
             'M'               => 'numeric',
             'L'               => 'numeric',
             'XL'               => 'numeric',
-            'photo_id'=>''
+            'branded'=>''
 
         ];
     }

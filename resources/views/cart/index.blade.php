@@ -20,7 +20,7 @@
                                         <div class="row">
                                             <div class="col-sm-3 col-md-3 col-lg-2">
                                                 <a href="{{route('brand-shop.show', $item->model->slug)}}">
-                                                    <img src="{{url('images/'. json_decode($item->model->path)[0] )}}" alt="{{$item->model->name}}" title="{{$item->model->name}}" class="img-fluid">
+                                                    <img src="{{asset(asset($item->model->getFirstMedia('branded_sample')->getUrl('brand_card')))}}" alt="{{$item->model->name}}" title="{{$item->model->name}}" class="img-fluid">
                                                 </a>
                                             </div>
                                             <div class="col-sm-12 col-md-12 col-lg-10">
@@ -183,7 +183,7 @@
                     <div class="col-sm-10 col-md-4 col-lg-3 mx-auto text-center m-2">
                         <div class="card">
                         <a href="{{route('brand-shop.show', $love->slug)}}" title="{{$love->slug}}">
-                            <img class="img-fluid"  src="{{url('images/'. json_decode($love->path)[0] )}}" alt="{{$love->name}}">
+                            <img class="img-fluid"  src="{{asset(asset($love->getFirstMedia('branded_sample')->getUrl('brand_card')))}}" alt="{{$love->name}}">
                         </a>
                             <h6 class="text-center mt-2">
                                 @if($love->reviews->count()>0)

@@ -46,26 +46,21 @@ class PortfolioAdminController extends Controller
     {
         //
         $input= $request->all();
-        if($file=$request->file('video_id')) {
-            $name = time() . $file->getClientOriginalName();
-            $file->move('videos', $name);
-            $video = Video::create(['path' => $name]);
-            $input['video_id'] = $video->id;
+        $portfolio=Portfolio::create($input);
 
+        if($file=$request->file('video_id')) {
+
+            $portfolio->addMedia($request->video_id)->toMediaCollection('portfolio_video');
         }
 
         if($files=$request->file('path')) {
             foreach ($files as $file){
-                $name = time() . $file->getClientOriginalName();
-                $file->move('images', $name);
-                $data[]=$name;
 
+                $portfolio->addMedia($file)->toMediaCollection('portfolio_photos');
             }
         }
 
-        $input['path']=json_encode($data);
 
-        Portfolio::create($input);
 
         Session::flash('portfolio_message', 'The Project has been successfully Created');
 
@@ -82,7 +77,8 @@ class PortfolioAdminController extends Controller
     {
         //
         $portfolio=Portfolio::findBySlugOrFail($slug);
-        return view('admin.portfolio.show', compact('portfolio'));
+        $photos=$portfolio->getMedia('portfolio_photos');
+        return view('admin.portfolio.show', compact('portfolio','photos'));
     }
 
     /**
@@ -111,30 +107,27 @@ class PortfolioAdminController extends Controller
         //
         $find=Portfolio::findOrFail($id);
         $input= $request->all();
+        $find->update($input);
         if($file=$request->file('video_id')) {
-            $name = time() . $file->getClientOriginalName();
-            $file->move('videos', $name);
-            $video = Video::create(['path' => $name]);
-            $input['video_id'] = $video->id;
+
+            $find->clearMediaCollection('video_id');
+            $find->addMedia($request->video_id)->toMediaCollection('video_id');
+        }
+
+        if($files=$request->file('path')) {
+            foreach ($files as $file){
+                $find->clearMediaCollection('portfolio_photos');
+
+            }
 
         }
 
         if($files=$request->file('path')) {
             foreach ($files as $file){
-                $name = time() . $file->getClientOriginalName();
-                $file->move('images', $name);
-                $data[]=$name;
-
+                $find->addMedia($file)->toMediaCollection('portfolio_photos');
             }
+
         }
-         if(!empty($data)){
-             $input['path']=json_encode($data);
-         }
-
-
-
-
-        $find->update($input);
 
         Session::flash('portfolio_message', 'The Project has been successfully Updated');
 
@@ -152,14 +145,6 @@ class PortfolioAdminController extends Controller
     {
         //
         $portfolio=Portfolio::findOrFail($id);
-        $photos=json_decode($portfoliot->path);
-        foreach ($photos as $photo){
-            unlink(public_path().'/images/'. $photo);
-        }
-        if ($portfolio->video){
-            unlink(public_path(). $portfolio->video->path);
-        }
-
         $portfolio->delete();
 
         Session::flash('portfolio_message', 'The Project has been successfully Deleted');

@@ -118,9 +118,10 @@
                         <div class="row">
                             @foreach( $products as $product )
                                 <div class="col-sm-4 col-md-4 col-lg-3  text-center m-2 mx-auto">
+                                    <div class="card-deck">
                                     <div class="card">
                                     <a href="{{route('brand-shop.show', $product->slug)}}" title="{{$product->slug}}">
-                                        <img src="{{url('images/'. json_decode($product->path)[0] )}}" class="img-fluid" title="{{$product->name}}" >
+                                        <img src="{{asset($photo)}}" class="img-fluid card-img-top" alt="{{$product->slug}}">
                                     </a>
                                     <h5 class="mt-2">
                                         @if($product->reviews->count()>0)
@@ -155,6 +156,7 @@
                                             <a id="price" href="{{route('brand-shop.show', $product->slug)}}" class="btn btn-block m-0" style="font-size: 12!important;px">ADD TO CART &nbsp;&nbsp KES {{$product->price}}</a>
                                         </div>
 
+                                    </div>
                                     </div>
                                 </div>
                             @endforeach

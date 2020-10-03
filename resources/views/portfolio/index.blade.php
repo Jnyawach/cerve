@@ -8,7 +8,7 @@
             @foreach($portfolios as $portfolio)
             <div class="col-sm-12 col-md-4 col-lg-4">
                 <a href="{{route('previousWork', $portfolio->slug)}}" title="{{$portfolio->title}}">
-                    <img src="{{url('images/'. json_decode($portfolio->path)[0] )}}" class="img-fluid" title="{{$portfolio->title}}" >
+                    <img src="{{asset($photo)}}" class="img-fluid" title="{{$portfolio->title}}" >
                 </a>
 
 

@@ -51,34 +51,24 @@ class ProductAdminController extends Controller
     {
         //
         $input= $request->all();
-        if($file=$request->file('video_id')) {
-            $name = time() . $file->getClientOriginalName();
-            $file->move('videos', $name);
-            $video = Video::create(['path' => $name]);
-            $input['video_id'] = $video->id;
+        $product=Product::create($input);
 
+
+        if($file=$request->file('video')) {
+
+            $product->addMedia($request->video)->toMediaCollection('product_video');
         }
-        if($file=$request->file('photo_id')) {
-            $name = time() . $file->getClientOriginalName();
-            $file->move('images', $name);
-            $photo = Photo::create(['path' => $name]);
-            $input['photo_id'] = $photo->id;
+        if($file=$request->file('branded')) {
 
+            $product->addMedia($request->branded)->toMediaCollection('branded_sample');
         }
 
-        if($files=$request->file('path')) {
+        if($files=$request->file('photos')) {
             foreach ($files as $file){
-                $name = time() . $file->getClientOriginalName();
-                $file->move('images', $name);
-                $data[]=$name;
 
+                $product->addMedia($file)->toMediaCollection('product_photos');
             }
         }
-
-        $input['path']=json_encode($data);
-
-       $product=Product::create($input);
-
         Session::flash('product_message', 'The Product has been successfully Created');
 
         return redirect('/admin/homepage/products');
@@ -97,7 +87,8 @@ class ProductAdminController extends Controller
     {
         //
         $product=Product::findBySlugOrFail($id);
-        return view('admin.products.show', compact('product'));
+        $photos=$product->getMedia('product_photos');
+        return view('admin.products.show', compact('product','photos'));
     }
 
     /**
@@ -125,37 +116,34 @@ class ProductAdminController extends Controller
     {
         //
         $find=Product::findOrFail($id);
-        $input= $request->all();
-        $input= $request->all();
-        if($file=$request->file('video_id')) {
-            $name = time() . $file->getClientOriginalName();
-            $file->move('videos', $name);
-            $video = Video::create(['path' => $name]);
-            $input['video_id'] = $video->id;
+        $input=$request->all();
+        $find->update($input);
+        if($file=$request->file('video')) {
 
+            $find->clearMediaCollection('product_video');
+            $find->addMedia($request->video)->toMediaCollection('product_video');
         }
-        if($file=$request->file('photo_id')) {
-            $name = time() . $file->getClientOriginalName();
-            $file->move('images', $name);
-            $photo = Photo::create(['path' => $name]);
-            $input['photo_id'] = $photo->id;
+        if($file=$request->file('branded')) {
 
+            $find->clearMediaCollection('branded_sample');
+            $find->addMedia($request->branded)->toMediaCollection('branded_sample');
         }
 
-        if($files=$request->file('path')) {
+        if($files=$request->file('photos')) {
             foreach ($files as $file){
-                $name = time() . $file->getClientOriginalName();
-                $file->move('images', $name);
-                $data[]=$name;
+                $find->clearMediaCollection('product_photos');
 
             }
+
         }
 
-        if(!empty($data)){
-            $input['path']=json_encode($data);
+        if($files=$request->file('photos')) {
+            foreach ($files as $file){
+                $find->addMedia($file)->toMediaCollection('product_photos');
+            }
+
         }
 
-        $find->update($input);
 
         Session::flash('product_message', 'The Product has been successfully Updated');
 
@@ -172,18 +160,6 @@ class ProductAdminController extends Controller
     {
         //
         $product=Product::findOrFail($id);
-        $photos=json_decode($product->path);
-        foreach ($photos as $photo){
-            unlink(public_path().'/images/'. $photo);
-        }
-        if ($product->video){
-            unlink(public_path(). $product->video->path);
-        }
-        if ($product->photo){
-            unlink(public_path(). $product->photo->path);
-        }
-
-
         $product->delete();
 
         Session::flash('product_message', 'The product has been deleted');

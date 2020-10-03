@@ -19,7 +19,11 @@ class BrandShopController extends Controller
         //
         $products=Product::inRandomOrder()->paginate(12);
         $categories=ProductCategory::all();
-        return  view('brand-shop.index' ,compact( 'products','categories'));
+        foreach ($products as $product){
+            $photo=$product->getFirstMedia('product_photos')->getUrl('product_card');
+        }
+
+        return  view('brand-shop.index' ,compact( 'products','categories','photo'));
     }
 
     /**
@@ -55,7 +59,9 @@ class BrandShopController extends Controller
         $product=Product::findBySlugOrFail($id);
         $reviews=Review::where('product_id', $product->id)->get();
         $related=Product::where('category_id', $product->category_id)->where('slug','!=', $id)->inRandomOrder()->get();
-        return view('brand-shop.show', compact('product','related','reviews'));
+        $photos=$product->getMedia('product_photos');
+
+        return view('brand-shop.show', compact('product', 'related', 'reviews', 'photos'));
     }
 
     /**

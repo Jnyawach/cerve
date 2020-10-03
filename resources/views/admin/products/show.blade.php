@@ -14,10 +14,10 @@
        </div>
        <div class="card-body">
            <div class="row">
-               @foreach(json_decode($product->path) as $photo)
+               @foreach($photos as $photo)
 
                    <div class="col-3 col-sm-3 col-md-3 col-lg-3">
-                   <img src="{{url('images/'.$photo)}}" class="img-fluid" title="{{$product->name}}">
+                   <img src="{{asset($photo->getUrl())}}" class="img-fluid" title="{{$product->name}}">
 
 
                    </div>
@@ -32,11 +32,11 @@
                <div class="col-sm-10 col-md-6 col-lg-6 mx-auto">
                    <h4>Branding Guideline</h4>
                   <p>{!! $product->brand? $product->brand:'No branding guideline provided' !!}</p>
-                   @if($product->video)
+                   @if($product->getFirstMedia('product_video')->getUrl())
                    <div>
                        <h4>Associated Video</h4>
                        <div class="embed-responsive embed-responsive-16by9">
-                           <iframe class="embed-responsive-item" src="{{url($product->video->path) }}" allowfullscreen></iframe>
+                           <iframe class="embed-responsive-item" src="{{asset($product->getFirstMedia('product_video')->getUrl()) }}" allowfullscreen></iframe>
                        </div>
                    </div>
                        @endif

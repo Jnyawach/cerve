@@ -5,13 +5,18 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
+use Spatie\MediaLibrary\File;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use Spatie\MediaLibrary\Models\Media;
 
 
-class Product extends Model
+class Product extends Model implements HasMedia
 {
     //
     use Sluggable;
     use SluggableScopeHelpers;
+    use HasMediaTrait;
 
     /**
      * Return the sluggable configuration array for this model.
@@ -47,9 +52,9 @@ class Product extends Model
         'L',
         'XL',
         'brand',
-        'video_id',
-        'path',
-        'photo_id'
+
+
+
     ];
     public  function category(){
         return $this->belongsTo('App\ProductCategory');
@@ -72,6 +77,27 @@ class Product extends Model
     }
    public  function costs(){
         return$this->hasMany('App\ProductPrinting');
+    }
+
+    public  function registerMediaCollections()
+    {
+        $this->addMediaCollection('product_photos')
+
+        ->registerMediaConversions(function (Media $media){
+            $this->addMediaConversion('product_card')
+                ->width(300)
+                ->height(300);
+
+        });
+
+        $this->addMediaCollection('branded_sample')
+
+            ->registerMediaConversions(function (Media $media){
+                $this->addMediaConversion('brand_card')
+                    ->width(400)
+                    ->height(400);
+
+            });
     }
 
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Contact;
 use App\Http\Requests\ContactRequest;
 use App\Product;
+use App\ProductCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
@@ -20,7 +21,10 @@ class ContactController extends Controller
     {
         //
         $products=Product::all();
-        return  view('contact-us.index' , compact('products'));
+        foreach ($products as $product){
+            $photo=$product->getFirstMedia('product_photos')->getUrl('product_card');
+        }
+        return  view('contact-us.index' , compact('products','photo'));
     }
 
     /**

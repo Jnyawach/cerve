@@ -94,16 +94,16 @@
                 </div>
                 <div class=" form-group row">
                     <div class="col-sm-12 col-md-4 col-lg-4">
-                        {!!Form::label('path', 'PRODUCT IMAGE:')!!}
-                        {!!Form::file('path[]',  ['class'=>'form-control-file', 'multiple'=>'multiple'])!!}
+                        {!!Form::label('photos', 'PRODUCT IMAGE:')!!}
+                        {!!Form::file('photos[]',  ['class'=>'form-control-file', 'multiple'=>'multiple'])!!}
                     </div>
                     <div class="col-sm-12 col-md-4 col-lg-4">
-                        {!!Form::label('video_id', 'ASSOCIATED VIDEO:')!!}
-                        {!!Form::file('video_id',  ['class'=>'form-control-file'])!!}
+                        {!!Form::label('video', 'ASSOCIATED VIDEO:')!!}
+                        {!!Form::file('video',  ['class'=>'form-control-file'])!!}
                     </div>
                     <div class="col-sm-12 col-md-4 col-lg-4">
-                        {!!Form::label('photo_id', 'BRANDED PHOTO:')!!}
-                        {!!Form::file('photo_id',  ['class'=>'form-control-file'])!!}
+                        {!!Form::label('branded', 'BRANDED PHOTO:')!!}
+                        {!!Form::file('branded',  ['class'=>'form-control-file'])!!}
                     </div>
 
 

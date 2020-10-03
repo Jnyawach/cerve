@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-sm-12 col-md-3 col-lg-3 mx-auto">
                 <a href="{{route('products.show', $cost->product->slug)}}">
-                <img src="{{url('images/'. json_decode($cost->product->path)[0] )}}" title="{{$cost->product->name}}" alt="{{$cost->product->name}}" class="img-fluid">
+                <img src="{{asset($cost->product->getFirstMedia('product_photos')->getUrl('product_card'))}}" title="{{$cost->product->name}}" alt="{{$cost->product->name}}" class="img-fluid">
                 </a>
             </div>
 

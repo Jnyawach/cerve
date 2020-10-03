@@ -5,7 +5,7 @@
 
 @endsection
 @section('content')
-    <div class="pt-5 p-2 d-inline-flex">
+    <div class="pt-5 p-2 d-inline-flex m-3">
         <a href="{{route('brand-shop.index')}}" title="Cerve Brand MarketPlace"><h6>Home</h6></a><h6 class="ml-2 mr-2">|</h6>
         <a href="{{route('category', $product->category->slug)}}" title="Cerve Brand MarketPlace"><h6>{{$product->category->name}}</h6></a><h6 class="ml-2 mr-2">|</h6>
         <h6>{{$product->name}}</h6>
@@ -26,9 +26,9 @@
                         <!-- Wrapper for slides -->
                         <div class='carousel-inner'>
 
-                            @foreach(json_decode($product->path) as $photo=>$path)
+                            @foreach($photos as $photo=>$path)
                                 <div class='carousel-item {{$photo==0? 'active' : '' }}'>
-                                    <img src="{{url('images/'.$path)}}" class=" img-fluid">
+                                    <img src="{{asset($path->getUrl())}}" class=" img-fluid">
                                 </div>
                             @endforeach
 
@@ -52,17 +52,17 @@
 
                     <!-- Indicators -->
                     <ol class='carousel-indicators'>
-                        @foreach(json_decode($product->path) as $photo=>$key)
-                            <li data-target='#carousel-custom' data-slide-to='{{$photo}}' class='active'><img src="{{url('images/'.$key)}}" class=" img-fluid img-thumbnail"></li>
+                        @foreach($photos as $photo=>$key)
+                            <li data-target='#carousel-custom' data-slide-to='{{$photo}}' class='active'><img src="{{asset($key->getUrl())}}" class=" img-fluid img-thumbnail"></li>
 
                         @endforeach
 
                     </ol>
                 </div>
-                @if($product->photo)
+                @if($branded=$product->getFirstMedia('branded_sample')->getUrl('brand_card'))
                 <div class="branded mt-4">
                     <h4>Branded Sample</h4>
-                    <img src="{{asset($product->photo->path)}}" class="img-fluid" style="height: 400px">
+                    <img src="{{asset($branded=$product->getFirstMedia('branded_sample')->getUrl('brand_card'))}}" class="img-fluid" alt="Branded Sample">
                 </div>
                     @endif
             </div>
@@ -233,11 +233,11 @@
                               <p>{!! $product->brand? $product->brand:'No branding guideline provided' !!}</p>
                             </div>
                             <div class="tab-pane fade" id="outline-three" role="tabpanel" aria-labelledby="tab-outline-three">
-                                @if($product->video)
+                                @if( $product->getFirstMedia('product_video')->getUrl())
                                     <div>
 
                                         <div class="embed-responsive embed-responsive-16by9">
-                                            <iframe class="embed-responsive-item" src="{{url($product->video->path) }}" allowfullscreen></iframe>
+                                            <iframe class="embed-responsive-item" src="{{asset( $product->getFirstMedia('product_video')->getUrl()) }}" allowfullscreen></iframe>
                                         </div>
                                     </div>
                                     @else
@@ -337,7 +337,7 @@
                                 <div class="col-12 col-md-3 col-lg-3 mx-auto text-center">
                                     <div class="card">
                                     <a href="{{route('brand-shop.show', $product->slug)}}" title="{{$product->slug}}">
-                                        <img src="{{url('images/'. json_decode($product->path)[0] )}}" class="img-fluid" title="{{$product->name}}" >
+                                        <img src="{{asset($product->getFirstMedia('product_photos')->getUrl('product_card'))}}" class="img-fluid" title="{{$product->name}}" >
                                     </a>
                                     <h5 class="mt-2">
                                         @if($product->reviews->count()>0)

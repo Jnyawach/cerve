@@ -27,7 +27,7 @@ class AddColumnsToProducts extends Migration
             $table->integer('price');
             $table->integer('stock');
             $table->text('brand')->nullable();
-            $table->integer('video_id')->index()->nullable();
+
             $table->foreign('category_id')->references('id')->on('product_categories')->onDelete('cascade');
 
 

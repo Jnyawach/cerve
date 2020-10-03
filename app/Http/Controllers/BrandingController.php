@@ -101,11 +101,8 @@ class BrandingController extends Controller
             Session::flash('cart_message', 'Product is already added to cart');
             return redirect('cart');
         }else {
-            if ($file = @$request->file('artwork_id')) {
-                $name = time() . $file->getClientOriginalName();
-                $file->move('documents', $name);
-                $artwork = Document::create(['path' => $name]);
-                $order['artwork_id'] = $artwork->id;
+            if ($file = $request->file('artwork_id')) {
+                $artwork=$user->addMedia($file)->toMediaCollection('submitted_artwork');
             }
             $order['brand_price'] = $brand_price;
             $userId = Auth::id();
