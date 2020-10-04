@@ -59,7 +59,7 @@
 
                     </ol>
                 </div>
-                @if($branded=$product->getFirstMedia('branded_sample')->getUrl('brand_card'))
+                @if($branded=$product->getFirstMedia('branded_sample'))
                 <div class="branded mt-4">
                     <h4>Branded Sample</h4>
                     <img src="{{asset($branded=$product->getFirstMedia('branded_sample')->getUrl('brand_card'))}}" class="img-fluid" alt="Branded Sample">
@@ -233,7 +233,7 @@
                               <p>{!! $product->brand? $product->brand:'No branding guideline provided' !!}</p>
                             </div>
                             <div class="tab-pane fade" id="outline-three" role="tabpanel" aria-labelledby="tab-outline-three">
-                                @if( $product->getFirstMedia('product_video')->count()>0)
+                                @if( $product->getFirstMedia('product_video'))
                                     <div>
 
                                         <div class="embed-responsive embed-responsive-16by9">
