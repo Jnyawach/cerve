@@ -233,7 +233,7 @@
                               <p>{!! $product->brand? $product->brand:'No branding guideline provided' !!}</p>
                             </div>
                             <div class="tab-pane fade" id="outline-three" role="tabpanel" aria-labelledby="tab-outline-three">
-                                @if( $product->getFirstMedia('product_video')->getUrl()>0)
+                                @if( $product->getFirstMedia('product_video')->count()>0)
                                     <div>
 
                                         <div class="embed-responsive embed-responsive-16by9">
