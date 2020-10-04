@@ -53,7 +53,7 @@
                     <!-- Indicators -->
                     <ol class='carousel-indicators'>
                         @foreach($photos as $photo=>$key)
-                            <li data-target='#carousel-custom' data-slide-to='{{$photo}}' class='active'><img src="{{asset($key->getUrl())}}" class=" img-fluid img-thumbnail"></li>
+                            <li data-target='#carousel-custom' data-slide-to='{{$photo}}' class='active'><img src="{{asset($key->getUrl('product_card'))}}" class=" img-fluid img-thumbnail"></li>
 
                         @endforeach
 
