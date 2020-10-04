@@ -216,6 +216,33 @@ footer li{
 .social-media{
     background-color:  #fafafa;
 }
+.how-it{
+    background-color: var(--primary);
+}
+
+.how-it h3{
+    color: white !important;
+}
+.how-box{
+    border-top: 1px solid white;
+    position: relative;
+}
+.how-box img{
+   height: 100px;
+    position: absolute;
+    top: -50px;
+    left: 35%;
+}
+.how-it h5{
+    margin-top: 80px;
+    color: white;
+    font-family: "Avenir Regular"!important;
+}
+
+.how-it p{
+    color: white;
+    font-size: 16px;
+}
 .copyright{
     background-color:  #E6E6E6;
 

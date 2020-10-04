@@ -15,10 +15,33 @@ To Craft Your Visibility')
 
         </div>
     </section>
-    <section class="p-5">
-        <h3 class="text-center">HOW IT WORKS</h3>
-        <div class="row">
-            <div class="col-10 col-sm-10 col-md-3 col-lg-3 mx-auto">
+    <section class="p-5 how-it">
+        <h3 class="text-center mt-5">HOW IT WORKS</h3>
+        <div class="row mt-5 mb-5">
+            <div class="col-10 col-sm-10 col-md-3 col-lg-3 mx-auto how-box mt-5">
+                <img src="{{asset('images/how-01.png')}}" class="img-fluid">
+                <h5 class="text-center">SELECT A PRODUCT</h5>
+                <p class="text-center">Sign Up Or Login. Go to Brand shop and select a product.
+                Upload the design you that you want to be printed. Submit printing guidelines</p>
+
+            </div>
+
+            <div class="col-10 col-sm-10 col-md-3 col-lg-3 mx-auto how-box mt-5">
+                <img src="{{asset('images/how-02.png')}}" class="img-fluid">
+                <h5 class="text-center">PLACE AN ORDER AND PAY</h5>
+                <p class="text-center">Enter the quantity you want. Choose between delivering to your doorstep or
+                picking up from our offices. place an order then pay.</p>
+
+            </div>
+
+            <div class="col-10 col-sm-10 col-md-3 col-lg-3 mx-auto how-box mt-5">
+                <img src="{{asset('images/how-03.png')}}" class="img-fluid">
+                <h5 class="text-center">PRINTING AND DELIVERY</h5>
+                <p class="text-center">
+                    Our team will get started on your
+                    order immediately. Once done you will
+                    either pick the item from our offices or have it delivered to you
+                </p>
 
             </div>
         </div>
