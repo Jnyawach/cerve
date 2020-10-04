@@ -49,10 +49,8 @@ class CerveController extends Controller
 
     public  function portfolio(){
         $portfolios=Portfolio::where('is_active', 1)->paginate(9);
-        foreach ($portfolios as$portfolio){
-            $photo=$portfolio->getFirstMedia('portfolio_photos')->getUrl('portfolio_card');
-        }
-        return view('portfolio.index', compact('portfolios','photo'));
+
+        return view('portfolio.index', compact('portfolios'));
     }
 
     public  function previousWork($slug){

@@ -19,11 +19,9 @@ class BrandShopController extends Controller
         //
         $products=Product::inRandomOrder()->paginate(12);
         $categories=ProductCategory::all();
-        foreach ($products as $product){
-            $photo=$product->getFirstMedia('product_photos')->getUrl('product_card');
-        }
 
-        return  view('brand-shop.index' ,compact( 'products','categories','photo'));
+
+        return  view('brand-shop.index' ,compact( 'products','categories'));
     }
 
     /**

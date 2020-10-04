@@ -21,10 +21,8 @@ class ContactController extends Controller
     {
         //
         $products=Product::all();
-        foreach ($products as $product){
-            $photo=$product->getFirstMedia('product_photos')->getUrl('product_card');
-        }
-        return  view('contact-us.index' , compact('products','photo'));
+
+        return  view('contact-us.index' , compact('products'));
     }
 
     /**

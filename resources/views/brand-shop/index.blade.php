@@ -121,7 +121,7 @@
                                     <div class="card-deck">
                                     <div class="card">
                                     <a href="{{route('brand-shop.show', $product->slug)}}" title="{{$product->slug}}">
-                                        <img src="{{asset($photo)}}" class="img-fluid card-img-top" alt="{{$product->slug}}">
+                                        <img src="{{$product->getFirstMedia('product_photos')->getUrl('product_card')}}" class="img-fluid card-img-top" alt="{{$product->slug}}">
                                     </a>
                                     <h5 class="mt-2">
                                         @if($product->reviews->count()>0)
