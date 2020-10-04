@@ -10,7 +10,7 @@
                     @foreach($posts as $post)
                 <div class="col-sm-12 col-md-4 col-lg-4 mx-auto">
                     <a href="{{route('post', $post->slug)}}" title="{{$post->slug}}">
-                    <img src="{{$post->photo? $post->photo->path:'images.cerve logo.png'}}" class="img-fluid">
+                    <img src="{{asset($post->getFirstMedia('blog_photo')->getUrl('blog_card'))}}" class="img-fluid">
                     </a>
                         <h4>{{$post->title}}</h4>
                     <p>{!! Illuminate\Support\Str::limit($post->body, 100) !!}</p>

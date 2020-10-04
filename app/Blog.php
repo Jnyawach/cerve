@@ -9,6 +9,7 @@ use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\MediaLibrary\Models\Media;
 
+
 class Blog extends Model implements HasMedia
 {
     use Sluggable;
@@ -43,11 +44,19 @@ class Blog extends Model implements HasMedia
     public function user(){
         return $this->belongsTo('App\User');
     }
-    public function photo(){
-        return $this->belongsTo('App\Photo');
-    }
 
     public function category(){
         return $this->belongsTo('App\Category');
+    }
+    public  function registerMediaCollections()
+    {
+        $this->addMediaCollection('blog_photo')
+
+            ->registerMediaConversions(function (Media $media){
+                $this->addMediaConversion('blog_card')
+                    ->width(400)
+                    ->height(400);
+
+            });
     }
 }

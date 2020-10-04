@@ -27,7 +27,7 @@ class BlogRequest extends FormRequest
             //
             'title'        =>'required',
             'is_active'  =>'required',
-            'photo_id'     =>'required',
+            'photo'     =>'required',
             'summary'      =>'required',
             'body'        =>'required'
         ];

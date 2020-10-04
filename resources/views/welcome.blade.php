@@ -195,7 +195,7 @@ To Craft Your Visibility')
 
 
                     <a href="{{route('post', $post->slug)}}" title="{{$post->slug}}">
-                    <img src="{{$post->photo ? $post->photo->path:'images/cerve logo.png'}}" class="img-fluid">
+                    <img src="{{asset($post->getFirstMedia('blog_photo')->getUrl('blog_card'))}}" class="img-fluid">
 
                 <h4 class="m-3">{{$post->title}}</h4>
                     </a>

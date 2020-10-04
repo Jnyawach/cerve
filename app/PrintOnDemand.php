@@ -13,10 +13,6 @@ class PrintOnDemand extends Model
         return$this->belongsTo('App\Branding');
     }
 
-    public  function artwork(){
-        return $this->belongsTo('App\Document');
-    }
-
     public function user (){
         return $this->belongsTo('App\User');
     }

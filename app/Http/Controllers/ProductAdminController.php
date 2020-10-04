@@ -4,13 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Branding;
 use App\Http\Requests\ProductRequest;
-use App\Photo;
-use App\PortfolioPhoto;
 use App\Product;
 use App\ProductCategory;
-use App\ProductPhotos;
 use App\ProductPrinting;
-use App\Video;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 

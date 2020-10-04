@@ -51,7 +51,7 @@
                                         @endif
 
                                     </td>
-                                    <td>15</td>
+                                    <td>{{$job->careers->count()}}</td>
                                     <td>
                                         <div class="dropdown show">
                                             <a class="btn  dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

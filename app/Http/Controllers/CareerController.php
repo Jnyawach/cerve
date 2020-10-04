@@ -47,15 +47,12 @@ class CareerController extends Controller
     {
         //
         $input=$request->all();
-        $user=Auth::user();
-        if($file=@$request->file('resume_id')){
-            $name= time().$file->getClientOriginalName();
-            $file->move('documents', $name);
-            $photo=Document::create(['path'=>$name]);
-            $input['resume_id'] = $photo->id;
-        }
+        $input['user_id']=Auth::id();
+        $career=Career::create($input);
 
-        $user->career()->create($input);
+        if($file=@$request->file('resume_id')){
+            $career->addMedia($file)->toMediaCollection('resume');
+        }
         Session::flash('job_message', 'Your application has been successfully submitted');
 
         return redirect('account/homepage/career');
@@ -97,12 +94,13 @@ class CareerController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $input= $request->all();
+        $input=$request->all();
+        $input['user_id']=Auth::id();
+        $career= Career::findOrFail($id);
+        $career->update($input);
         if($file=@$request->file('resume_id')){
-            $name= time().$file->getClientOriginalName();
-            $file->move('documents', $name);
-            $photo=Document::create(['path'=>$name]);
-            $input['resume_id'] = $photo->id;
+            $career->clearMediaCollection('resume');
+            $career->addMedia($file)->toMediaCollection('resume');
         }
 
         Auth::user()->career()->whereId($id)->first()->update($input);
@@ -123,7 +121,6 @@ class CareerController extends Controller
     {
         //
         $job=Career::findOrFail($id);
-        unlink(public_path(). $job->resume->path);
         $job->delete();
 
         Session::flash('job_message', 'The application has been deleted');

@@ -3,22 +3,25 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
-class Career extends Model
+class Career extends Model implements HasMedia
 {
     //
+    use HasMediaTrait;
     protected $fillable=[
         'user_id',
-        'career_id',
-        'resume_id',
+        'job_id',
         'letter'
     ];
 
-    public  function career(){
+    public  function job(){
         return $this->belongsTo('App\Job');
     }
 
-    public function resume(){
-        return $this->belongsTo('App\Document');
+
+    public function user(){
+        return $this->belongsTo('App\User');
     }
 }

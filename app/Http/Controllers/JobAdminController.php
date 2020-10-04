@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Career;
 use App\Http\Requests\JobRequest;
 use App\Job;
 use Illuminate\Http\Request;
@@ -58,6 +59,7 @@ class JobAdminController extends Controller
     {
         //
         $job=Job::findBySlugOrFail($slug);
+
         return view('admin.jobs.show', compact('job'));
     }
 

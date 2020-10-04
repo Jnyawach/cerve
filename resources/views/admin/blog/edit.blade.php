@@ -17,8 +17,8 @@
         </div>
         <div class="form-group row">
             <div class="col-sm-12 col-md-6 col-lg-6">
-                {!!Form::label('photo_id', 'File:')!!}
-                {!!Form::file('photo_id', null, ['class'=>'form-control-file'])!!}
+                {!!Form::label('photo', 'File:')!!}
+                {!!Form::file('photo', null, ['class'=>'form-control-file'])!!}
             </div>
             <div class="col-sm-12 col-md-6 col-lg-6">
                 {!!Form::label('is_active', 'Status:')!!}

@@ -28,7 +28,8 @@ class CareerRequest extends FormRequest
 
             'resume_id'=>'required',
             'resume_id.*' => 'mimes:doc,pdf,docx',
-            'letter'=>'required'
+            'letter'=>'required',
+            'job_id'=>'required'
         ];
     }
 }

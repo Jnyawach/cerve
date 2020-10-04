@@ -4,7 +4,7 @@
             <a class="nav-link {{ (request()->is('admin/homepage/jobs/'.$job->slug)) ? 'active' : '' }}" id="pills-home-tab" href="{{route('jobs.show', $job->slug)}}" role="tab" aria-controls="home" aria-selected="true">Position</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link {{ (request()->is('live')) ? 'active' : '' }}"   href="#" role="tab" aria-controls="profile" aria-selected="false">Applicants </a>
+            <a class="nav-link {{ (request()->is('admin/homepage/applicant')) ? 'active' : '' }}"   href="{{route('applicant.index')}}" role="tab" aria-controls="profile" aria-selected="false">Applicants </a>
         </li>
         <li class="nav-item">
             <a class="nav-link {{ (request()->is('active')) ? 'active' : '' }} "   href="{{route('active')}}" role="tab" aria-controls="contact" aria-selected="false">Inactive</a>

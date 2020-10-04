@@ -37,4 +37,8 @@ class Job extends Model
         'country'
     ];
 
+    public  function careers(){
+        return $this->hasMany('App\Career');
+    }
+
 }

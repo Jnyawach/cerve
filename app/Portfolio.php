@@ -41,12 +41,6 @@ class Portfolio extends Model implements HasMedia
 
     ];
 
-    public function video(){
-        return $this->belongsTo('App\Video');
-    }
-    public function photos(){
-        return $this->hasMany('App\PortfolioPhoto');
-    }
 
     public  function category(){
         return $this->belongsTo('App\Category');

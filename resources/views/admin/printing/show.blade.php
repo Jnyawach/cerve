@@ -20,7 +20,7 @@
                 </p>
                 <h6>{{$project->created_at->isoFormat('MMMM Do YYYY')}}</h6>
                 <p>{!! $project->description !!}</p>
-                <a href="{{ asset($project->artwork->path) }}" class="btn btn-primary" >View artwork</a>
+                <a href="{{ $project->getFirstMedia('print_document')->getUrl() }}" class="btn btn-primary" >View artwork</a>
            <div class="mt-4">
                {!!Form::open(['method'=>'DELETE', 'action'=>['AdminPrintOnDemandController@destroy', $project->id]])!!}
                <button type="submit" class="btn btn-danger">Delete <i class="fa fa-trash-o ml-2" aria-hidden="true"></i> </button>

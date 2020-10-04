@@ -2,16 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Branding;
-use App\Document;
-use App\Http\Requests\PrintOnDemandRequest;
-use App\Photo;
-use App\PrintOnDemand;
+use App\Career;
+use App\Job;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Session;
 
-class PrintOnDemandController extends Controller
+class AdminJobApplicationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,8 +16,8 @@ class PrintOnDemandController extends Controller
     public function index()
     {
         //
-        $branding=Branding::pluck('name','id')->all();
-        return view('print-on-demand.index', compact('branding'));
+        $jobs=Job::all();
+        return  view('admin.applicant.index', compact('job'));
     }
 
     /**
@@ -41,22 +36,9 @@ class PrintOnDemandController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PrintOnDemandRequest $request)
+    public function store(Request $request)
     {
         //
-        $input=$request->all();
-        $input['user_id']=Auth::user();
-        $print=PrintOnDemand::create($input);
-        if($file=$request->file('artwork_id')) {
-
-            $print->addMedia($file)->toMediaCollection('print_document');
-        }
-
-
-        Session::flash('print_message', 'Thank you for contacting Cerve, we will get back to you shortly');
-
-        return redirect('print-on-demand');
-
     }
 
     /**
@@ -68,6 +50,8 @@ class PrintOnDemandController extends Controller
     public function show($id)
     {
         //
+        $applicant=Career::findOrFail($id);
+        return  view('admin.applicant.show', compact('applicant'));
     }
 
     /**
@@ -91,18 +75,6 @@ class PrintOnDemandController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $input=$request->all();
-        $input['user_id']=Auth::user();
-        $print=PrintOnDemand::findOrFail($id);
-        $print->create($input);
-        if($file=$request->file('artwork_id')) {
-            $print->clearMediaCollection('print_document');
-            $print->addMedia($file)->toMediaCollection('print_document');
-        }
-
-        Session::flash('job_message', 'Your application has been successfully updated');
-
-        return redirect('admin/homepage/printing');
     }
 
     /**
@@ -114,5 +86,8 @@ class PrintOnDemandController extends Controller
     public function destroy($id)
     {
         //
+        $applicant=Career::findOrFail($id);
+        $applicant->delete();
+        return redirect()->back();
     }
 }

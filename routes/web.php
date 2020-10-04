@@ -51,6 +51,7 @@ Route::group(['middleware'=>'role'], function(){
     Route::patch('costing_update/{id}',['as'=>'costing-updated', 'uses'=>'ProductAdminController@costUpdated']);
     Route::resource('/admin/homepage/pricing','PricingController');
     Route::resource('/admin/homepage/mpesa', 'MpesaC2BController');
+    Route::resource('admin/homepage/applicant', 'AdminJobApplicationController');
 
 });
 

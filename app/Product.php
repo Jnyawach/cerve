@@ -60,14 +60,6 @@ class Product extends Model implements HasMedia
         return $this->belongsTo('App\ProductCategory');
     }
 
-    public function video(){
-        return$this->belongsTo('App\Video');
-    }
-
-    public  function photo(){
-        return $this->belongsTo('App\Photo');
-    }
-
     public function wishlist(){
         return$this->hasMany('App\Wishlist');
     }

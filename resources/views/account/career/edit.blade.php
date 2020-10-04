@@ -13,7 +13,7 @@
                             <div class="col-sm-12 col-md-12 col-lg-12">
                                 <div class="row">
                                     <div class="col-sm-12 col-lg-8 col-md-8">
-                                        <h6>{{$job->career->title}}</h6>
+                                        <h6>{{$job->job->title}}</h6>
                                     </div>
                                     <div class="col-sm-12 col-lg-4 col-md-4">
                                         {!!Form::open(['method'=>'DELETE', 'action'=>['CareerController@destroy',$job->id],'class'=>'float-right ml-5'])!!}

@@ -1,14 +1,21 @@
 @extends('layouts.cerve_admin')
 @section('title', $job->title)
+@section('styles')
+    <link rel="stylesheet" type="text/css" href="{{asset('datatables/css/dataTables.bootstrap4.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('datatables/css/buttons.bootstrap4.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('datatables/css/select.bootstrap4.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('datatables/css/fixedHeader.bootstrap4.css')}}">
+
+@endsection
 @section('content')
-    @include('includes.jobs_menu')
+
     <section>
         <div class="m-3">
             <h3>{{$job->title}}</h3>
             <div class="p-3" style="background: white; border-left: 5px solid #0E0C28">
                 <h4>Posted On: {{$job->created_at->isoFormat('MMMM Do YYYY')}}<br>
                 Active Until: {{$date = \Carbon\Carbon::createFromFormat('Y-m-d', $job->duration)->isoFormat('MMMM Do YYYY')}}<br>
-                Total Applicants: 15</h4>
+                Total Applicants: {{$job->careers->count()}}</h4>
                 <div class="row">
                     <div class="col-2">
                     <a class="btn btn-primary" href="{{route('jobs.edit', $job->id)}}">Edit<i class="fa fa-pencil-square-o ml-2" aria-hidden="true"></i></a>
@@ -23,4 +30,86 @@
             <p>{!! $job->description !!}</p>
         </div>
     </section>
+
+    <div class="card">
+        <div class="card-header">
+            <h5 class="mb-0">Applicants </h5>
+
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table id="example" class="table table-striped table-bordered second" style="width:100%">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Name</th>
+                        <th>Date applied</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @if($job->careers->count()>0)
+                        @foreach($job->careers as $applicant)
+                            <tr>
+                                <td>{{$applicant->id}}</td>
+                                <td>{{$applicant->user->email}}</td>
+                                <td>{{$applicant->user->cellphone}}</td>
+                                <td>{{$applicant->user->name}}&nbsp;{{$applicant->user->lastname}}</td>
+                                <td>{{$applicant->created_at->isoFormat('MMMM Do YYYY')}}</td>
+                                <td>
+                                    <div class="dropdown show">
+                                        <a class="btn  dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Action
+                                        </a>
+
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                            <a class="dropdown-item" href="{{route('applicant.show', $applicant->id)}}">View <i class="fa fa-bookmark ml-2" aria-hidden="true"></i></a>
+                                            {!!Form::open(['method'=>'DELETE','class'=>'dropdown-item', 'action'=>['JobAdminController@destroy', $applicant->id]])!!}
+                                            <button type="submit" class="btn btn-block">Delete <i class="fa fa-trash-o ml-2" aria-hidden="true"></i> </button>
+
+                                            {!!Form::close()!!}
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                    @else
+                        <h2>There are no vacancies in the database</h2>
+                    @endif
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <th>Id</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Name</th>
+                        <th>Date applied</th>
+                        <th>Action</th>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+@endsection
+
+@section('scripts')
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="{{asset('datatables/js/dataTables.bootstrap4.min.js')}}"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+    <script src="{{asset('datatables/js/buttons.bootstrap4.min.js')}}"></script>
+    <script src="{{asset('datatables/js/data-table.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script>
+    <script src="https://cdn.datatables.net/rowgroup/1.0.4/js/dataTables.rowGroup.min.js"></script>
+    <script src="https://cdn.datatables.net/select/1.2.7/js/dataTables.select.min.js"></script>
+    <script src="https://cdn.datatables.net/fixedheader/3.1.5/js/dataTables.fixedHeader.min.js"></script>
+
+
 @endsection

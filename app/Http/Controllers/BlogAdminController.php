@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Blog;
 use App\Http\Requests\BlogRequest;
-use App\Photo;
-use App\Portfolio;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -46,13 +44,12 @@ class BlogAdminController extends Controller
     {
         //
         $input=$request->all();
-        $user=Auth::user();
-        $user->posts()->create($input);
-        if($file=$request->file('photo_id')) {
+        $input['user_id']=Auth::id();
+        $blog=Blog::create($input);
+        if($file=$request->file('photo')) {
 
-            $user->addMedia($file)->toMediaCollection('blog_photo');
+            $blog->addMedia($file)->toMediaCollection('blog_photo');
         }
-
 
         Session::flash('post_issue', 'The Post has been Created');
 
@@ -97,10 +94,10 @@ class BlogAdminController extends Controller
         //
         $input= $request->all();
         $result=Blog::findOrFail($id);
+        $input['user_id']=Auth::id();
+        $result->update($input);
 
-        $update=Auth::user()->posts()->whereId($id)->first()->update($input);
-
-        if($file=$request->file('photo_id')) {
+        if($file=$request->file('photo')) {
             $result->clearMediaCollection('blog_photo');
 
             $result->addMedia($file)->toMediaCollection('blog_photo');
@@ -120,7 +117,6 @@ class BlogAdminController extends Controller
     {
         //
         $post=Blog::findOrFail($id);
-        unlink(public_path(). $post->photo->path);
         $post->delete();
 
         Session::flash('post_issue', 'The post has been deleted');

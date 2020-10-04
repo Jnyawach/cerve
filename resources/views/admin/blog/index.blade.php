@@ -39,7 +39,7 @@
                             @foreach($posts as $post)
                                 <tr>
                                     <td>{{$post->id}}</td>
-                                    <td><img src="{{$post->photo? $post->photo->path:'images/cerve logo.png'}}" class="img-fluid" style="height: 60px"></td>
+                                    <td><img src="{{asset($post->getFirstMedia('blog_photo')->getUrl('blog_card'))}}" class="img-fluid" style="height: 60px"></td>
                                     <td>{{$post->title}}</td>
                                     <td>{{$post->user->name}}&nbsp;{{$post->user->lastname}}</td>
 

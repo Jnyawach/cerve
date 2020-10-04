@@ -2,13 +2,13 @@
 @section('title','Cerve Blog')
 @section('content')
     <section>
-        <div class="container">
+        <div class="m-5">
             <div class="row mt-5">
-            <div class="col-10 col-md-8 col-lg-8 mx-auto" >
+            <div class="col-10 col-md-9 col-lg-9 mx-auto" >
                 <div class="post-header">
-                    <h2>{{$post->title}}</h2>
-                    <img height="50px" class="img-fluid" src="{{$post->photo ? $post->photo->path: '/images/person.jpg'}}" alt="Post photo">
 
+                    <img height="50px" class="img-fluid" src="{{asset($post->getFirstMedia('blog_photo')->getUrl())}}" alt="Post photo">
+                    <h2>{{$post->title}}</h2>
                     <h5>By <span>{{$post->user->name}}  {{$post->user->lastname}}</span> on {{$post->created_at->isoFormat('dddd, MMMM Do YYYY')}} </h5>
 
                 </div>
@@ -50,12 +50,12 @@
                 </div>
              </div>
 
-                <div class="col-10 col-md-4 col-lg-4 mx-auto" >
-                    <h2 class="text-center">Recent from the Blog</h2>
+                <div class="col-10 col-md-3 col-lg-3 mx-auto" >
+                    <h4 class="text-center">Recent from the Blog</h4>
                     @if($blogs->count()>0)
                         @foreach($blogs as $blog)
                             <a href="{{route('post', $blog->slug)}}" title="{{$blog->title}}">
-                                <img src="{{$post->photo? $post->photo->path:'images.cerve logo.png'}}" class="img-fluid">
+                                <img src="{{asset($post->getFirstMedia('blog_photo')->getUrl('blog_card'))}}" class="img-fluid">
 
                             </a>
                             <h4>{{$blog->title}}</h4>

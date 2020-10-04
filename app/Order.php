@@ -33,10 +33,6 @@ class Order extends Model
         return $this->belongsTo('App\User');
     }
 
-    public  function artwork(){
-        return $this->belongsTo('App\Document');
-    }
-
     public  function  printing(){
         return $this->belongsTo('App\ProductPrinting');
     }

@@ -29,7 +29,7 @@
             <div class="col-12 mx-auto">
                 @if($date=\Carbon\Carbon::now()<$job->duration)
                     {!!Form::open(['method'=>'POST', 'action'=>'CareerController@store', 'files'=>true])!!}
-                    {!! Form::hidden('career_id',$job->id) !!}
+                    {!! Form::hidden('job_id',$job->id) !!}
                     <div class="form-group">
                         {!!Form::label('letter', 'Cover Letter:')!!}
                         {!!Form::textarea('letter', null, ['class'=>'form-control','id'=>'req-editor'])!!}

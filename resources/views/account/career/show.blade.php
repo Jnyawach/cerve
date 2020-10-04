@@ -12,7 +12,7 @@
                             <div class="col-sm-12 col-md-12 col-lg-12">
                                         <div class="row">
                                             <div class="col-sm-12 col-lg-8 col-md-8">
-                                                <h6>{{$job->career->title}}</h6>
+                                                <h6>{{$job->job->title}}</h6>
                                             </div>
                                             <div class="col-sm-12 col-lg-4 col-md-4">
                                                 <a href="{{route('career.edit', $job->id)}}" title="View Application" class="btn">
@@ -26,7 +26,7 @@
                                             </div>
 
                                             <p>{!! $job->letter !!}</p>
-                                            <a href="{{ asset($job->resume->path) }}" class="btn btn-primary" >View resume</a>
+                                            <a href="{{$job->getFirstMedia('resume')->getUrl()}}" class="btn btn-primary" target="_blank">View resume</a>
                                         </div>
 
 
