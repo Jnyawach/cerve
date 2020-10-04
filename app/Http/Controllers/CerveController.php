@@ -17,10 +17,8 @@ class CerveController extends Controller
     public  function homepage(){
         $products=Product::all();
         $posts=Blog::latest()->take(3)->get();
-        foreach ($products as $product){
-            $photo=$product->getFirstMedia('product_photos')->getUrl('product_card');
-        }
-        return view('welcome', compact('products','posts','photo'));
+
+        return view('welcome', compact('products','posts'));
     }
     public  function about(){
         return view('about-us');

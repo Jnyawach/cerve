@@ -5,11 +5,11 @@
 @endsetup
 
 @story('full-deploy')
-
+site-down
 git
 backend
 frontend
-
+site-up
 
 @endstory
 
