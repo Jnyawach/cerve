@@ -17,7 +17,7 @@
                 <div class="col-6 col-sm-6 col-md-4 col-lg-3  text-center m-2 mx-auto">
                     <div class="card">
                         <a href="{{route('brand-shop.show', $product->slug)}}" title="{{$product->slug}}">
-                            <img src="{{url('images/'. json_decode($product->path)[0] )}}" class="img-fluid" title="{{$product->name}}" >
+                            <img src="{{url(asset($product->getFirstMedia('product_photo')->getUrl('product_card') )}}" class="img-fluid" title="{{$product->name}}" >
                         </a>
                         <h5 class="mt-2">
                             @if($product->reviews->count()>0)
