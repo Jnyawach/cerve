@@ -52,8 +52,7 @@ Route::group(['middleware'=>'role'], function(){
     Route::resource('/admin/homepage/pricing','PricingController');
     Route::resource('/admin/homepage/mpesa', 'MpesaC2BController');
     Route::resource('admin/homepage/applicant', 'AdminJobApplicationController');
-    Route::resource('mail', 'MailViewController');
-    Route::get('mail/contact',['as'=>'contact-mail', 'uses'=>'MailViewController@contact']);
+
 
 });
 
@@ -96,3 +95,6 @@ Route::group(['middleware'=>'auth'], function(){
     Route::resource('account/homepage/project', 'UserPrintOnDemandController');
 
 });
+
+Route::resource('mail', 'MailViewController');
+Route::get('mail/contact',['as'=>'contact-mail', 'uses'=>'MailViewController@contact']);

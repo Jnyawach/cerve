@@ -55,7 +55,7 @@
                     @if($blogs->count()>0)
                         @foreach($blogs as $blog)
                             <a href="{{route('post', $blog->slug)}}" title="{{$blog->title}}">
-                                <img src="{{asset($post->getFirstMedia('blog_photo')->getUrl('blog_card'))}}" class="img-fluid">
+                                <img src="{{asset($blog->getFirstMedia('blog_photo')->getUrl('blog_card'))}}" class="img-fluid">
 
                             </a>
                             <h4>{{$blog->title}}</h4>

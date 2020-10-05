@@ -53,7 +53,7 @@ class ContactController extends Controller
 
         );
 
-        Mail::send('contact-us.email', $input, function ($message) use($input){
+        Mail::send('mail.show', $input, function ($message) use($input){
             $message->to('nyawach41@gmail.com');
             $message->from($input['email']);
             $message->subject($input['subject']);
