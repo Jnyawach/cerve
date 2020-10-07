@@ -26,7 +26,7 @@
                         <tr>
                             <th>Id</th>
                             <th>Name</th>
-                            <th>Size</th>
+
                             <th>Price</th>
                             <th>Stock</th>
                             <th>Color</th>
@@ -41,7 +41,7 @@
                                 <tr>
                                     <td>{{$product->id}}</td>
                                     <td>{{$product->name}}</td>
-                                    <td>{{$product->size}}</td>
+
                                     <td>{{$product->price}}</td>
                                     <td>{{$product->stock}}</td>
                                     <td>{{$product->color}}</td>
@@ -80,7 +80,6 @@
                         <tr>
                             <th>Id</th>
                             <th>Name</th>
-                            <th>Size</th>
                             <th>Price</th>
                             <th>Stock</th>
                             <th>Color</th>

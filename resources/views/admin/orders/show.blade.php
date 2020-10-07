@@ -63,7 +63,7 @@
         <hr>
         <div class="row">
             <div class="col-sm-12 col-md-4 col-lg-4">
-                <img src="{{url('images/'. json_decode($order->product->path)[0] )}}" class="img-fluid" title="{{$order->product->name}}" >
+                <img src="{{$order->product->getFirstMedia('product_photos')? $order->product->getFirstMedia('product_photos')->getUrl('product_card'):'/images/no-image.png' )}}" class="img-fluid" title="{{$order->product->name}}" >
             </div>
             <div class="col-sm-12 col-md-8 col-lg-8">
                 @if($order->product->category->name=='Clothing/Apparel')

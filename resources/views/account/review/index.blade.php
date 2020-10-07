@@ -17,7 +17,7 @@
 
                                     <div class="col-sm-4 col-md-4 col-lg-2 mt-2">
                                         <a href="{{route('brand-shop.show', $review->product->slug)}}" title="View Product">
-                                            <img src="{{url('images/'. json_decode($review->product->path)[0] )}}" alt="{{$review->product->name}}" title="{{$review->product->name}}" class="img-fluid" style="height: 100px">
+                                            <img src="{{url($review->getFirstMedia('product_photos')? $review->getFirstMedia('product_photos')->getUrl('product_card'):'/images/no-image.png' )}}" alt="{{$review->product->name}}" title="{{$review->product->name}}" class="img-fluid" style="height: 100px">
                                         </a>
                                     </div>
                                     <div class="col-sm-8 col-md-8 col-lg-10">

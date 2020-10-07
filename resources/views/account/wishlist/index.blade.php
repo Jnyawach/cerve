@@ -19,7 +19,7 @@
 
                                         <div class="col-sm-4 col-md-4 col-lg-3 mt-2">
                                             <a href="{{route('brand-shop.show', $wishlist->product->slug)}}" title="View Product">
-                                            <img src="{{url('images/'. json_decode($wishlist->product->path)[0] )}}" alt="#" title="#" class="img-fluid">
+                                            <img src="{{url($wishlist->getFirstMedia('product_photos')? $wishlist->getFirstMedia('product_photos')->getUrl('product_card'):'/images/no-image.png' )}}" alt="#" title="#" class="img-fluid">
                                             </a>
                                         </div>
                                         <div class="col-sm-8 col-md-8 col-lg-8">

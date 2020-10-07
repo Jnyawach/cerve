@@ -17,7 +17,7 @@
                @foreach($photos as $photo)
 
                    <div class="col-3 col-sm-3 col-md-3 col-lg-3">
-                   <img src="{{asset($photo->getUrl())}}" class="img-fluid" title="{{$product->name}}">
+                   <img src="{{asset($photo? $photo->getUrl():'/images/no-image.png')}}" class="img-fluid" title="{{$product->name}}">
 
 
                    </div>

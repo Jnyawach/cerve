@@ -40,7 +40,7 @@ class ProductRequest extends FormRequest
             'stock'                 =>'required|numeric',
             'brand'               =>'',
             'video'               =>'',
-            'photos'               => '',
+            'photos'               => 'required',
             'photos.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'S'               => 'numeric',
             'M'               => 'numeric',

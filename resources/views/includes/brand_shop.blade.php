@@ -12,11 +12,12 @@
 
                 @foreach($products->chunk(4) as $chunk)
                     <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
-                        <div class="row">
+                        <div class="row equal">
 
                             @foreach( $chunk as $product )
                                 <div class="col-6 col-sm-6 col-md-4 col-lg-3 mx-auto text-center m-2">
-                                    <div class="card shadow">
+                                    <div class="card shadow h-100">
+                                        <div class="card-body">
 
 
                                     <a href="{{route('brand-shop.show', $product->slug)}}" title="{{$product->slug}}">
@@ -52,6 +53,7 @@
 
 
                                     </div>
+                                        </div>
                                         <div class="card-footer p-0">
                                             <a id=price href="{{route('brand-shop.show', $product->slug)}}" class="rounded-0 btn btn-block m-0 ">ADD TO CART &nbsp;&nbsp; KES {{$product->price}}</a>
                                         </div>

@@ -15,7 +15,7 @@
                             @if($orders->count()>0)
                                 @foreach($orders as $order)
                                     <div class="col-sm-12 col-md-2 col-lg-2 m-2">
-                                        <img src="{{url('images/'. json_decode($order->product->path)[0] )}}" class="img-fluid img-thumbnail" title="{{$order->product->name}}" >
+                                        <img src="{{url($order->product->getFirstMedia('product_photos')? $order->product->getFirstMedia('product_photos')->getUrl('product_card'):'/images/no-image.png' )}}" class="img-fluid img-thumbnail" title="{{$order->product->name}}" >
                                     </div>
                                     <div class="col-sm-12 col-md-9 col-lg-9 m-2">
                                         <div class="row">

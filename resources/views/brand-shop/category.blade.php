@@ -15,9 +15,10 @@
         <div class="row m-3">
             @foreach( $products as $product )
                 <div class="col-6 col-sm-6 col-md-4 col-lg-3  text-center m-2 mx-auto">
-                    <div class="card">
+                    <div class="card h-100">
+                        <div class="card-body">
                         <a href="{{route('brand-shop.show', $product->slug)}}" title="{{$product->slug}}">
-                            <img src="{{asset($product->getFirstMedia('product_photos')->getUrl('product_card') )}}" class="img-fluid" title="{{$product->name}}" >
+                            <img src="{{asset($product->getFirstMedia('product_photos')? $product->getFirstMedia('product_photos')->getUrl('product_card'):'/images/no-image.png' )}}" class="img-fluid" title="{{$product->name}}" >
                         </a>
                         <h5 class="mt-2">
                             @if($product->reviews->count()>0)
@@ -35,7 +36,7 @@
 
                         </h5>
 
-                        <h6 class="text-capitalize text-center m-2" style="color: black">{{$product->name}}</h6>
+                        <h6 class="text-capitalize text-center m-1" style="color: black">{{$product->name}}</h6>
                         <div class="saved">
                             {!!Form::open(['method'=>'POST', 'action'=>'UserWishlistController@store','class'=>'form-inline my-2 my-lg-0'])!!}
                             <div class="form-group">
@@ -47,6 +48,7 @@
 
 
 
+                        </div>
                         </div>
                         <div class="card-footer mt-3 p-0">
                             <a id="price" href="{{route('brand-shop.show', $product->slug)}}" class="btn btn-block m-0" style="font-size: 12!important;px">ADD TO CART &nbsp;&nbsp KES {{$product->price}}</a>

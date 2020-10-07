@@ -6,7 +6,7 @@
 
         </div>
         <h2>{{$post->title}}</h2>
-        <img src="{{asset($post->getFirstMedia('blog_photo')->getUrl())}}" class="img-fluid ">
+        <img src="{{$post->getFirstMedia('product_photos')? $post->getFirstMedia('product_photos')->getUrl('product_card'):'/images/no-image.png' )}}" class="img-fluid ">
         <div class="d-inline-flex">
             <h4 class="mr-2">Author: {{$post->user->name}} {{$post->user->lastname}}</h4>
             <h4 class="mr-2">Created: {{$post->created_at->isoFormat('MMMM Do YYYY')}}</h4>
