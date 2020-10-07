@@ -23,7 +23,7 @@
                                     <a href="{{route('brand-shop.show', $product->slug)}}" title="{{$product->slug}}">
                                         <img src="{{url($product->getFirstMedia('product_photos')? $product->getFirstMedia('product_photos')->getUrl('product_card'):'/images/no-image.png' )}}" class="img-fluid" alt="{{$product->slug}}">
                                     </a>
-                                    <h5 class="m-3" style="color: black">{{$product->name}}</h5>
+                                    <h5 class="m-2" style="color: black">{{$product->name}}</h5>
                                     <h5 class="mt-2">
                                         @if($product->reviews->count()>0)
                                             @for($i = 0; $i < 5; $i++)
