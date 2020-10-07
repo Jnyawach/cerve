@@ -159,10 +159,10 @@
                         </div>
                         <div class="card-body">
                             <h5>Subtotal<span class="float-right">KES {{number_format(Cart::session(Auth::id())->getSubTotal(),2)}}</span></h5>
-                            <h5> Delivery & Handling<span class="float-right">KES </span></h5>
+                            <h5> Delivery & Handling<span class="float-right">KES 0.00 </span></h5>
                             <h5> Tax(16%)<span class="float-right">KES 0.00</span></h5>
                             <hr>
-                            <h5>Total<span class="float-right">KES 0.00</span></h5>
+                            <h5>Total<span class="float-right">KES {{number_format(Cart::session(Auth::id())->getTotal(),2)}}</span></h5>
                         </div>
                     </div>
                 </div>
