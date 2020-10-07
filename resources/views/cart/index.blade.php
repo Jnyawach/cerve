@@ -183,7 +183,7 @@
                     <div class="col-sm-10 col-md-4 col-lg-3 mx-auto text-center m-2">
                         <div class="card">
                         <a href="{{route('brand-shop.show', $love->slug)}}" title="{{$love->slug}}">
-                            <img class="img-fluid"  src="{{asset(asset($love->getFirstMedia('branded_sample')->getUrl('brand_card')))}}" alt="{{$love->name}}">
+                            <img class="img-fluid"  src="{{asset($love->getFirstMedia('product_photos')? $love->getFirstMedia('product_photos')->getUrl('product_card'):'/images/no-image.png')}}" alt="{{$love->name}}">
                         </a>
                             <h6 class="text-center mt-2">
                                 @if($love->reviews->count()>0)
