@@ -20,7 +20,7 @@
 
 
                                     <a href="{{route('brand-shop.show', $product->slug)}}" title="{{$product->slug}}">
-                                        <img src="{{url($product->getFirstMedia('product_photos')->getUrl('product_card'))}}" class="img-fluid" alt="{{$product->slug}}">
+                                        <img src="{{url($product->getFirstMedia('product_photos')->getUrl('product_card')? $product->getFirstMedia('product_photos')->getUrl('product_card'):'/images/no-image.png' )}}" class="img-fluid" alt="{{$product->slug}}">
                                     </a>
                                     <h5 class="m-3" style="color: black">{{$product->name}}</h5>
                                     <h5 class="mt-2">
