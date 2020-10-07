@@ -124,7 +124,7 @@
                                 @foreach(Cart::session(Auth::id())->getContent() as $item)
                                     <div class="row">
                                         <div class="col-sm-3 col-md-4 col-lg-4">
-                                            <img src="{{asset(asset($item->model->getFirstMedia('branded_sample')->getUrl('brand_card')))}}" alt="#" title="#" class="img-fluid">
+                                            <img src="{{asset($item->model->getFirstMedia('product_photos')?$item->model->getFirstMedia('product_photos')->getUrl('product_card'):'/images/no-image.png')}}" alt="#" title="#" class="img-fluid">
                                         </div>
                                         <div class="col-sm-7 col-md-8 col-lg-8">
 

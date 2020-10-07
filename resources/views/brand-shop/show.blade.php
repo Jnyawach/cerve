@@ -335,9 +335,10 @@
 
                             @foreach( $chunk as $product )
                                 <div class="col-12 col-md-3 col-lg-3 mx-auto text-center">
-                                    <div class="card">
+                                    <div class="card h-100">
+                                        <div class="card-body">
                                     <a href="{{route('brand-shop.show', $product->slug)}}" title="{{$product->slug}}">
-                                        <img src="{{asset($product->getFirstMedia('product_photos')->getUrl('product_card'))}}" class="img-fluid" title="{{$product->name}}" >
+                                        <img src="{{asset($product->getFirstMedia('product_photos')?$product->getFirstMedia('product_photos')->getUrl('product_card'):'/images/no-image.png')}}" class="img-fluid" title="{{$product->name}}" >
                                     </a>
                                     <h5 class="mt-2">
                                         @if($product->reviews->count()>0)
@@ -370,6 +371,7 @@
 
 
                                     </div>
+                                        </div>
                                         <div class="card-footer p-0 mt-3">
                                             <a id=price href="{{route('brand-shop.show', $product->slug)}}" class="rounded-0 btn btn-block m-0 ">ADD TO CART &nbsp;&nbsp; KES {{$product->price}}</a>
                                         </div>

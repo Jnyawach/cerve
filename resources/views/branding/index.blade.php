@@ -19,7 +19,7 @@
                         <div class="col-sm-12 col-md-3 col-lg-3">
                             <a href="{{route('brand-shop.show', $cart->model->slug)}}">
 
-                                <img src="{{asset(asset($cart->model->getFirstMedia('branded_sample')->getUrl('brand_card')))}}" alt="{{$cart->model->name}}" title="{{$cart->model->name}}" class="img-fluid">
+                                <img src="{{asset($cart->model->getFirstMedia('product_photos')?$cart->model->getFirstMedia('product_photos')->getUrl('product_card'):'/images/no-image.png')}}" alt="{{$cart->model->name}}" title="{{$cart->model->name}}" class="img-fluid">
                                 <h6 class="mt-2">Branded sample</h6>
 
                             </a>
@@ -43,7 +43,7 @@
                                         <tbody>
                                         <tr>
                                             <th >
-                                                <img src="{{asset($cart->model->getFirstMedia('product_photos')->getUrl('product_card'))}}" class="img-fluid" title="{{$cart->model->name}}" style="height: 40px" >
+                                                <img src="{{asset($item->model->getFirstMedia('product_photos')?$item->model->getFirstMedia('product_photos')->getUrl('product_card'):'/images/no-image.png')}}" class="img-fluid" title="{{$cart->model->name}}" style="height: 40px" >
                                             </th>
                                             <th class="font-bold">{{$cart->attributes->small}}</th>
                                             <td class="font-bold">{{$cart->attributes->medium}}</td>
