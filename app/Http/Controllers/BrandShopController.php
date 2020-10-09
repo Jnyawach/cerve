@@ -6,6 +6,7 @@ use App\Product;
 use App\ProductCategory;
 use App\Review;
 use Illuminate\Http\Request;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class BrandShopController extends Controller
 {
@@ -98,12 +99,11 @@ class BrandShopController extends Controller
 
 
     public function search(Request $request){
-        $search=$request->get('search');
-        if($search !=""){
-            $products=Product::where('name', 'like', '%'.$search.'%')->orderBy('id')->paginate(50);
-        }else{
-            $products=Product::paginate(50);
-        }
+        $search= $request->name;
+        $products=QueryBuilder::for(Product::class)
+            ->allowedFilters(['name'])
+
+            ->paginate(50);
         return view('search', compact('products','search'));
     }
 

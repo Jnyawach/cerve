@@ -1,0 +1,69 @@
+@extends('layouts.shop')
+@section('title', $search)
+@section('content')
+
+    <h2 class="text-center text-uppercase mt-5" style="font-size: 20px">{{$search}}&nbsp;({{$products->count()}})</h2>
+
+    <hr>
+
+    <div class="container">
+        @if($products->count()>0)
+            <div class="row m-3">
+                @foreach( $products as $product )
+                    <div class="col-6 col-sm-6 col-md-4 col-lg-3  text-center m-2 mx-auto">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <a href="{{route('brand-shop.show', $product->slug)}}" title="{{$product->slug}}">
+                                    <img src="{{asset($product->getFirstMedia('product_photos')? $product->getFirstMedia('product_photos')->getUrl('product_card'):'/images/no-image.png' )}}" class="img-fluid" title="{{$product->name}}" >
+                                </a>
+                                <h5 class="mt-2">
+                                    @if($product->reviews->count()>0)
+                                        @for($i = 0; $i < 5; $i++)
+                                            <span><i class="fa fa-star{{$product->reviews->sum('rating')/$product->reviews->count()  <= $i ? '-o' : '' }}"></i></span>
+                                        @endfor
+
+                                    @else
+                                        <span><i class="fa fa-star-o"></i></span>
+                                        <span><i class="fa fa-star-o"></i></span>
+                                        <span><i class="fa fa-star-o"></i></span>
+                                        <span><i class="fa fa-star-o"></i></span>
+                                        <span><i class="fa fa-star-o"></i></span>
+                                    @endif
+
+                                </h5>
+
+                                <h6 class="text-capitalize text-center m-1" style="color: black">{{$product->name}}</h6>
+                                <div class="saved">
+                                    {!!Form::open(['method'=>'POST', 'action'=>'UserWishlistController@store','class'=>'form-inline my-2 my-lg-0'])!!}
+                                    <div class="form-group">
+                                        {!! Form::hidden('product_id', $product->id) !!}
+                                        {!! Form::hidden('user_id', Auth::id()) !!}
+                                        <button class="btn" type="submit" title="Add to Wish list"><i class="far fa-heart"></i></button>
+                                    </div>
+                                    {!!Form::close()!!}
+
+
+
+                                </div>
+                            </div>
+                            <div class="card-footer mt-3 p-0">
+                                <a id="price" href="{{route('brand-shop.show', $product->slug)}}" class="btn btn-block m-0" style="font-size: 12!important;px">ADD TO CART &nbsp;&nbsp KES {{$product->price}}</a>
+                            </div>
+
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        @else
+            <h3 class="text-center p-5">Oops! There are no products in this category</h3>
+        @endif
+    </div>
+
+
+    <div class="row">
+        <div class="col-10 mx-auto ">
+            <h3 class="text-right">{{ $products->links() }}</h3>
+        </div>
+    </div>
+@endsection
+

@@ -26,10 +26,10 @@
         </button>
         <div class="collapse navbar-collapse " id="navbarNavDropdown" >
             <ul class="navbar-nav">
-                {!!Form::open(['method'=>'GET', 'action'=>'BrandShopController@store','class'=>'form-inline my-2 my-lg-0'])!!}
+                {!!Form::open(['method'=>'GET', 'action'=>'BrandShopController@search','class'=>'form-inline my-2 my-lg-0'])!!}
                 <div class="form-group">
 
-                    {!!Form::search('search', null, ['class'=>'form-control mr-sm-2','placeholder'=>'Search Products and Categories', 'required'])!!}
+                    {!!Form::search('name', null, ['class'=>'form-control mr-sm-2','placeholder'=>'Search Products and Categories', 'required'])!!}
                     <button class="btn btn-primary my-2 my-sm-0" type="submit"><i class="fas fa-search"></i>&nbsp;SEARCH</button>
                 </div>
                 {!!Form::close()!!}

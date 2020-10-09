@@ -69,6 +69,7 @@ Route::group([], function (){
     Route::resource('brand-shop', 'BrandShopController');
     Route::resource('work-with-us', 'WorkWithUsController');
     Route::get('brand-shop/category/{slug}',['as'=>'category', 'uses'=>'BrandShopController@category']);
+    Route::get('search',['as'=>'search', 'uses'=>'BrandShopController@search']);
     Route::resource('contact-us', 'ContactController');
 
 
