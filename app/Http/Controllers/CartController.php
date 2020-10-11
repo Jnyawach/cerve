@@ -201,7 +201,9 @@ if ($quantity<=0){
     public function destroy($id)
     {
         //
+
         \Cart::session(Auth::id())->remove($id);
+
 
         Session::flash('cart_message', 'Product successfully removed from cart');
 

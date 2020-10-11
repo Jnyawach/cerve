@@ -27,8 +27,17 @@ class OrderRequest extends FormRequest
             //
             'description'=>'required',
             'printing'=>'required',
-            'artwork_id'               => 'required',
+            'artwork_id'               => '',
             'artwork_id.*' => 'image|mimes:jpeg,png,jpg,gif,svg,doc,docx,pdf, ai, cdr,eps,psd|max:2048'
+        ];
+    }
+
+    public  function messages()
+    {
+        return [
+            'description.required'=>'Please submit description',
+             'printing.required'=>'Please provide printing type'
+
         ];
     }
 }

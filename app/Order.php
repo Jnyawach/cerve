@@ -4,28 +4,20 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+
 class Order extends Model
 {
     //
-    protected $fillable=[
-      '  user_id',
-        'product_id',
-        'quantity',
-        'is_active',
-        'cancelled',
-        'completed',
-        'total_price',
-        'price',
-        'brand_price',
-        'small',
-        'large',
-        'medium',
-        'extra_large',
-        'printing',
-        'description',
-        'artwork_id'
 
+
+    protected $fillable=[
+        'user_id',
+        'mpesa_c2b_id',
+        'cart_data',
+        'is_active'
     ];
+
+
     public  function product(){
         return $this->belongsTo('App\Product');
     }
@@ -33,7 +25,7 @@ class Order extends Model
         return $this->belongsTo('App\User');
     }
 
-    public  function  printing(){
-        return $this->belongsTo('App\ProductPrinting');
+    public  function  payment(){
+        return $this->belongsTo('App\MpesaC2B');
     }
 }

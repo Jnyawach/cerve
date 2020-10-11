@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PaymentController extends Controller
 {
@@ -36,6 +38,14 @@ class PaymentController extends Controller
     public function store(Request $request)
     {
         //
+        $cart=\Cart::session(Auth::id())->getContent();
+        $cartReady=json_encode($cart);
+
+        Order::create([
+            'user_id'=>Auth::id(),
+            'cart_data'=>$cartReady
+        ]);
+        \Cart::session(Auth::id())->clear();
 
         return redirect('account/homepage/payment');
     }

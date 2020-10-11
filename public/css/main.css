@@ -23,6 +23,9 @@ body{
 
 
 }
+.form-group.required .control-label:after {
+    content:"*";color:red;
+}
 /*--- btn light --*/
 
 .btn-light {

@@ -6,6 +6,7 @@ use App\Branding;
 use App\Document;
 use App\Http\Requests\OrderRequest;
 use App\Order;
+use App\OrderPrinting;
 use App\Product;
 use App\ProductPrinting;
 use Darryldecode\Cart\Cart;
@@ -47,6 +48,7 @@ class BrandingController extends Controller
     public function store(OrderRequest $request)
     {
         //
+
         \Cart::session('branding')->clear();
         $order=$request->all();
         $user=Auth::user();
@@ -101,13 +103,11 @@ class BrandingController extends Controller
             Session::flash('cart_message', 'Product is already added to cart');
             return redirect('cart');
         }else {
-            if ($file = $request->file('artwork_id')) {
-                $artwork=$user->addMedia($file)->toMediaCollection('submitted_artwork');
-            }
+
             $order['brand_price'] = $brand_price;
             $userId = Auth::id();
             $rowId = $request->product_id;
-            $payment=0;
+
             $branding = new \Darryldecode\Cart\CartCondition(array(
                 'name' => 'branding',
                 'type' => 'printing',
@@ -115,6 +115,19 @@ class BrandingController extends Controller
                 'order' => 1,
                 'value' => '+' . $brand_price,
             ));
+
+
+            $productPrinting=OrderPrinting::create([
+                'user_id'=>$userId,
+                'product_id'=>$request->product_id,
+                'product_printing_id'=>$request->printing,
+                'description'=>$request->description
+
+            ]);
+            if($file=$request->file('artwork')) {
+
+                $productPrinting->addMedia($request->artwork)->toMediaCollection('order_artwork');
+            }
 
 
             $item = \Cart::session($userId)->add(array(
@@ -130,14 +143,17 @@ class BrandingController extends Controller
                     'totalPrice' => $request->total_price,
                     'printing' => $brand_price,
                     'totalPrinting' => $totalBrandPrice,
-                   'artwork'=>$artwork->id,
-                    'payment'=>$payment
+                    'order_printing'=>$productPrinting->id
+
+
                 ),
                 'conditions' => $branding,
                 'associatedModel' => $product
 
             ));
             \Cart::session('branding')->clear();
+
+
             Session::flash('cart_message', 'Product successfully added to cart');
             return redirect('cart');
         }

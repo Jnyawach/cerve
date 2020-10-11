@@ -75,7 +75,7 @@
                                     <tbody>
                                     <tr>
                                         <th>
-                                            <img src="{{asset($cart->model->getFirstMedia('product_photos')->getUrl('product_card'))}}" class="img-fluid" title="{{$cart->model->name}}" style="height: 40px" >
+                                            <img src="{{asset($cart->model->getFirstMedia('product_photos')?$cart->model->getFirstMedia('product_photos')->getUrl('product_card'):'images/no-image.png')}}" class="img-fluid" title="{{$cart->model->name}}" style="height: 40px" >
                                         </th>
                                         <th ><h6 class="p-0 m-0">{{$cart->quantity}}</h6></th>
                                         <th class="font-bold">{{number_format(Cart::session('branding')->getSubTotal(),2)}}</th>
@@ -142,8 +142,9 @@
                     {!! Form::hidden('medium', $cart->attributes->medium) !!}
                     {!! Form::hidden('large', $cart->attributes->large) !!}
                     {!! Form::hidden('extra_large', $cart->attributes->extra_large) !!}
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect1">PRINTING TYPE</label>
+
+                    <div class="form-group required">
+                        <label for="exampleFormControlSelect1" class="control-label">PRINTING TYPE</label>
                         <select class="form-control" id="exampleFormControlSelect1" name="printing">
 
                             @foreach($cart->model->costs as $checkbox)
@@ -152,35 +153,32 @@
                         </select>
                     </div>
 
-                    <div class="form-group">
-                        {!!Form::label('description', 'DESCRIPTION:')!!}
+                    <div class="form-group required">
+                        {!!Form::label('description', 'DESCRIPTION:', ['class'=>'control-label'])!!}
                         <h6 ><i class="fa fa-info-circle mr-3" aria-hidden="true"></i> Please give a detailed description on how this product should be branded. Include the placements, size and color(s)</h6>
                         {!!Form::textarea('description', null, ['class'=>'form-control','id'=>'brand-editor','required'])!!}
 
                     </div>
-                    <h6 class="mt-5"><i class="fa fa-info-circle mr-3" aria-hidden="true"></i>So that we can serve you better attain high print quality we recommend that you submit vector files such as
+                    <div class="form-check-inline">
+                        <input type="checkbox" class="form-check-input" id="artwork" onclick="showFunction()">
+                        <label class="form-check-label " for="exampleCheck1"><h6 class="p-0 m-0 ml-2">Attach artwork(<span class="text-danger">Optional</span>)</h6></label>
+                    </div>
+                    <div id="checked" style="display:none" class="mb-5">
+                    <h6 class="mt-4"><i class="fa fa-info-circle mr-3" aria-hidden="true"></i>So that we can serve you better attain high print quality we recommend that you submit vector files such as
                         PDF, SVG, EPS, CDR or AI.</h6>
-                    <div class="form-group">
-                        {!!Form::label('artwork_id', 'ATTACH ARTWORK:')!!}
-                        {!!Form::file('artwork_id', null, ['class'=>'form-control-file','required'])!!}
+                        <div class="container">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="customFile" name="artwork">
+                                <label class="custom-file-label" for="customFile">Choose file</label>
+                            </div>
 
                     </div>
-                    @foreach($cart->model->costs as $checkbox)
+                    </div>
 
-                    @endforeach
-
-
-                    <p>Please note that all prices are inclusive of printing costs.
-                    Additional costs may be incurred when:</p>
-                    <ul>
-                        <li>When the product is to be printed on places exceeding one. <a href="#" title="Request a quote" class="text-primary">Please request a quote</a> for such a case</li>
-                        <li>Costs incurred during delivery-when the client requests that the product(s) be delivered to their premises</li>
-                    </ul>
                     <div>
                         <h6>You don't seem to find what you are looking for?</h6>
-                        <a href="#" title="Request for a quote" class="btn btn-primary m-2" style="font-size: 11px">Contact us</a>
-                        <a href="#" title="Request for a quote" class="btn btn-primary m-2" style="font-size: 11px">Request of a quote</a>
-                        <a href="#" title="Request for a sample" class="btn btn-primary m-2" style="font-size: 11px">Request of a sample</a>
+                        <a href="{{route('contact-us.index')}}" title="Request for a quote" class="btn btn-primary m-2" style="font-size: 11px">Contact us</a>
+                        <a href="{{route('print-on-demand.index')}}" title="Request for a sample" class="btn btn-primary m-2" style="font-size: 11px">Request of a sample</a>
                     </div>
                     <hr class="broken">
                     <div class="form-group row">
@@ -202,5 +200,31 @@
 @section('scripts')
     <script>
         CKEDITOR.replace( 'brand-editor', );
+
     </script>
+    <script>
+        function showFunction() {
+            // Get the checkbox
+            var checkBox = document.getElementById("artwork");
+            // Get the output text
+            var text = document.getElementById("checked");
+
+            // If the checkbox is checked, display the output text
+            if (checkBox.checked == true){
+                text.style.display = "block";
+            } else {
+                text.style.display = "none";
+            }
+        }
+    </script>
+
+    <script>
+        // Add the following code if you want the name of the file appear on select
+        $(".custom-file-input").on("change", function() {
+            var fileName = $(this).val().split("\\").pop();
+            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
+    </script>
+
+
 @endsection
