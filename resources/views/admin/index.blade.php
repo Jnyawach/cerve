@@ -108,19 +108,22 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            @if($orders->where('is_active',0)->count()>0)
-                                                @foreach($orders->where('is_active',0)->take(5) as $index=>$order)
-                                            <tr>
-                                                <td>{{$index+1}}</td>
-                                                <td>{{$order->product->name}} </td>
-                                                <td>{{$order->quantity}}</td>
-                                                <td>{{$order->total_price}}</td>
-                                                <td>{{$order->created_at}}</td>
-                                                <td>{{$order->user->name}} {{$order->user->lastname}} </td>
+                                            <!--
 
-                                            </tr>
-                                            @endforeach
-                                            @endif
+{{--                                            @if($orders->where('is_active',0)->count()>0)--}}
+{{--                                                @foreach($orders->where('is_active',0)->take(5) as $index=>$order)--}}
+{{--                                            <tr>--}}
+{{--                                                <td>{{$index+1}}</td>--}}
+{{--                                                <td>{{$order->product->name}} </td>--}}
+{{--                                                <td>{{$order->quantity}}</td>--}}
+{{--                                                <td>{{$order->total_price}}</td>--}}
+{{--                                                <td>{{$order->created_at}}</td>--}}
+{{--                                                <td>{{$order->user->name}} {{$order->user->lastname}} </td>--}}
+
+{{--                                            </tr>--}}
+{{--                                            @endforeach--}}
+{{--                                            @endif--}}
+                                                -->
                                             <tr>
                                                 <td colspan="9"><a href="{{route('pending.order')}}" class="btn btn-outline-light float-right">View Details</a></td>
                                             </tr>

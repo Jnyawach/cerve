@@ -43,7 +43,8 @@ class PaymentController extends Controller
 
         Order::create([
             'user_id'=>Auth::id(),
-            'cart_data'=>$cartReady
+            'cart_data'=>$cartReady,
+            'amount'=>$request->amount
         ]);
         \Cart::session(Auth::id())->clear();
 
