@@ -126,7 +126,12 @@ class BrandingController extends Controller
             ]);
             if($file=$request->file('artwork')) {
 
-                $productPrinting->addMedia($request->artwork)->toMediaCollection('order_artwork');
+               $productPrinting->addMedia($request->artwork)->toMediaCollection('order_artwork');
+                $printartwork=OrderPrinting::findOrFail($productPrinting->id);
+                $printingDocument=$printartwork->getFirstMedia('order_artwork')->getUrl();
+
+            }else{
+                $printingDocument=null;
             }
 
 
@@ -143,7 +148,10 @@ class BrandingController extends Controller
                     'totalPrice' => $request->total_price,
                     'printing' => $brand_price,
                     'totalPrinting' => $totalBrandPrice,
-                    'order_printing'=>$productPrinting->id
+                    'order_printing'=>$productPrinting->id,
+                    'printType'=>$request->printing,
+                    'printDescription'=>$request->description,
+                    'printArtwork'=> $printingDocument
 
 
                 ),

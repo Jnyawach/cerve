@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Order;
+use Darryldecode\Cart\CartCollection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -18,6 +19,9 @@ class UserOrdersController extends Controller
     {
         //
         $orders=Order::where('user_id', Auth::id())->paginate(5);
+
+
+
         return  view('account.customer.index', compact('orders'));
     }
 

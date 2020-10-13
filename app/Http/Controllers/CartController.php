@@ -142,6 +142,9 @@ if ($quantity<=0){
                         'totalPrice'=>$totalPrice,
                         'printing'=>$printing,
                         'totalPrinting'=>$totalPrinting,
+                        'printType'=>null,
+                        'printDescription'=>null,
+                        'printArtwork'=>null
 
                     ),
                    'associatedModel'=>$product

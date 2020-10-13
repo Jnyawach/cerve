@@ -101,7 +101,7 @@
                         <h6>Enter the transaction code the press complete</h6>
                         {!!Form::open(['method'=>'POST', 'action'=>'PaymentController@store','class'=>'form-inline'])!!}
                         <div class="form-group">
-                            {!! Form::hiddeb('amount',Cart::session(Auth::id())->getTotal()) !!}
+                            {!! Form::hidden('amount',Cart::session(Auth::id())->getTotal()) !!}
                             {!!Form::text('town', null, ['class'=>'form-control rounded-0'])!!}
                         </div>
                         <div class="form-group">

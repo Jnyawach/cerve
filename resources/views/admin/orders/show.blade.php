@@ -108,6 +108,7 @@
                     <div class="col-sm-12 col-md-12 col-md-12">
                         <p>Printing type: {{$printing->name}}</p>
                         <p>{!! $order->description !!}</p>
+
                         <a href="{{ asset($order->artwork->path) }}" class="btn btn-primary" >View artwork</a>
                     </div>
                 </div>
