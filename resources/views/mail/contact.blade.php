@@ -207,7 +207,7 @@
               <td align="left" style="font-size:0px;padding:25px 25px 25px 25px;word-break:break-word;">
 
       <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:11px;line-height:1.5;text-align:left;color:#000000;">
-        <p style="text-align: center;"><span style="color: #ffffff; font-size: 36px; font-family: tahoma, arial, helvetica, sans-serif;">Thank You For Contacting Us</span></p>
+        <p style="text-align: center;"><span style="color: #ffffff; font-size: 24px; font-family: tahoma, arial, helvetica, sans-serif;">Thank You For Contacting Us</span></p>
 <p style="text-align: center;"><span style="color: #ffffff; font-size: 20px; font-family: tahoma, arial, helvetica, sans-serif;">We will get back to you</span></p>
       </div>
 
@@ -269,7 +269,7 @@
             <tr>
               <td align="left" style="font-size:0px;padding:15px 15px 15px 15px;word-break:break-word;">
 
-      
+
 
               </td>
             </tr>
@@ -330,8 +330,8 @@
               <td align="left" style="font-size:0px;padding:17px 17px 17px 17px;word-break:break-word;">
 
       <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:11px;line-height:1.5;text-align:left;color:#000000;">
-        <p><strong><span style="font-family: tahoma, arial, helvetica, sans-serif; font-size: 14px; color: #201c4f;">Subject: Printing</span></strong></p>
-<p><span style="font-family: tahoma, arial, helvetica, sans-serif; font-size: 14px;">When it comes to authentic style that sets itself apart, nothing is cooler than the iconic, casual, and loose-fitting pouched pocket fleece hoodie. Designed with a basic fit that offers plenty of room to groove. a premium 80% cotton fabric offers an always smooth feel and years of lasting wear. Machine wash in cold, tumble dry low.</span></p>
+        <p><strong><span style="font-family: tahoma, arial, helvetica, sans-serif; font-size: 14px; color: #201c4f;">Subject: {{$subject}}</span></strong></p>
+<p><span style="font-family: tahoma, arial, helvetica, sans-serif; font-size: 14px;">{{$body}}</span></p>
       </div>
 
               </td>
@@ -393,8 +393,8 @@
               <td align="left" style="font-size:0px;padding:15px 15px 15px 15px;word-break:break-word;">
 
       <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:11px;line-height:1.5;text-align:left;color:#000000;">
-        <p><span style="color: #201c4f; font-size: 18px; font-family: tahoma, arial, helvetica, sans-serif;">Joshua Nyawach</span></p>
-<p><span style="color: #201c4f; font-size: 18px; font-family: tahoma, arial, helvetica, sans-serif;">nyawach41@gmail.com</span></p>
+        <p><span style="color: #201c4f; font-size: 18px; font-family: tahoma, arial, helvetica, sans-serif;">{{$first_name}}&nbsp;{{$last_name}}</span></p>
+<p><span style="color: #201c4f; font-size: 18px; font-family: tahoma, arial, helvetica, sans-serif;">{{$email}}</span></p>
       </div>
 
               </td>
@@ -456,7 +456,7 @@
               <td align="left" style="font-size:0px;padding:15px 15px 15px 15px;word-break:break-word;">
 
       <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:11px;line-height:1.5;text-align:left;color:#000000;">
-        <p style="text-align: center;"><span style="font-family: tahoma, arial, helvetica, sans-serif; font-size: 12px; color: #201c4f;">This email was sent to: nyawach41@gmail.com</span></p>
+        <p style="text-align: center;"><span style="font-family: tahoma, arial, helvetica, sans-serif; font-size: 12px; color: #201c4f;">This email was sent to: {{$email}}</span></p>
       </div>
 
               </td>

@@ -148,7 +148,7 @@ class BrandingController extends Controller
                     'totalPrice' => $request->total_price,
                     'printing' => $brand_price,
                     'totalPrinting' => $totalBrandPrice,
-                    'order_printing'=>$productPrinting->id,
+                    'order_printing'=>$request->printing,
                     'printType'=>$request->printing,
                     'printDescription'=>$request->description,
                     'printArtwork'=> $printingDocument

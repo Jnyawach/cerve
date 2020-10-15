@@ -5,7 +5,7 @@
     <section>
         <div class="row">
             <div class="col-sm-12 col-md-6 col-lg-6">
-                <h4>{{$order->product->name}}</h4>
+
             </div>
             @if($order->is_active==0 )
             <div class="col-sm-12 col-md-6 col-lg-6">
@@ -61,12 +61,13 @@
             </div>
         </div>
         <hr>
+        @foreach(json_decode($order->cart_data) as $item)
         <div class="row">
             <div class="col-sm-12 col-md-4 col-lg-4">
-                <img src="{{$order->product->getFirstMedia('product_photos')? $order->product->getFirstMedia('product_photos')->getUrl('product_card'):'/images/no-image.png' )}}" class="img-fluid" title="{{$order->product->name}}" >
+                <img src="{{asset($photo=\App\Product::findOrFail($item->id)->getFirstMedia('product_photos')? $photo=\App\Product::findOrFail($item->id)->getFirstMedia('product_photos')->getUrl('product_card'):'/images/no-image.png')}}" class="img-fluid" title="{{$item->name}}" >
             </div>
             <div class="col-sm-12 col-md-8 col-lg-8">
-                @if($order->product->category->name=='Clothing/Apparel')
+
                     <table class="table mt-4" >
                         <thead class="thead thead-light">
                         <tr>
@@ -82,10 +83,10 @@
                         <tbody>
                         <tr>
                             <th ><h4 class="p-0 m-0">Quantity:</h4></th>
-                            <td class="font-bold">{{$order->small}}</td>
-                            <td class="font-bold">{{$order->medium}}</td>
-                            <td class="font-bold">{{$order->large}}</td>
-                            <td class="font-bold">{{$order->extra_large}}</td>
+                            <td class="font-bold">{{$item->attributes->small}}</td>
+                            <td class="font-bold">{{$item->attributes->medium}}</td>
+                            <td class="font-bold">{{$item->attributes->large}}</td>
+                            <td class="font-bold">{{$item->attributes->extra_large}}</td>
 
 
                         </tr>
@@ -93,23 +94,24 @@
 
                         </tbody>
                     </table>
-                    @else
-                    <p>Quantity: {{$order->quantity}}</p>
-                @endif
-                <p>{!! $order->product->description !!}</p>
-                <p>{!! $order->product->features !!}</p>
+
+                    <p>Quantity: {{$item->quantity}}</p>
+
+
 
             </div>
         </div>
         <hr>
         <div class="row">
-            @if($order->description)
+            @if($item->attributes->printDescription)
                 <div class="row">
                     <div class="col-sm-12 col-md-12 col-md-12">
-                        <p>Printing type: {{$printing->name}}</p>
-                        <p>{!! $order->description !!}</p>
+                        <p>Printing type:{{\App\ProductPrinting::findOrFail($item->attributes->order_printing)->name}} </p>
+                        <p>{!! $item->attributes->printDescription !!}</p>
 
-                        <a href="{{ asset($order->artwork->path) }}" class="btn btn-primary" >View artwork</a>
+                        @if($item->attributes->printArtwork)
+                            <a href="{{asset($item->attributes->printArtwork)}}" class="btn btn-primary" >View artwork</a>
+                        @endif
                     </div>
                 </div>
                 @else
@@ -117,5 +119,5 @@
             @endif
         </div>
     </section>
-
+@endforeach
     @endsection

@@ -28,7 +28,7 @@
                             <th>Invoice</th>
                             <th>Shipping</th>
                             <th>Price</th>
-                            <th>Quantity</th>
+                            <th>Payment</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
@@ -37,11 +37,11 @@
                         @if($orders->count()>0)
                             @foreach($orders as $order)
                                 <tr>
-                                    <td>CER{{$order->id}}</td>
+                                    <td>{{$order->id}}</td>
                                     <td>{{$order->created_at->isoFormat('Y-m-d')}}</td>
                                     <td>001</td>
                                     <td>002</td>
-                                    <td>{{$order->total_price}}</td>
+                                    <td>{{$order->amount}}</td>
                                     <td>{{$order->quantity}}</td>
                                     <td>@if($order->is_active==0 )
                                             <p class="text-danger">Pending</p>
