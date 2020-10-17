@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class PaymentController extends Controller
 {
@@ -40,12 +41,29 @@ class PaymentController extends Controller
         //
         $cart=\Cart::session(Auth::id())->getContent();
         $cartReady=json_encode($cart);
-
-        Order::create([
+        $order=Order::create([
             'user_id'=>Auth::id(),
             'cart_data'=>$cartReady,
             'amount'=>$request->amount
         ]);
+
+        $input=array(
+            'order_id'=>$order->id,
+            'total'=>$cart->getTotal(),
+            'shipping'=>0.00,
+            'tax'=>0.00,
+            'cart'=>$cart
+
+
+
+        );
+
+        Mail::send('mail.receipt', $input, function ($message) use($input){
+            $message->to(Auth::user()->email);
+            $message->from('cerve@cervekenya.com');
+            $message->subject('Order Confirmation');
+
+        });
         \Cart::session(Auth::id())->clear();
 
         return redirect('account/homepage/payment');

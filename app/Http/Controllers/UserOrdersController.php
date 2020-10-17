@@ -19,9 +19,6 @@ class UserOrdersController extends Controller
     {
         //
         $orders=Order::where('user_id', Auth::id())->paginate(5);
-
-
-
         return  view('account.customer.index', compact('orders'));
     }
 

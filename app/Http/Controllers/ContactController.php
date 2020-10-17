@@ -53,9 +53,16 @@ class ContactController extends Controller
 
         );
 
-        Mail::send('mail.contact', $input, function ($message) use($input){
-            $message->to('nyawach41@gmail.com');
+        Mail::send('contact-us.email', $input, function ($message) use($input){
+            $message->to('support@cervekenya.com');
             $message->from($input['email']);
+            $message->subject($input['subject']);
+
+        });
+
+        Mail::send('mail.contact', $input, function ($message) use($input){
+            $message->to($input['email']);
+            $message->from('support@cervekenya.com');
             $message->subject($input['subject']);
 
         });
