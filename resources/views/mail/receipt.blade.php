@@ -85,7 +85,7 @@
                                                     <p style="font-size: 18px; font-weight: 400; margin: 0; color: #ffffff;"><a href="https://cervekenya.com" target="_blank" style="color: #ffffff; text-decoration: none;">Shop &nbsp;</a></p>
                                                 </td>
                                                 <td style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 24px;">
-                                                    <a href="https://cervekenya.com/brand-shop" target="_blank" style="color: #ffffff; text-decoration: none;"><img src="{{asset('https://cervekenya.com/images/shopping-cart-black-shape 1.png')}}" width="27" height="27" style="display: block; border: 0px;" /></a>
+                                                    <a href="https://cervekenya.com/brand-shop" target="_blank" style="color: #ffffff; text-decoration: none;"><img src="{{asset('https://cervekenya.com/images/shopping-cart.png')}}" width="27" height="27" style="display: block; border: 0px;" /></a>
                                                 </td>
                                             </tr>
                                         </table>
@@ -130,23 +130,28 @@
                                                 Order Confirmation #
                                             </td>
                                             <td width="25%" align="left" bgcolor="#eeeeee" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; line-height: 24px; padding: 10px;">
-                                                2345678
+                                                {{$order_id}}
                                             </td>
                                         </tr>
+                                        @foreach($cart as $item)
                                         <tr>
+
                                             <td width="75%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 15px 10px 5px 10px;">
-                                                Purchased Item (1)
+                                                {{$item->name}}
                                             </td>
+
                                             <td width="25%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 15px 10px 5px 10px;">
-                                                $100.00
+                                                KES {{number_format( $item->getPriceSumWithConditions(),2)}}
                                             </td>
+
                                         </tr>
+                                        @endforeach
                                         <tr>
                                             <td width="75%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 5px 10px;">
                                                 Shipping + Handling
                                             </td>
                                             <td width="25%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 5px 10px;">
-                                                $10.00
+                                                KES 0.00
                                             </td>
                                         </tr>
                                         <tr>
@@ -154,7 +159,7 @@
                                                 Sales Tax
                                             </td>
                                             <td width="25%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; padding: 5px 10px;">
-                                                $5.00
+                                                KES 0.00
                                             </td>
                                         </tr>
                                     </table>
@@ -168,7 +173,7 @@
                                                 TOTAL
                                             </td>
                                             <td width="25%" align="left" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 800; line-height: 24px; padding: 10px; border-top: 3px solid #eeeeee; border-bottom: 3px solid #eeeeee;">
-                                                $115.00
+                                                KES {{number_format($total, 2)}}
                                             </td>
                                         </tr>
                                     </table>
@@ -203,7 +208,7 @@
                                             <tr>
                                                 <td align="left" valign="top" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px;">
                                                     <p style="font-weight: 800;">Delivery Address</p>
-                                                    <p>675 Massachusetts Avenue<br>11th Floor<br>Cambridge, MA 02139</p>
+                                                    <p>{{$user->name}}&nbsp;{{$user->lastname}}<br>{{$user->cellphone}}<br>{{$user->street}}&nbsp;{{$user->town}}&nbsp;{{$user->country}}</p>
 
                                                 </td>
                                             </tr>
@@ -211,20 +216,7 @@
                                     </div>
                                     <!--[if (gte mso 9)|(IE)]>
                                     </td>
-                                    <td align="left" valign="top" width="300">
-                                    <![endif]-->
-                                    <div style="display:inline-block; max-width:50%; min-width:240px; vertical-align:top; width:100%;">
-                                        <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:300px;">
-                                            <tr>
-                                                <td align="left" valign="top" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px;">
-                                                    <p style="font-weight: 800;">Estimated Delivery Date</p>
-                                                    <p>January 1st, 2016</p>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                    <!--[if (gte mso 9)|(IE)]>
-                                    </td>
+
                                     </tr>
                                     </table>
                                     <![endif]-->
@@ -258,7 +250,7 @@
                                     <table border="0" cellspacing="0" cellpadding="0">
                                         <tr>
                                             <td align="center" style="border-radius: 5px;" bgcolor="#66b3b7">
-                                                <a href="https://cervekeny.com" target="_blank" style="font-size: 18px; font-family: Open Sans, Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; border-radius: 5px; background-color: #11054E; padding: 15px 30px; border: 1px solid #66b3b7; display: block;">Shop Now</a>
+                                                <a href="https://cervekenya.com" target="_blank" style="font-size: 18px; font-family: Open Sans, Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; border-radius: 5px; background-color: #11054E; padding: 15px 30px; border: 1px solid #66b3b7; display: block;">Shop Now</a>
                                             </td>
                                         </tr>
                                     </table>
@@ -287,7 +279,7 @@
                             </tr>
                             <tr>
                                 <td align="center" style="font-family: Open Sans, Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 24px; padding: 5px 0 10px 0;">
-                                    <p style="font-size: 14px; font-weight: 500; line-height: 18px; color: #333333;">Cerve Limited<br />Keekorok Rd. Nairobi<br />Win global Hse.<br /><strong>Email: supportt@cervekenya.com | phone: +254717109280</strong></p>
+                                    <p style="font-size: 14px; font-weight: 500; line-height: 18px; color: #333333;">Cerve Limited<br />Keekorok Rd. Nairobi<br />Win global Hse.<br /><strong>Email: support@cervekenya.com | phone: +254717109280</strong></p>
                                 </td>
                             </tr>
                             <tr>

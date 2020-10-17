@@ -30,6 +30,7 @@ Route::group(['middleware'=>'role'], function(){
     Route::resource('/admin/homepage/policy','PolicyAdminController');
     Route::resource('/admin/homepage/faqs','FaqAdminController');
     Route::resource('/admin/homepage/orders','OrdersAdminController');
+    Route::resource('/admin/homepage/contact','AdminContactController');
     Route::get('admin/orders/pending',['as'=>'pending.order', 'uses'=>'OrdersAdminController@pending']);
     Route::get('admin/orders/processing',['as'=>'process.order', 'uses'=>'OrdersAdminController@process']);
     Route::get('admin/orders/complete',['as'=>'complete.order', 'uses'=>'OrdersAdminController@complete']);

@@ -97,6 +97,19 @@
                         </li>
 
                         <li class="nav-item">
+                            <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-28" aria-controls="submenu-2"><i class="fa fa-envelope-o" aria-hidden="true"></i>Inbox</a>
+                            <div id="submenu-28" class="collapse submenu" style="">
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{route('contact.index')}}">Messages</a>
+                                    </li>
+
+
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
                             <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-25" aria-controls="submenu-25"><i class="fa fa-money" aria-hidden="true"></i>Payment</a>
                             <div id="submenu-25" class="collapse submenu" style="">
                                 <ul class="nav flex-column">

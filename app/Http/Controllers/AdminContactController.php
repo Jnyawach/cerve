@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Order;
+use App\Contact;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 
-class PaymentController extends Controller
+class AdminContactController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +16,8 @@ class PaymentController extends Controller
     public function index()
     {
         //
-        return view('account.payment.index');
+        $contacts=Contact::all();
+        return  view('admin.contact.index', compact('contacts'));
     }
 
     /**
@@ -39,41 +39,6 @@ class PaymentController extends Controller
     public function store(Request $request)
     {
         //
-        $cart=\Cart::session(Auth::id())->getContent();
-        $cartReady=json_encode($cart);
-        $order=Order::create([
-            'user_id'=>Auth::id(),
-            'cart_data'=>$cartReady,
-            'amount'=>$request->amount
-        ]);
-
-        $input=array(
-            'order_id'=>$order->id,
-            'total'=>\Cart::session(Auth::id())->getTotal(),
-            'shipping'=>0.00,
-            'tax'=>0.00,
-            'cart'=>$cart,
-            'user'=>Auth::user(),
-
-
-
-        );
-
-        Mail::send('mail.receipt', $input, function ($message) use($input){
-            $message->to(Auth::user()->email);
-            $message->from('cerve@cervekenya.com');
-            $message->subject('Order Confirmation');
-
-        });
-        Mail::send('mail.order', $input, function ($message) use($input){
-            $message->to('jnyawach@cervekenya.com');
-            $message->from('cerve@cervekenya.com');
-            $message->subject('New Order');
-
-        });
-        \Cart::session(Auth::id())->clear();
-
-        return redirect('account/homepage/payment');
     }
 
     /**
@@ -85,6 +50,8 @@ class PaymentController extends Controller
     public function show($id)
     {
         //
+        $message=Contact::findBySlugOrFail($id);
+        return  view('admin.contact.show', compact('message'));
     }
 
     /**
@@ -108,6 +75,10 @@ class PaymentController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $message=Contact::findOrFail($id);
+        $message->update(['read'=>$request->read]);
+        Session::flash('contact_message', 'The message has been successfully updated');
+        return redirect()->back();
     }
 
     /**
@@ -119,5 +90,9 @@ class PaymentController extends Controller
     public function destroy($id)
     {
         //
+        $message=Contact::findOrFail($id);
+        $message->delete();
+        Session::flash('contact_message', 'The message has been successfully deleted');
+        return redirect()->back();
     }
 }
