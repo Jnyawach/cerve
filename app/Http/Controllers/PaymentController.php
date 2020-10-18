@@ -39,6 +39,9 @@ class PaymentController extends Controller
     public function store(Request $request)
     {
         //
+        if (\Cart::session(Auth::id())->getContent()->count()>0){
+
+
         $cart=\Cart::session(Auth::id())->getContent();
         $cartReady=json_encode($cart);
         $order=Order::create([
@@ -73,7 +76,11 @@ class PaymentController extends Controller
         });
         \Cart::session(Auth::id())->clear();
 
-        return redirect('account/homepage/payment');
+        return view('account.payment.index', compact('order'));
+        }else{
+            return redirect('/');
+        }
+
     }
 
     /**
