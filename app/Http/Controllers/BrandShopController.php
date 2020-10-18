@@ -56,7 +56,7 @@ class BrandShopController extends Controller
     {
         //
         $product=Product::findBySlugOrFail($id);
-        $reviews=Review::where('product_id', $product->id)->get();
+        $reviews=Review::where('product_id', $product->id)->where('is_active',0)->get();
         $related=Product::where('category_id', $product->category_id)->where('slug','!=', $id)->inRandomOrder()->get();
         $photos=$product->getMedia('product_photos');
 

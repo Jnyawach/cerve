@@ -19,7 +19,7 @@ class ReviewController extends Controller
     {
         //
         $user=Auth::id();
-        $reviews=Review::where('user_id',$user)->paginate(10);
+        $reviews=Review::where('user_id',$user)->where('is_active',0)->paginate(10);
         return view('account.review.index', compact('reviews'));
     }
 

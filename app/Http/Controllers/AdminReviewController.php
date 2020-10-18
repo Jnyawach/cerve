@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Review;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class AdminReviewController extends Controller
 {
@@ -14,6 +16,8 @@ class AdminReviewController extends Controller
     public function index()
     {
         //
+        $reviews=Review::all();
+        return view('admin.reviews.index', compact('reviews'));
     }
 
     /**
@@ -46,6 +50,8 @@ class AdminReviewController extends Controller
     public function show($id)
     {
         //
+        $review=Review::findOrFail($id);
+        return  view('admin.reviews.show', compact('review'));
     }
 
     /**
@@ -69,6 +75,12 @@ class AdminReviewController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $review=Review::findOrFail($id);
+        $review->update(['is_active'=>$request->is_active]);
+        Session::flash('rating_message', 'Status successfully changed');
+
+        return  redirect()->back();
+
     }
 
     /**
@@ -80,5 +92,9 @@ class AdminReviewController extends Controller
     public function destroy($id)
     {
         //
+        $review=Review::findOrFail($id);
+        $review->delete();
+        Session::flash('rating_message', 'Review deleted successfully');
+        return  redirect()->back();
     }
 }
