@@ -106,7 +106,7 @@
             <div class="form-group row">
                 <div class="col-sm-12 col-md-6 col-lg-6">
                     <label for="town" class="control-label">Town/City:</label>
-                    <input id="cellphone" type="tel" class="form-control @error('town') is-invalid @enderror" name="town" value="{{ old('town') }}" required autocomplete="town" autofocus placeholder="Example, Nairobi">
+                    <input id="town" type="text" class="form-control @error('town') is-invalid @enderror" name="town" value="{{ old('town') }}" required autocomplete="town" autofocus placeholder="Example, Nairobi">
 
                     @error('town')
                     <span class="invalid-feedback" role="alert">

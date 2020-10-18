@@ -94,6 +94,7 @@
                             <li>Go to M-PESA on your phone</li>
                             <li>Select Lipa Na Mpesa</li>
                             <li>Select Buy Goods and Services</li>
+                            <li>Enter Till Number: 5174841</li>
                             <li>Enter the Amount {{number_format(Cart::session(Auth::id())->getTotal(),2)}}</li>
                             <li>Enter your M-PESA PIN and send</li>
                             <li>You will receive a confirmation message from M-PESA</li>
