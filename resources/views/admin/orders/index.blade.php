@@ -25,8 +25,7 @@
                         <tr>
                             <th>Order No.</th>
                             <th>Date</th>
-                            <th>Invoice</th>
-                            <th>Shipping</th>
+                            <th>Tracking</th>
                             <th>Price</th>
                             <th>Payment</th>
                             <th>Status</th>
@@ -39,7 +38,7 @@
                                 <tr>
                                     <td>{{$order->id}}</td>
                                     <td>{{$order->created_at->isoFormat('Y-m-d')}}</td>
-                                    <td>001</td>
+
                                     <td>002</td>
                                     <td>{{$order->amount}}</td>
                                     <td>{{$order->quantity}}</td>
@@ -84,8 +83,7 @@
                         <tr>
                             <th>Order No.</th>
                             <th>Date</th>
-                            <th>Invoice</th>
-                            <th>Shipping</th>
+                            <th>Tracking</th>
                             <th>Price</th>
                             <th>Quantity</th>
                             <th>Status</th>

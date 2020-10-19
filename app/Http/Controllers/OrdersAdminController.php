@@ -53,13 +53,11 @@ class OrdersAdminController extends Controller
         //
         $pending_count=Order::where('is_active',0)->get();
         $order=Order::findOrFail($id);
-        if ($order->printing){
-            $printing=ProductPrinting::findOrFail($order->printing);
-        }
 
 
 
-        return  view('admin.orders.show', compact('pending_count','order', 'printing'));
+
+        return  view('admin.orders.show', compact('pending_count','order'));
     }
 
     /**
