@@ -26,10 +26,7 @@
                                 <h3>SHIP TO</h3>
                                 <p>N/A</p>
                             </div>
-                            <div class="col-sm-12 col-md-3 col-lg-3 justify-content-end">
-                                <h3>INVOICE</h3>
-                                <p>Ref No: 234567</p>
-                            </div>
+
 
                         </div>
                         <hr class="broken">

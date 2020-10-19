@@ -41,7 +41,7 @@
 
                                     <td>002</td>
                                     <td>{{$order->amount}}</td>
-                                    <td>{{$order->quantity}}</td>
+                                    <td>{{$order->payment}}</td>
                                     <td>@if($order->is_active==0 )
                                             <p class="text-danger">Pending</p>
                                             @elseif($order->is_active==1)
@@ -85,7 +85,7 @@
                             <th>Date</th>
                             <th>Tracking</th>
                             <th>Price</th>
-                            <th>Quantity</th>
+                            <th>Payment</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>

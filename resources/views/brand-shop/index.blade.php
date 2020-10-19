@@ -57,25 +57,27 @@
                         <div class="carousel-item active">
                             <img src="images/banner.png" class="d-block w-100" alt="...">
                             <div class="carousel-caption d-none d-md-block  text-left">
-                                <h1>A lot of Good Stuff!</h1>
-                                <p style="width: 500px">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
-                                <a href="#" class="btn btn-primary">SHOP NOW</a>
+                                <h1>The Ultimate Experience</h1>
+                                <p style="width: 600px; font-size:25px"> Enhance Your visibility from all corners.
+                                Make your brand discoverable!</p>
+                                <a href="https://cervekenya.com/brand-shop/category/general-branding" class="btn btn-primary">SHOP NOW</a>
                             </div>
                         </div>
                         <div class="carousel-item">
                             <img src="images/banner2.jpg" class="d-block w-100" alt="...">
                             <div class="carousel-caption d-none d-md-block text-left">
-                                <h1>A lot of Good Stuff!</h1>
-                                <p>Water Bottle branding</p>
-                                <a href="#" class="btn btn-primary">SHOP NOW</a>
+                                <h1>When it is this personal </h1>
+                                <p style="width: 600px; font-size:25px">It is not a gift anymore.... It is love. We help you reward love</p>
+                                <a href="https://cervekenya.com/brand-shop/category/home-living" class="btn btn-primary">SHOP NOW</a>
                             </div>
                         </div>
                         <div class="carousel-item ">
                             <img src="images/banner3.png" class="d-block w-100" alt="...">
                             <div class="carousel-caption d-none d-md-block text-left">
-                                <h1>A lot of Good Stuff!</h1>
-                                <a href="#" class="btn btn-primary">SHOP NOW</a>
+                                <h1>We explore all dimensions</h1>
+                                <p style="width: 600px; font-size:25px">To get you out there,
+                                we explore all dimensions</p>
+                                <a href="https://cervekenya.com/brand-shop/category/clothing-apparel" class="btn btn-primary">SHOP NOW</a>
                             </div>
                         </div>
 

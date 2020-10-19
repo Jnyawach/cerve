@@ -25,23 +25,22 @@
                         <tr>
                             <th>Order No.</th>
                             <th>Date</th>
-                            <th>Invoice</th>
-                            <th>Shipping</th>
+                            <th>Tracking</th>
                             <th>Price</th>
-                            <th>Quantity</th>
+                            <th>Payment</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @if($pending->count()>0)
-                            @foreach($pending as $order)
+                        @if($orders->count()>0)
+                            @foreach($orders as $order)
                                 <tr>
-                                    <td>CER{{$order->id}}</td>
+                                    <td>{{$order->id}}</td>
                                     <td>{{$order->created_at->isoFormat('Y-m-d')}}</td>
-                                    <td>001</td>
+
                                     <td>002</td>
-                                    <td>{{$order->total_price}}</td>
+                                    <td>{{$order->amount}}</td>
                                     <td>{{$order->quantity}}</td>
                                     <td>@if($order->is_active==0 )
                                             <p class="text-danger">Pending</p>
@@ -49,8 +48,8 @@
                                             <p>Processing</p>
                                         @elseif($order->is_active==2)
                                             <p>Completed</p>
-                                        @else
-                                            <p>Completed</p>
+                                        @elseif($order->is_active==3)
+                                            <p>Cancelled</p>
                                         @endif
                                     </td>
                                     <td>
@@ -60,7 +59,13 @@
                                             </a>
 
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                <a class="dropdown-item" href="{{route('products.edit', $order->id)}}">Edit<i class="fa fa-pencil-square-o ml-2" aria-hidden="true"></i></a>
+                                                <a class="dropdown-item" href="{{route('orders.show', $order->id)}}">View<i class="fa fa-pencil-square-o ml-2" aria-hidden="true"></i></a>
+                                                {!!Form::model($order,['method'=>'PATCH','class'=>'dropdown-item', 'action'=>['OrdersAdminController@update',$order->id]])!!}
+                                                {!! Form::hidden('is_active', 3) !!}
+                                                <div class="form-group">
+                                                    <button class="btn btn-block my-2 my-sm-0" type="submit">Cancel</button>
+                                                </div>
+                                                {!!Form::close()!!}
                                                 {!!Form::open(['method'=>'DELETE','class'=>'dropdown-item', 'action'=>['ProductAdminController@destroy', $order->id]])!!}
                                                 <button type="submit" class="btn btn-block">Delete <i class="fa fa-trash-o ml-2" aria-hidden="true"></i> </button>
 
@@ -78,10 +83,9 @@
                         <tr>
                             <th>Order No.</th>
                             <th>Date</th>
-                            <th>Invoice</th>
-                            <th>Shipping</th>
+                            <th>Tracking</th>
                             <th>Price</th>
-                            <th>Quantity</th>
+                            <th>Payment</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
