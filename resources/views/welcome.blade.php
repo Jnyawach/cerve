@@ -1,7 +1,11 @@
 @extends('layouts.cerve')
 @section('title', 'Discover The New Ways
 To Craft Your Visibility')
+@section('styles')
+
+    @endsection
 @section('content')
+
 
     <section class="intro  text-center p-lg-5 p-md-3 p-sm-2">
         <div class="row p-lg-5 p-md-3 p-sm-2">
@@ -203,6 +207,7 @@ To Craft Your Visibility')
                </div>
            </div>
 
+
    </section>
     @include('includes.brand_shop')
 
@@ -245,4 +250,8 @@ To Craft Your Visibility')
 
 
     </section>
+@endsection
+@section('scripts')
+
+
 @endsection

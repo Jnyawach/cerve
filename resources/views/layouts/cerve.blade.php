@@ -98,6 +98,7 @@
 </header>
 
 <main>
+    @include('includes.whatsapp')
     @yield('content')
 </main>
 

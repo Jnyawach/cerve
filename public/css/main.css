@@ -195,6 +195,20 @@ label{
 }
 
 
+#whatsapp{
+    position:fixed;
+    z-index: 100;
+    width:60px;
+    height:60px;
+    bottom:40px;
+    right:40px;
+    background-color:#0C9;
+    color:#FFF;
+    border-radius:50px;
+    text-align:center;
+    box-shadow: 2px 2px 3px #999;
+}
+
 
 /*################################HOMME PAGE ######################*/
 .navbar{
@@ -596,6 +610,7 @@ a:hover{
 .shop-info img{
     height: 60px;
 }
+
 .carousel-caption{
     position: absolute;
     left: 5%;

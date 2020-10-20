@@ -86,6 +86,7 @@
         </div>
     </nav>
 </section>
+@include('includes.whatsapp')
 @yield('content')
 <footer>
     <div>
