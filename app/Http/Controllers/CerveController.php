@@ -31,10 +31,8 @@ class CerveController extends Controller
         $post=Blog::findBySlugOrFail($slug);
         $blogs=Blog::inRandomOrder()->limit(4)->get();
         $products=Product::all();
-        foreach ($products as $product){
-            $photo=$product->getFirstMedia('product_photos')->getUrl('product_card');
-        }
-        return view('post', compact('post', 'blogs','photo','products'));
+
+        return view('post', compact('post', 'blogs','products'));
     }
 
     public  function policy(){

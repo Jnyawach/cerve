@@ -23,7 +23,8 @@
         "laravelcollective/html": "^6.1",
         "php-http/curl-client": "^2.1",
         "spatie/laravel-medialibrary": "^7.0.0",
-        "spatie/laravel-query-builder": "^3.0"
+        "spatie/laravel-query-builder": "^3.0",
+        "spatie/laravel-sitemap": "^5.8"
     },
     "require-dev": {
         "facade/ignition": "^2.0",
