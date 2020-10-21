@@ -67,7 +67,7 @@
                         {!!Form::text('price_4', null, ['class'=>'form-control'])!!}
                     </div>
                 </div>
-                <h4>Please add stock per size if apparel</h4>
+                <h4 class="mt-5">Please add stock per size if apparel</h4>
                 <div class="form-group row">
 
                     <div class="col-sm-6 col-md-2 col-lg-2">
@@ -108,8 +108,6 @@
 
 
                 </div>
-
-
 
                 <div class="form-group">
                     {!!Form::submit('Create Product', ['class'=>'btn btn-primary'])!!}

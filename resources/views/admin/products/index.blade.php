@@ -40,7 +40,11 @@
                             @foreach($products as $product)
                                 <tr>
                                     <td>{{$product->id}}</td>
-                                    <td>{{$product->name}}</td>
+                                    <td>{{$product->name}}
+                                        @if($product->productprinting->count()>0)
+                                            <i class="fa fa-print" aria-hidden="true"></i>
+                                            @endif
+                                    </td>
 
                                     <td>{{$product->price}}</td>
                                     <td>{{$product->stock}}</td>

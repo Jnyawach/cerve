@@ -63,6 +63,10 @@ class Product extends Model implements HasMedia
         return$this->hasMany('App\Wishlist');
     }
 
+    public function productprinting(){
+        return $this->hasMany('App\ProductPrinting');
+    }
+
     public function reviews(){
         return$this->hasMany('App\Review');
     }
