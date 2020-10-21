@@ -32,7 +32,8 @@
                <div class="col-sm-10 col-md-6 col-lg-6 mx-auto">
                    <h4>Branding Guideline</h4>
                   <p>{!! $product->brand? $product->brand:'No branding guideline provided' !!}</p>
-                   @if($product->getFirstMedia('product_video')->getUrl())
+                   @if($product->getFirstMedia('product_video')
+                   )
                    <div>
                        <h4>Associated Video</h4>
                        <div class="embed-responsive embed-responsive-16by9">
