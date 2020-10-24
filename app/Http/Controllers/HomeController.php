@@ -24,7 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $shops=Product::all();
+        $shops=Product::where('is_active', 1)->get();
         return view('home', compact('shops'));
     }
 }

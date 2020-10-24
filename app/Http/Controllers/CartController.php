@@ -20,7 +20,7 @@ class CartController extends Controller
     public function index()
     {
         //
-        $lover=Product::inRandomOrder()->take(3)->get();
+        $lover=Product::where('is_active',1)->inRandomOrder()->take(3)->get();
         return view('cart.index', compact('lover'));
     }
 

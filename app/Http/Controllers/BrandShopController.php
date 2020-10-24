@@ -18,7 +18,7 @@ class BrandShopController extends Controller
     public function index()
     {
         //
-        $products=Product::inRandomOrder()->paginate(12);
+        $products=Product::where('is_active',1)->inRandomOrder()->paginate(12);
         $categories=ProductCategory::all();
 
 
@@ -101,6 +101,7 @@ class BrandShopController extends Controller
     public function search(Request $request){
         $search= $request->name;
         $products=QueryBuilder::for(Product::class)
+            ->where('is_active',1)
             ->allowedFilters(['name'])
 
             ->paginate(50);
@@ -109,7 +110,7 @@ class BrandShopController extends Controller
 
     public  function  category($id){
         $category=ProductCategory::findBySlugOrFail($id);
-        $products=Product::where('category_id', $category->id)->paginate(20);
+        $products=Product::where('category_id', $category->id)->where('is_active',1)->paginate(20);
 
         return view('brand-shop/category', compact('products','category'));
     }

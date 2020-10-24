@@ -15,7 +15,7 @@ class CerveController extends Controller
 {
     //
     public  function homepage(){
-        $products=Product::all();
+        $products=Product::where('is_active',1)->get();
         $posts=Blog::latest()->take(3)->get();
 
         return view('welcome', compact('products','posts'));
@@ -30,7 +30,7 @@ class CerveController extends Controller
     public  function post($slug){
         $post=Blog::findBySlugOrFail($slug);
         $blogs=Blog::inRandomOrder()->limit(4)->get();
-        $products=Product::all();
+        $products=Product::where('is_active',1)->get();
 
         return view('post', compact('post', 'blogs','products'));
     }

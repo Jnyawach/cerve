@@ -20,7 +20,7 @@ class ContactController extends Controller
     public function index()
     {
         //
-        $products=Product::all();
+        $products=Product::where('is_active',1)->get();
 
         return  view('contact-us.index' , compact('products'));
     }
