@@ -6,7 +6,9 @@
         @include('includes.product_menu')
         @include('includes.editor')
 
+
         <div class="mt-5">
+            <img src="{{asset($product->getFirstMedia('product_photos')? $product->getFirstMedia('product_photos')->getUrl('product_card'):'/images/no-image.png' )}}" alt="{{$product->name}}">
             {!!Form::model($product,['method'=>'PATCH', 'action'=>['ProductAdminController@update', $product->id],'files'=>true])!!}
             <div class="form-group ">
                 {!!Form::label('name', 'NAME:')!!}
