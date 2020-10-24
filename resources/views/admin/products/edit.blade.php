@@ -114,7 +114,7 @@
             <div class="form-group row">
 
                 @foreach($printing as $pricing)
-                    <div class="col-sm-12 col-md-3 col-lg-3 m-1">
+                    <div class="col-sm-12 col-md-4 col-lg-4 m-1">
                         <div class="custom-control custom-checkbox">
                             <input type="checkbox" class="custom-control-input{{$pricing->name}}" id="customCheck1{{$pricing->name}}" name="branding_id[]" value="{{$pricing->id}}">
                             <label class="custom-control-label{{$pricing->name}}" for="customCheck1{{$pricing->name}}">{{$pricing->name}}</label>
