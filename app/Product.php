@@ -51,6 +51,8 @@ class Product extends Model implements HasMedia
         'L',
         'XL',
         'brand',
+       'branding_id[]'
+
 
 
 
@@ -64,7 +66,7 @@ class Product extends Model implements HasMedia
     }
 
     public function productprinting(){
-        return $this->hasMany('App\ProductPrinting');
+        return $this->belongsToMany('App\ProductPrinting');
     }
 
     public function reviews(){
@@ -72,6 +74,10 @@ class Product extends Model implements HasMedia
     }
    public  function costs(){
         return$this->hasMany('App\ProductPrinting');
+    }
+
+    public function branding(){
+        return $this->belongsToMany('App\Branding');
     }
 
     public  function registerMediaCollections()

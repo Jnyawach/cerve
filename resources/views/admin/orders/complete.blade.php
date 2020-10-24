@@ -33,8 +33,8 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @if($orders->count()>0)
-                            @foreach($orders as $order)
+                        @if($pending->count()>0)
+                            @foreach($pending as $order)
                                 <tr>
                                     <td>{{$order->id}}</td>
                                     <td>{{$order->created_at->isoFormat('Y-m-d')}}</td>

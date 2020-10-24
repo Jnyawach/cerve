@@ -48,20 +48,26 @@ class BrandingController extends Controller
     public function store(OrderRequest $request)
     {
         //
+        $product=Product::findOrFail($request->product_id);
 
         \Cart::session('branding')->clear();
         $order=$request->all();
         $user=Auth::user();
-        $printing=ProductPrinting::findOrFail($request->printing);
+        $printing=Branding::findOrFail($request->printing);
         $brand_price=$printing->cost_1;
         $quantity=$request->quantity;
 //Branding Price
+        if ($product->category->name=='Clothing/Apparel' && $quantity<=15){
+            $brand_price=$printing->cost_1/$quantity;
+        }else{
+
+
         switch ($brand_price){
             case $quantity>=1 && $quantity<=3:
                 $brand_price=$printing->cost_1/$quantity;
                 break;
             case $quantity>=4 && $quantity<=15:
-                $brand_price=$printing->cost_2/$quantity;
+                $brand_price=$printing->cost_2;
                 break;
             case $quantity>=16 && $quantity<=50:
                 $brand_price=$printing->cost_3;
@@ -70,6 +76,8 @@ class BrandingController extends Controller
                 $brand_price=$printing->cost_4;
                 break;
         }
+    }
+
         //TotalBranding Price
         $totalBrandPrice=1500;
 
@@ -82,7 +90,7 @@ class BrandingController extends Controller
         }
 
 //set product price
-        $product=Product::findOrFail($request->product_id);
+
 
         $price=$product->price;
         switch ($price){

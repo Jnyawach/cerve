@@ -25,7 +25,8 @@
                             <th>Name</th>
                             <th>Quantity(1-3)</th>
                             <th>Quantity(4-15)</th>
-                            <th>Quantity(16-plus)</th>
+                            <th>Quantity(16-50)</th>
+                            <th>Quantity(50+)</th>
                             <th>Action</th>
 
                         </tr>
@@ -36,9 +37,10 @@
                                 <tr>
                                     <td>{{$pricing->id}}</td>
                                     <td>{{$pricing->name}}</td>
-                                    <td>{{$pricing->quantity_1}}</td>
-                                    <td>{{$pricing->quantity_2}}</td>
-                                    <td>{{$pricing->quantity_3}}</td>
+                                    <td>{{$pricing->cost_1}}</td>
+                                    <td>{{$pricing->cost_2}}</td>
+                                    <td>{{$pricing->cost_3}}</td>
+                                    <td>{{$pricing->cost_4}}</td>
 
 
                                     <td>
@@ -69,7 +71,8 @@
                             <th>Name</th>
                             <th>Quantity(1-3)</th>
                             <th>Quantity(4-15)</th>
-                            <th>Quantity(16-plus)</th>
+                            <th>Quantity(16-50)</th>
+                            <th>Quantity(50+)</th>
                             <th>Action</th>
                         </tr>
                         </tfoot>

@@ -10,21 +10,25 @@
                 {!!Form::text('name', null, ['class'=>'form-control'])!!}
             </div>
             <div class="form-group row">
-                <div class="col-sm-12 col-md-3 col-lg-3">
-                    {!!Form::label('quantity_1', 'QUANTITY(1-3):',['class'=>'control-label'])!!}
-                    {!!Form::text('quantity_1', null, ['class'=>'form-control'])!!}
+                <div class="col-sm-6 col-md-3 col-lg-3">
+                    {!!Form::label('cost_1', 'Price(1-3):')!!}
+                    {!!Form::text('cost_1', null, ['class'=>'form-control'])!!}
                 </div>
-                <div class="col-sm-12 col-md-3 col-lg-3">
-                    {!!Form::label('quantity_2', 'QUANTITY(4-15):',['class'=>'control-label'])!!}
-                    {!!Form::text('quantity_2', null, ['class'=>'form-control'])!!}
+                <div class="col-sm-6 col-md-3 col-lg-3">
+                    {!!Form::label('cost_2', 'Price(4-15):')!!}
+                    {!!Form::text('cost_2', null, ['class'=>'form-control'])!!}
                 </div>
-                <div class="col-sm-12 col-md-3 col-lg-3">
-                    {!!Form::label('quantity_3', 'QUANTITY(16-PLUS):',['class'=>'control-label'])!!}
-                    {!!Form::text('quantity_3', null, ['class'=>'form-control'])!!}
+                <div class="col-sm-6 col-md-3 col-lg-3">
+                    {!!Form::label('cost_3', 'Price(16-50):')!!}
+                    {!!Form::text('cost_3', null, ['class'=>'form-control'])!!}
+                </div>
+                <div class="col-sm-6 col-md-3 col-lg-3">
+                    {!!Form::label('cost_4', 'Price(50+):')!!}
+                    {!!Form::text('cost_4', null, ['class'=>'form-control'])!!}
                 </div>
             </div>
             <div class="form-group">
-                {!!Form::submit('Add Pricing', ['class'=>'btn btn-primary'])!!}
+                {!!Form::submit('Edit Pricing', ['class'=>'btn btn-primary'])!!}
             </div>
 
             {!!Form::close()!!}

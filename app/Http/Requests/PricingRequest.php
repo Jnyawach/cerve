@@ -26,9 +26,10 @@ class PricingRequest extends FormRequest
         return [
             //
             'name'=>'required',
-            'quantity_1'=>'required|numeric',
-            'quantity_2'=>'required|numeric',
-            'quantity_3'=>'required|numeric'
+            'cost_1'=>'required|numeric',
+            'cost_2'=>'required|numeric',
+            'cost_3'=>'required|numeric',
+            'cost_4'=>'required|numeric'
         ];
     }
 }

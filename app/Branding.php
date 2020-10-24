@@ -7,8 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 class Branding extends Model
 {
     //
-    protected $fillable=['name','quantity_1','quantity_2','quantity_3'];
-    public  function costs(){
-        return $this->hasMany('App\ProductPrinting');
+    protected $fillable=[
+        'name',
+        'cost_1',
+        'cost_2',
+        'cost_3',
+        'cost_4'
+    ];
+
+    public function products(){
+        return $this->belongsTo('App\Products');
+    }
+
+    public  function brandings(){
+        return $this->belongsToMany('App\Product');
     }
 }

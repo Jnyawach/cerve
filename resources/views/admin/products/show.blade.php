@@ -85,38 +85,26 @@
                         <th>Price(4-15)</th>
                         <th>Price(16-50)</th>
                         <th>Price(50+)</th>
-                        <th>Action</th>
+
                     </tr>
                     </thead>
                     <tbody>
-                    @if($product->costs->count()>0)
-                        @foreach($product->costs as $cost)
+
+                    @if($product->branding->count()>0)
+                        @foreach($product->branding as $price)
+
                             <tr>
-                                <td>{{$cost->id}}</td>
-                                <td>{{ $cost->name}}</td>
-                                <td>{{$cost->cost_1}}</td>
-                                <td>{{ $cost->cost_2}}</td>
-                                <td>{{ $cost->cost_3}}</td>
-                                <td>{{ $cost->cost_4}}</td>
-                                <td>
-                                    <div class="dropdown show">
-                                        <a class="btn  dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Action
-                                        </a>
+                                <td>{{$price->id}}</td>
+                                <td>{{$price->name}}</td>
+                                <td>{{$price->cost_1}}</td>
+                                <td>{{$price->cost_2}}</td>
+                                <td>{{$price->cost_3}}</td>
+                                <td>{{$price->cost_4}}</td>
 
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                            <a class="dropdown-item" href="{{route('costing-update', $cost->id)}}">Edit<i class="fa fa-pencil-square-o ml-2" aria-hidden="true"></i></a>
-                                            {!!Form::open(['method'=>'DELETE','class'=>'dropdown-item', 'action'=>['ProductAdminController@costDelete', $cost->id]])!!}
-                                            <button type="submit" class="btn btn-block">Delete <i class="fa fa-trash-o ml-2" aria-hidden="true"></i> </button>
-
-                                            {!!Form::close()!!}
-                                        </div>
-                                    </div>
-                                </td>
                             </tr>
                         @endforeach
                     @else
-                        <h2>There are no users in the database</h2>
+                        <h2>There is no printing Cost set</h2>
                     @endif
                     </tbody>
                     <tfoot>
@@ -127,7 +115,7 @@
                         <th>Price(4-15)</th>
                         <th>Price(16-50)</th>
                         <th>Price(50+)</th>
-                        <th>Action</th>
+
                     </tr>
                     </tfoot>
                 </table>

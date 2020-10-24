@@ -107,7 +107,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($cart->model->costs as $cost)
+                                    @foreach($cart->model->branding as $cost)
                                     <tr>
                                         <th>{{$cost->name}}</th>
                                         <th >{{$cost->cost_1}}</th>
@@ -147,7 +147,7 @@
                         <label for="exampleFormControlSelect1" class="control-label">PRINTING TYPE</label>
                         <select class="form-control" id="exampleFormControlSelect1" name="printing">
 
-                            @foreach($cart->model->costs as $checkbox)
+                            @foreach($cart->model->branding as $checkbox)
                                 <option value="{{$checkbox->id}}">{{$checkbox->name}}</option>
                             @endforeach
                         </select>

@@ -34,7 +34,8 @@ class ProductAdminController extends Controller
         //
 
         $category=ProductCategory::pluck('name', 'id')->all();
-        return view('admin.products.create', compact('category'));
+        $printing=Branding::all();
+        return view('admin.products.create', compact('category','printing'));
     }
 
     /**
@@ -48,6 +49,12 @@ class ProductAdminController extends Controller
         //
         $input= $request->all();
         $product=Product::create($input);
+        if($request->branding_id){
+            $product->branding()->sync($request->branding_id);
+        }
+
+
+
 
 
         if($file=$request->file('video')) {
@@ -98,7 +105,8 @@ class ProductAdminController extends Controller
         //
         $category=ProductCategory::pluck('name', 'id')->all();
         $product= Product::findOrFail($id);
-        return view('admin.products.edit', compact('product','category'));
+        $printing=Branding::all();
+        return view('admin.products.edit', compact('product','category','printing'));
     }
 
     /**
@@ -114,6 +122,10 @@ class ProductAdminController extends Controller
         $find=Product::findOrFail($id);
         $input=$request->all();
         $find->update($input);
+        if($request->branding_id){
+            $find->branding()->sync($request->branding_id);
+        }
+
         if($file=$request->file('video')) {
 
             $find->clearMediaCollection('product_video');
