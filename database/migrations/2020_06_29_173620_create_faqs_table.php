@@ -13,7 +13,7 @@ class CreateFaqsTable extends Migration
      */
     public function up()
     {
-        Schema::create('faqs-panel', function (Blueprint $table) {
+        Schema::create('faqs', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('category_id')->index()->unsigned();
             $table->integer('is_active')->index()->default(0)->unsigned();
