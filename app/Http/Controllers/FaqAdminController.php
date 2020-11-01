@@ -20,7 +20,7 @@ class FaqAdminController extends Controller
         //
         $faqs=Faq::all();
         $categories=FaqCategory::all();
-        return view('admin.faqs-panel.index', compact('categories', 'faqs'));
+        return view('admin.faqs.index', compact('categories', 'faqs'));
     }
 
     /**
@@ -32,7 +32,7 @@ class FaqAdminController extends Controller
     {
         //
         $category=FaqCategory::pluck('name', 'id')->all();
-        return view('admin.faqs-panel.create' , compact('category'));
+        return view('admin.faqs.create' , compact('category'));
     }
 
     /**
@@ -61,7 +61,7 @@ class FaqAdminController extends Controller
         //
         $faqs=Faq::where('category_id', $id)->get();
         $categories=FaqCategory::all();
-        return view('admin.faqs-panel.show', compact('categories', 'faqs'));
+        return view('admin.faqs.show', compact('categories', 'faqs'));
 
 
     }
