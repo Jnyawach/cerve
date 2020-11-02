@@ -47,7 +47,7 @@ class FaqAdminController extends Controller
         $faq=Faq::create($request->all());
         Session::flash('faq_message', 'The Faq has been successfully Added');
 
-        return redirect('/admin/homepage/faqs-panel');
+        return redirect('/admin/homepage/faqs');
     }
 
     /**
@@ -77,7 +77,7 @@ class FaqAdminController extends Controller
         //
         $faq=Faq::findOrFail($id);
         $category=FaqCategory::pluck('name', 'id')->all();
-        return view('admin.faqs-panel.edit', compact('category', 'faq'));
+        return view('admin.faqs.edit', compact('category', 'faq'));
     }
 
     /**
@@ -93,7 +93,7 @@ class FaqAdminController extends Controller
         $faq=Faq::findOrFail($id)->update($request->all());
         Session::flash('faq_message', 'The Faq has been successfully Updated');
 
-        return redirect('/admin/homepage/faqs-panel');
+        return redirect('/admin/homepage/faqs');
     }
 
     /**
@@ -108,6 +108,6 @@ class FaqAdminController extends Controller
         $faq=Faq::findOrFail($id)->delete();
         Session::flash('faq_message', 'The Faq has been successfully Deleted');
 
-        return redirect('/admin/homepage/faqs-panel');
+        return redirect('/admin/homepage/faqs');
     }
 }

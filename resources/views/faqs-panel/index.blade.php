@@ -1,6 +1,7 @@
 @extends('layouts.cerve')
 @section('title', 'Frequently Asked Questions')
 @section('content')
+    <section>
     <div class="container mt-5">
         <h4>Get Answer about</h4>
         <div class="pills-regular shadow">
@@ -19,9 +20,10 @@
 
         </div>
     </div>
-
+    </section>
+<section>
 <div class="container">
-    <div class="row mt-5 mb-5">
+    <div class="row">
         @if($faqs->count()>0)
 
             @foreach($faqs as $faq)
@@ -37,7 +39,7 @@
                                     </h5>
                                 </div>
                                 <div id="collapseSeven{{$faq->id}}" class="collapse" aria-labelledby="headingSeven" data-parent="#accordion3">
-                                    <div class="card-body">
+                                    <div class="card-body ">
                                         <p class="lead"> {!! $faq->answer !!}</p>
 
 
@@ -56,5 +58,5 @@
     </div>
     </div>
 
-
+</section>
 @endsection

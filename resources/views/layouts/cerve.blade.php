@@ -17,7 +17,7 @@
     "{{asset('images/icon-04.png')}}"
           type = "image/x-icon">
 
-
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
 <header>

@@ -27,7 +27,7 @@
                                         <p class="lead"> {!! $faq->answer !!}</p>
                                         <div class="row">
                                             <div class="col-2">
-                                                <a class=" btn btn-primary" href="{{route('faqs-panel.edit', $faq->id)}}">Edit<i class="fa fa-pencil-square-o ml-2" aria-hidden="true"></i></a>
+                                                <a class=" btn btn-primary" href="{{route('faqs.edit', $faq->id)}}">Edit<i class="fa fa-pencil-square-o ml-2" aria-hidden="true"></i></a>
                                             </div>
                                             <div class="col-2">
                                                 {!!Form::open(['method'=>'DELETE', 'action'=>['FaqAdminController@destroy', $faq->id]])!!}

@@ -52,6 +52,14 @@
                     {!!Form::textarea('body', null, ['class'=>'form-control','id'=>'message'])!!}
 
                 </div>
+                <div class="form-group row">
+                    <div class="col-md-6 offset-md-4">
+                        <div class="g-recaptcha" data-sitekey="6LeIPN4ZAAAAANQBqg82ujMZFul26ELMWUYUFZFL">
+
+                        </div>
+                    </div>
+
+                </div>
                 <div class="form-group">
 
                     {!!Form::submit('SUBMIT', ['class'=>'btn btn-block mt-2'])!!}
