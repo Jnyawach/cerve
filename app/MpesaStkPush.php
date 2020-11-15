@@ -41,4 +41,6 @@ class MpesaStkPush extends Model implements Mpesa
     {
         return $this->mpesa_receipt_number;
     }
+
+
 }

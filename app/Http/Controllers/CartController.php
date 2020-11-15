@@ -78,6 +78,7 @@ if ($quantity<=0){
             $printing=0;
             $payment=0;
             $totalPrinting=$printing*$qty;
+
             $item= \Cart::session('branding')->add(array(
                 'id'=> $rowId,
                 'name'=> $request->name,
@@ -129,6 +130,8 @@ if ($quantity<=0){
              $totalPrice=$qty*$price;
              $printing=0;
              $totalPrinting=$printing*$qty;
+                $order_id= time();
+
                $item= \Cart::session($userId)->add(array(
                     'id'=> $rowId,
                     'name'=> $request->name,
@@ -144,7 +147,8 @@ if ($quantity<=0){
                         'totalPrinting'=>$totalPrinting,
                         'printType'=>null,
                         'printDescription'=>null,
-                        'printArtwork'=>null
+                        'printArtwork'=>null,
+                        'order_id'=>$order_id
 
                     ),
                    'associatedModel'=>$product

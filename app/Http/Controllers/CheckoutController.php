@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CheckoutRequest;
+use App\Invoice;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -17,6 +18,7 @@ class CheckoutController extends Controller
     public function index()
     {
         //
+        return  view('account.checkout.index');
     }
 
     /**
@@ -38,8 +40,6 @@ class CheckoutController extends Controller
     public function store(CheckoutRequest $request)
     {
         //
-        $payment=$request->payment;
-
 
         if ($request->shipping==1){
 
@@ -67,7 +67,7 @@ class CheckoutController extends Controller
             return redirect()->back();
         }
 
-      return view('account.checkout.index', compact('payment'));
+      return redirect('account/homepage/checkout');
 
 
     }

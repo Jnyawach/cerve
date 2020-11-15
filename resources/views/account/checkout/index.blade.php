@@ -24,7 +24,16 @@
 
                             <div class="col-sm-12 col-md-3 col-lg-3">
                                 <h3>SHIP TO</h3>
-                                <p>N/A</p>
+                                <p>{{Auth::user()->name}}&nbsp;{{Auth::user()->lastname}}<br>
+                                    {{Auth::user()->cellphone}}<br>
+                                </p>
+                            </div>
+
+                            <div class="col-sm-12 col-md-3 col-lg-3">
+                                <h3>REF NUMBER</h3>
+                                <p>
+
+                                </p>
                             </div>
 
 
@@ -84,62 +93,37 @@
                         </table>
                         <hr class="broken">
                     <h4>Payment details</h4>
-                        @if($payment==1)
+
                         <img src="{{asset('images/mpesa_logo.png')}}" class="img-fluid" alt="Lipa Na Mpesa">
-                        <h5>Lipa Na Mpesa{{$payment}}</h5>
+                        <h5>Lipa Na Mpesa Cerve Limited</h5>
+
                         <ol>
                             <li>Go to M-PESA on your phone</li>
                             <li>Select Lipa Na Mpesa</li>
-                            <li>Select Buy Goods and Services</li>
-                            <li>Enter Till Number: 5174841</li>
-                            <li>Enter the Amount {{number_format(Cart::session(Auth::id())->getTotal(),2)}}</li>
+                            <li>Select Paybill</li>
+                            <li>Enter Business Number:<span style="color: var(--primary); font-weight: bold">4042451</span> </li>
+                            <li>Enter the Account No:<span style="color: var(--primary); font-weight: bold">{{Auth::user()->name}}</span></li>
+                            <li>Enter the Amount:<span style="color: var(--primary); font-weight: bold"> {{Cart::session(Auth::id())->getTotal()}}</span></li>
                             <li>Enter your M-PESA PIN and send</li>
                             <li>You will receive a confirmation message from M-PESA</li>
                         </ol>
-                        <h6>Enter the transaction code the press complete</h6>
+                        <h6>Enter the your number then press complete</h6>
                         {!!Form::open(['method'=>'POST', 'action'=>'PaymentController@store','class'=>'form-inline'])!!}
                         <div class="form-group">
                             {!! Form::hidden('amount',Cart::session(Auth::id())->getTotal()) !!}
-                            {!!Form::text('town', null, ['class'=>'form-control rounded-0'])!!}
+                            {!! Form::hidden('sender_phone', 254717109280) !!}
+                            {!! Form::hidden('account_reference', Auth::user()->name) !!}
+
+                            {!!Form::text('payer_phone', null, ['class'=>'form-control rounded-0', 'placeholder'=>'Enter Your Phone Number'])!!}
                         </div>
                         <div class="form-group">
                             {!!Form::submit('COMPLETE', ['class'=>'btn btn-primary btn-sm ml-3'])!!}
                         </div>
 
                         {!!Form::close()!!}
-                            @elseif($payment==2)
-                            <div class="row">
 
-                                <div class="col-5">
-                                    <form>
-                                        <img src="{{asset('images/351652.png')}}" class="img-fluid">
-                                        <div class="form-group">
-                                            <label for="name">Name on Card</label>
-                                            <input type="text" class="form-control" id="name1">
-
-                                        </div>
-
-                                       <div class="form-group">
-
-                                           <label>Card
-                                               <div id="card-element"></div>
-                                           </label>
-
-                                           <label for="card-element">Card</label>
-                                           <div id="card-element"></div>
-
-                                           <script>
-                                               cardElement.mount('#card-element');
-                                           </script>
-                                       </div>
-
-                                        <button type="submit" class="btn btn-block">Complete Order</button>
-                                    </form>
-                                </div>
-                            </div>
-                        @endif
                         <hr class="broken mt-3">
-                        <h6 class="text-center">Cerve Limited | Keekorok Rd. Winglobal Hse| Phone:+254717109280 | Email:billing@cervekenya.com| www.cervekenya.com</h6>
+                        <h6 class="text-center">Cerve Limited | Keekorok Rd. Winglobal Hse| Phone:+254717109280 | Email:cerve@cervekenya.com| www.cervekenya.com</h6>
                     </div>
                 </div>
 

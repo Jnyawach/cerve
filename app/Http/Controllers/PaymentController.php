@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\MpesaSTKPushSimulateRequest;
+use App\Mpesa;
 use App\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -41,8 +43,7 @@ class PaymentController extends Controller
         //
         if (\Cart::session(Auth::id())->getContent()->count()>0){
 
-
-        $cart=\Cart::session(Auth::id())->getContent();
+            $cart=\Cart::session(Auth::id())->getContent();
         $cartReady=json_encode($cart);
         $order=Order::create([
             'user_id'=>Auth::id(),

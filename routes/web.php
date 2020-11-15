@@ -13,13 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'CerveController@homepage');
+
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group(['middleware'=>'role'], function(){
+
+Route::group(['middleware'=>'role','throttle:100,1'], function(){
 
     Route::resource('/admin','AdminController');
     Route::resource('admin/homepage/users','UserAdminController');
@@ -58,7 +58,9 @@ Route::group(['middleware'=>'role'], function(){
 
 });
 
-Route::group([], function (){
+Route::group([' middleware'=>'throttle:100,1'], function (){
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/', 'CerveController@homepage');
     Route::get('about-us',['as'=>'about-us', 'uses'=>'CerveController@about']);
     Route::get('blog',['as'=>'blog', 'uses'=>'CerveController@blog']);
     Route::get('post/{slug}',['as'=>'post', 'uses'=>'CerveController@post']);
@@ -79,7 +81,7 @@ Route::group([], function (){
 
 });
 
-Route::group(['middleware'=>'auth'], function(){
+Route::group(['middleware'=>'auth', 'throttle:100,1'], function(){
     Route::resource('cart', 'CartController');
     Route::get('cart/homepage/checkout', ['as'=>'checkout','uses'=>'CartController@checkout']);
     Route::resource('account', 'AccountController');
@@ -92,7 +94,7 @@ Route::group(['middleware'=>'auth'], function(){
     Route::resource('account/homepage/payment', 'PaymentController');
     Route::resource('branding', 'BrandingController');
     Route::resource('print-on-demand', 'PrintOnDemandController');
-    Route::resource('account/checkout', 'CheckoutController');
+    Route::resource('account/homepage/checkout', 'CheckoutController');
     Route::get('account/checkout/transfer', ['as'=>'bank-transfer','uses'=>'CheckoutController@transfer']);
     Route::resource('account/homepage/customer', 'UserOrdersController');
     Route::resource('account/homepage/project', 'UserPrintOnDemandController');

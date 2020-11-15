@@ -18,7 +18,7 @@
                                     <div class="col-sm-12 col-md-8 col-lg-8 mx-auto m-2 ">
                                         <h6>{{Auth::user()->name}}&nbsp;{{Auth::user()->lastname}}</h6>
                                         <h5 class="p-0">{{Auth::user()->email}},CBD-Nairobi Kenya</h5>
-                                        <h5 class="p-0">+254717109280</h5>
+                                        <h5 class="p-0">{{Auth::user()->cellphone}}</h5>
                                         <h5></h5>
 
                                     </div>
