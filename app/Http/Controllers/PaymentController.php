@@ -40,9 +40,14 @@ class PaymentController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        if (\Cart::session(Auth::id())->getContent()->count()>0){
 
+        /**
+         * This the controller which should process the payment
+         * I need to initiate the stk push, confirm the response and return the id after it
+         *been inserted into the table so that I can relate it to the orders table
+         *
+         */
+        if (\Cart::session(Auth::id())->getContent()->count()>0){
             $cart=\Cart::session(Auth::id())->getContent();
         $cartReady=json_encode($cart);
         $order=Order::create([

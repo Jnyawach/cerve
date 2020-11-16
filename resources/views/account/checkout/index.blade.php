@@ -108,6 +108,12 @@
                             <li>You will receive a confirmation message from M-PESA</li>
                         </ol>
                         <h6>Enter the your number then press complete</h6>
+                        <!--
+                        This is the form that processes the payment;
+                        The hidden fields will submit the amount, reference & sender phone
+                        I have decided to recollect users cellphone number instead of retrieving from the
+                        user model to allow for flexibility just in case someone may decide to pay from different line
+                        -->
                         {!!Form::open(['method'=>'POST', 'action'=>'PaymentController@store','class'=>'form-inline'])!!}
                         <div class="form-group">
                             {!! Form::hidden('amount',Cart::session(Auth::id())->getTotal()) !!}
