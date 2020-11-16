@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
     @yield('styles')
     <script src="https://kit.fontawesome.com/7432138d16.js" crossorigin="anonymous"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <title>@yield('title')</title>
     <link rel = "icon" href =
     "{{asset('images/icon-04.png')}}"
