@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Order;
 use App\Product;
 use App\ProductPrinting;
 
@@ -42,6 +43,7 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
+
         //
         $quantity=$request->quantity_small+$request->quantity_medium+$request->quantity_large+$request->quantity_extralarge;
 if ($quantity<=0){
@@ -130,7 +132,7 @@ if ($quantity<=0){
              $totalPrice=$qty*$price;
              $printing=0;
              $totalPrinting=$printing*$qty;
-                $order_id= time();
+
 
                $item= \Cart::session($userId)->add(array(
                     'id'=> $rowId,
@@ -148,12 +150,17 @@ if ($quantity<=0){
                         'printType'=>null,
                         'printDescription'=>null,
                         'printArtwork'=>null,
-                        'order_id'=>$order_id
+
 
                     ),
+
                    'associatedModel'=>$product
 
                     ));
+
+
+
+
 
 
                Session::flash('cart_message', 'Product successfully added to cart');
