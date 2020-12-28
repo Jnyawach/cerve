@@ -15,7 +15,7 @@ class AddOrderIdColumnToOrders extends Migration
     {
         Schema::table('orders', function (Blueprint $table) {
             //
-            $table->string('invoice')->unique();
+            $table->string('invoice');
         });
     }
 

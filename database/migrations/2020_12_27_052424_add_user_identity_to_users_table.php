@@ -27,7 +27,7 @@ class AddUserIdentityToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table->string('account')->unique();
+            $table->string('account');
         });
     }
 }
