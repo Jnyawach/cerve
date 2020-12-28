@@ -136,15 +136,6 @@
 
                     {!! Form::hidden('price', $product->price) !!}
                 </div>
-                @if($product->brand)
-                <div class="form-group">
-                    {!!Form::label('branding', 'Do You want this product Branded?')!!}
-                    {!!Form::select('branding', array(''=>'Please select',1=>'YES', 0=>'NO'), null, ['class'=>'form-control','required'])!!}
-                </div>
-                    @else
-                    <h4 class="text-success">There is no branding guideline for this product!</h4>
-                @endif
-
                 <div class="form-group row">
                     <div class="col-sm-12 col-md-12 col-lg-12 mb-3" >
                         <div class="row">
@@ -159,6 +150,46 @@
 
                             </div>
                         </div>
+
+                    </div>
+                </div>
+                @if($product->brand)
+                <div class="form-group">
+                    {!!Form::label('branding', 'Do You want this product Branded?')!!}
+                    {!!Form::select('branding', array(''=>'Please select','yes'=>'YES', 'no'=>'NO'), null, ['class'=>'form-control','required','id'=>'selector'])!!}
+                </div>
+                    @else
+                    <h4 class="text-success">This product cannot be branded</h4>
+                @endif
+
+                <div class="form-group row">
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+
+                    <div id="divid" style="display: none">
+                        <div class="form-group required">
+                            <label for="exampleFormControlSelect1" class="control-label">PRINTING TYPE</label>
+                            <select class="form-control" id="exampleFormControlSelect1" name="printing">
+
+                                @foreach($product->branding as $checkbox)
+                                    <option value="{{$checkbox->id}}">{{$checkbox->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group required">
+                            {!!Form::label('description', 'DESCRIPTION:', ['class'=>'control-label'])!!}
+                            <h6 class="text-success"><i class="fa fa-info-circle mr-3" aria-hidden="true"></i> Please give a detailed description on how this product should be branded. Include the placements, size and color(s)</h6>
+                            {!!Form::textarea('description', null, ['class'=>'form-control','id'=>'brand-editor'])!!}
+
+                        </div>
+                        <div class="form-group">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="customFile" name="artwork">
+                                <label class="custom-file-label" for="customFile">Attach File (optional)</label>
+                            </div>
+
+
+                        </div>
+                    </div>
 
                     </div>
                     @if($product->category->name=='Clothing/Apparel')
@@ -398,6 +429,21 @@
 
             $('#better-rating-form').betterRating();
 
+        });
+    </script>
+
+    <script>
+        $(document).ready(function(){
+            $('#selector').on('change', function() {
+                if ( this.value == 'yes')
+                {
+                    $("#divid").show();
+                }
+                else
+                {
+                    $("#divid").hide();
+                }
+            });
         });
     </script>
 

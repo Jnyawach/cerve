@@ -6,6 +6,7 @@
         <h5 class="card-header">Update User</h5>
         <div class="card-body">
             {!!Form::model($user,['method'=>'PATCH', 'action'=>['UserAdminController@update', $user->id]])!!}
+
             <div class="form-group row">
                 <div class="col-sm-7 col-md-6 col-lg-6 mx-auto">
                     {!!Form::label('name', 'First Name:')!!}

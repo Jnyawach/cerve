@@ -15,7 +15,7 @@ class DatabaseStorageModel extends Model
      * @var array
      */
     protected $fillable = [
-        'cart_id', 'cart_data',
+        'id', 'cart_data',
     ];
 
     public function setCartDataAttribute($value)

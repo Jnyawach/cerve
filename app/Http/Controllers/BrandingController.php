@@ -26,6 +26,7 @@ class BrandingController extends Controller
         //
 
 
+
         return view('branding.index');
     }
 
@@ -50,13 +51,13 @@ class BrandingController extends Controller
         //
         $product=Product::findOrFail($request->product_id);
 
-        \Cart::session('branding')->clear();
+
         $order=$request->all();
         $user=Auth::user();
         $printing=Branding::findOrFail($request->printing);
         $brand_price=$printing->cost_1;
         $quantity=$request->quantity;
-//Branding Price
+     //Branding Price
         if ($product->category->name=='Clothing/Apparel' && $quantity<=15){
             $brand_price=$printing->cost_1/$quantity;
         }else{

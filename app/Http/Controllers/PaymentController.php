@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\MpesaSTKPushSimulateRequest;
 use App\Mpesa;
+use App\MpesaC2B;
 use App\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -48,43 +49,73 @@ class PaymentController extends Controller
          *
          */
         if (\Cart::session(Auth::id())->getContent()->count()>0){
-            $cart=\Cart::session(Auth::id())->getContent();
-        $cartReady=json_encode($cart);
-        $order=Order::create([
-            'user_id'=>Auth::id(),
-            'cart_data'=>$cartReady,
-            'amount'=>$request->amount
-        ]);
 
-        $input=array(
-            'order_id'=>$order->id,
-            'total'=>\Cart::session(Auth::id())->getTotal(),
-            'shipping'=>0.00,
-            'tax'=>0.00,
-            'cart'=>$cart,
-            'user'=>Auth::user(),
+            $payment=MpesaC2B::where('trans_id', $request->reference)->first();
+            if($payment){
+               if($payment->invoice_number){
+                  return redirect()->back()->with('message', 'Sorry Outdated Transaction Code');
+               }else{
+                   if($payment->trans_amount<$request->amount){
+                       return redirect()->back()->with('message', 'Sorry amount paid not equivalent to subtotal. Email: support@cervekenya.com');
+                   }elseif ($payment->trans_amount>$request->amount){
+                       return redirect()->back()->with('message', 'Sorry amount paid not exceeds the subtotal. Email: support@cervekenya.com');
+                   }else{
+                       if($payment->trans_amount==$request->amount){
 
 
+                       $cart=\Cart::session(Auth::id())->getContent();
+                       $cartReady=json_encode($cart);
+                       $order=Order::create([
+                           'user_id'=>Auth::id(),
+                           'cart_data'=>$cartReady,
+                           'amount'=>$request->amount,
+                           'mpesa_c2b_id'=>$payment->trans_id,
+                           'invoice'=>time()
+                       ]);
+                       MpesaC2B::findOrFail($payment->id)->update(
+                          [ 'invoice_number'=>$order->invoice]
+                       );
 
-        );
+                       $input=array(
+                           'order_id'=>$order->id,
+                           'total'=>\Cart::session(Auth::id())->getTotal(),
+                           'shipping'=>0.00,
+                           'tax'=>0.00,
+                           'cart'=>$cart,
+                           'user'=>Auth::user(),
+                       );
 
-        Mail::send('mail.receipt', $input, function ($message) use($input){
-            $message->to(Auth::user()->email);
-            $message->from('cerve@cervekenya.com');
-            $message->subject('Order Confirmation');
+                       Mail::send('mail.receipt', $input, function ($message) use($input){
+                           $message->to(Auth::user()->email);
+                           $message->from('cerve@cervekenya.com');
+                           $message->subject('Order Confirmation');
 
-        });
-        Mail::send('mail.order', $input, function ($message) use($input){
-            $message->to('jnyawach@cervekenya.com');
-            $message->from('cerve@cervekenya.com');
-            $message->subject('New Order');
+                       });
+                       Mail::send('mail.order', $input, function ($message) use($input){
+                           $message->to('jnyawach@cervekenya.com');
+                           $message->from('cerve@cervekenya.com');
+                           $message->subject('New Order');
 
-        });
-        \Cart::session(Auth::id())->clear();
+                       });
+//                       \Cart::session(Auth::id())->clear();
 
-        return view('account.payment.index', compact('order'));
-        }else{
-            return redirect('/');
+
+                       return view('account.payment.index', compact('order'));
+                       }else{
+                           return redirect()->back()->with('message', 'Sorry unknown error occured!. Email: support@cervekenya.com');
+                       }
+                   }
+
+               }
+            }else{
+                return redirect()->back()->with('message', 'Sorry Transaction Code not found. Please try again');
+            }
+
+
+
+
+
+
         }
 
     }

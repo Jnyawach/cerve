@@ -15,7 +15,8 @@ class Order extends Model
         'mpesa_c2b_id',
         'cart_data',
         'is_active',
-        'amount'
+        'amount',
+        'invoice'
     ];
 
 

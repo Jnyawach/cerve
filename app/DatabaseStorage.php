@@ -34,7 +34,7 @@ class DatabaseStorage
         else
         {
             DatabaseStorageModel::create([
-                'cart_id' => $key,
+                'id' => $key,
                 'cart_data' => $value
             ]);
         }

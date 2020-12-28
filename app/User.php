@@ -29,7 +29,8 @@ class User extends Authenticatable implements HasMedia
         'town',
         'street',
         'is_active',
-       'role_id'
+       'role_id',
+        'account'
     ];
 
     /**

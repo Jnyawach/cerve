@@ -114,16 +114,22 @@
                         I have decided to recollect users cellphone number instead of retrieving from the
                         user model to allow for flexibility just in case someone may decide to pay from different line
                         -->
+                        @if(session()->has('message'))
+                            <div class="alert alert-danger">
+                                {{ session()->get('message') }}
+                            </div>
+                        @endif
                         {!!Form::open(['method'=>'POST', 'action'=>'PaymentController@store','class'=>'form-inline'])!!}
                         <div class="form-group">
-                            {!! Form::hidden('amount',Cart::session(Auth::id())->getTotal()) !!}
-                            {!! Form::hidden('sender_phone', 254717109280) !!}
-                            {!! Form::hidden('account_reference', Auth::user()->name) !!}
+                            {!! Form::hidden('amount', 6000) !!}
+                            {!! Form::hidden('user_id', Auth::id()) !!}
+                            {!! Form::hidden('account_reference', Auth::user()->account) !!}
 
-                            {!!Form::text('payer_phone', null, ['class'=>'form-control rounded-0', 'placeholder'=>'Enter Your Phone Number'])!!}
+                            {!!Form::text('reference', null, ['class'=>'form-control mr-2','placeholder'=>'Enter Transaction Code','required'])!!}
+
                         </div>
                         <div class="form-group">
-                            {!!Form::submit('COMPLETE', ['class'=>'btn btn-primary btn-sm ml-3'])!!}
+                            {!!Form::submit('Confirm', ['class'=>'btn btn-primary'])!!}
                         </div>
 
                         {!!Form::close()!!}

@@ -6,6 +6,7 @@
             <h5 class="card-header">Create User</h5>
             <div class="card-body">
                 {!!Form::open(['method'=>'POST', 'action'=>'UserAdminController@store'])!!}
+                {!! Form::hidden('account', time()) !!}
                 <div class="form-group row">
                     <div class="col-sm-7 col-md-6 col-lg-6 mx-auto">
                         {!!Form::label('name', 'First Name:')!!}

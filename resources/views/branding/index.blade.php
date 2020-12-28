@@ -10,10 +10,10 @@
 
         @endif
     <hr>
-        @if(Cart::session('branding')->getContent()->count()>0)
+        @if($product)
             <div class="row mt-5 mb-5">
                 <div class="col-sm-12 col-md-10 col-lg-10 mx-auto ">
-
+<p>{{$product->name}}</p>
                     <div class="row">
                         @foreach(Cart::session('branding')->getContent() as $cart)
                         <div class="col-sm-12 col-md-3 col-lg-3">

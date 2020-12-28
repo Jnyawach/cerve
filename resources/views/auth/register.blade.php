@@ -15,6 +15,7 @@
         <form method="POST" action="{{ route('register') }}">
 
                         @csrf
+            <input name="account" type="hidden" value="{{time()}}">
             <div class="form-group row">
                 <div class="col-sm-12 col-md-6 col-lg-6">
                     <label for="name" class="control-label">First Name:</label>

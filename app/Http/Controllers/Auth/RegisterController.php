@@ -58,6 +58,7 @@ class RegisterController extends Controller
             'country'=>['min:3|max:50','string'],
             'town'=>['min:3|max:50','string'],
             'street'=>['min:3|max:255','string'],
+            'account'=>['required']
 
         ]);
 
@@ -80,6 +81,7 @@ class RegisterController extends Controller
             'country'=>$data['country'],
             'town'=>$data['town'],
             'street'=>$data['street'],
+            'account'=>time()
         ]);
     }
 }

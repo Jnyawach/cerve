@@ -5,6 +5,7 @@
         <p class="text-success text-center p-2">{{session('cart_message')}}</p>
 
     @endif
+
     @if(Cart::session(Auth::id())->getContent()->count()>0)
         <section>
             <div class="row mt-4 p-2">
