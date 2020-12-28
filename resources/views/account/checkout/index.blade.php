@@ -121,7 +121,7 @@
                         @endif
                         {!!Form::open(['method'=>'POST', 'action'=>'PaymentController@store','class'=>'form-inline'])!!}
                         <div class="form-group">
-                            {!! Form::hidden('amount', 6000) !!}
+                            {!! Form::hidden('amount', Cart::session(Auth::id())->getTotal()) !!}
                             {!! Form::hidden('user_id', Auth::id()) !!}
                             {!! Form::hidden('account_reference', Auth::user()->account) !!}
 
