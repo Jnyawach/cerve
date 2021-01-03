@@ -3,26 +3,21 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\MediaLibrary\Models\Media;
 
-class Branding extends Model
+class Sample extends Model implements HasMedia
 {
     //
+    use HasMediaTrait;
+
     protected $fillable=[
-        'name',
-        'cost_1',
-        'cost_2',
-        'cost_3',
-        'cost_4'
+        'product_category_id',
+        'title',
+        'brand',
+
     ];
-
-    public function products(){
-        return $this->belongsTo('App\Products');
-    }
-
-    public  function brandings(){
-        return $this->belongsToMany('App\Product');
-    }
 
     public  function registerMediaCollections()
     {
@@ -36,5 +31,9 @@ class Branding extends Model
             });
 
 
+    }
+
+    public  function category(){
+        return $this->belongsTo('App\ProductCategory');
     }
 }

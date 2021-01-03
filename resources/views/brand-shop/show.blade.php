@@ -59,11 +59,36 @@
 
                     </ol>
                 </div>
-                @if($branded=$product->getFirstMedia('branded_sample'))
-                <div class="branded mt-4">
-                    <h4>Branded Sample</h4>
-                    <img src="{{asset($branded=$product->getFirstMedia('branded_sample')->getUrl('brand_card'))}}" class="img-fluid" alt="Branded Sample">
-                </div>
+                @if($product->branding->count()>0)
+                    <h4>Branding price Chart</h4>
+                    <table class="table" >
+                        <thead class="thead ">
+                        <tr>
+                            <th scope="col"><h4 class="p-0 m-0">Printing Type</h4></th>
+                            <th scope="col" colspan="4"><h4 class="p-0 m-0 text-center">Pricing(KES)</h4></th>
+
+                        </tr>
+                        <tr>
+                            <th scope="col"><h4 class="p-0 m-0">Quantity</h4></th>
+                            <th scope="col"><h4 class="p-0 m-0">1-3</h4></th>
+                            <th scope="col"><h4 class="p-0 m-0">4-15</h4></th>
+                            <th scope="col"><h4 class="p-0 m-0">16-50</h4></th>
+                            <th scope="col"><h4 class="p-0 m-0">50+</h4></th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($product->branding as $cost)
+                            <tr>
+                                <th>{{$cost->name}}</th>
+                                <th >{{$cost->cost_1}}</th>
+                                <th >{{$cost->cost_2}}</th>
+                                <td >{{$cost->cost_3}}</td>
+                                <td>{{$cost->cost_4}}</td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
                     @endif
             </div>
 
@@ -153,22 +178,69 @@
 
                     </div>
                 </div>
-                @if($product->brand)
+                @if($product->branding->count()>0)
                 <div class="form-group">
                     {!!Form::label('branding', 'Do You want this product Branded?')!!}
-                    {!!Form::select('branding', array(''=>'Please select','yes'=>'YES', 'no'=>'NO'), null, ['class'=>'form-control','required','id'=>'selector'])!!}
+                    {!!Form::select('branding', array(''=>'Please select','yes'=>'YES', 'no'=>'NO'), null, ['class'=>'custom-select','required','id'=>'selector'])!!}
+                    @if(session()->has('message'))
+                        <div class="alert alert-danger mt-3">
+                            {{ session()->get('message') }}
+                        </div>
+                    @endif
                 </div>
                     @else
                     <h4 class="text-success">This product cannot be branded</h4>
                 @endif
+                <!--Branding sample line -->
+                <h5>See Branding Samples</h5>
 
+                @if($product->sample->count()>0)
+                    <!-- modal -->
+                        <!-- Modal -->
+                        <div class="row">
+                        @foreach($product->sample as $sample)
+                                <div class="modal fade" id="exampleModalCenter{{$sample->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLongTitle">{{$sample->title}}</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <img src="{{asset($sample->getFirstMedia('sample_image')?$sample->getFirstMedia('sample_image')->getUrl():'/images/no-image.png')}}" class="img-fluid"  title="{{$sample->title}}" >
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="col-4 col-sm-4 col-md-2 col-lg-2 text-center">
+                                <div class="card " data-toggle="modal" data-target="#exampleModalCenter{{$sample->id}}">
+
+                                    <img src="{{asset($sample->getFirstMedia('sample_image')?$sample->getFirstMedia('sample_image')->getUrl('sample_card'):'/images/no-image.png')}}" class="img-fluid" title="{{$sample->title}}" >
+
+                                </div>
+                            </div>
+
+                        @endforeach
+                    </div>
+
+                @endif
+                <!--End of Branding sample line -->
                 <div class="form-group row">
                     <div class="col-sm-12 col-md-12 col-lg-12">
 
                     <div id="divid" style="display: none">
                         <div class="form-group required">
+
+
                             <label for="exampleFormControlSelect1" class="control-label">PRINTING TYPE</label>
-                            <select class="form-control" id="exampleFormControlSelect1" name="printing">
+                            <select class="custom-select" id="exampleFormControlSelect1" name="printing">
+                                <option value=" ">Please select</option>
 
                                 @foreach($product->branding as $checkbox)
                                     <option value="{{$checkbox->id}}">{{$checkbox->name}}</option>
@@ -248,9 +320,7 @@
                             <li class="nav-item">
                                 <a class="nav-link active" id="tab-outline-one" data-toggle="tab" href="#outline-one" role="tab" aria-controls="home" aria-selected="true"><h6>Description</h6></a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="tab-outline-two" data-toggle="tab" href="#outline-two" role="tab" aria-controls="profile" aria-selected="false"><h6>Brand Guideline</h6></a>
-                            </li>
+
                             <li class="nav-item">
                                 <a class="nav-link" id="tab-outline-three" data-toggle="tab" href="#outline-three" role="tab" aria-controls="contact" aria-selected="false"><h6>Associated Video</h6></a>
                             </li>
@@ -260,9 +330,7 @@
                          <p>{!! $product->description !!}</p>
                                 <p>{!! $product->features !!}</p>
                             </div>
-                            <div class="tab-pane fade" id="outline-two" role="tabpanel" aria-labelledby="tab-outline-two">
-                              <p>{!! $product->brand? $product->brand:'No branding guideline provided' !!}</p>
-                            </div>
+
                             <div class="tab-pane fade" id="outline-three" role="tabpanel" aria-labelledby="tab-outline-three">
                                 @if( $product->getFirstMedia('product_video'))
                                     <div>

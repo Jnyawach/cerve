@@ -46,11 +46,7 @@
                 {!!Form::textarea('features', null, ['class'=>'form-control','id'=>'key-editor'])!!}
 
             </div>
-            <div class="form-group">
-                {!!Form::label('brand', 'HOW TO BRAND THIS PRODUCT:')!!}
-                {!!Form::textarea('brand', null, ['class'=>'form-control','id'=>'brand-editor'])!!}
 
-            </div>
             <div class=" form-group row">
                 <div class="col-sm-6 col-md-3 col-lg-3">
                     {!!Form::label('price', 'PRICE(1-10):')!!}

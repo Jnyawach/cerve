@@ -38,7 +38,6 @@ class ProductRequest extends FormRequest
             'price_3'                 =>'required|numeric',
             'price_4'                 =>'required|numeric',
             'stock'                 =>'required|numeric',
-            'brand'               =>'',
             'video'               =>'',
             'photos'               => 'required',
             'photos.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',

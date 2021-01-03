@@ -150,6 +150,10 @@
                                     <li class="nav-item">
                                         <a class="nav-link" href="{{route('product-category.index')}}">Products Categories</a>
                                     </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{route('sample.index')}}">Samples</a>
+                                    </li>
                                 </ul>
                             </div>
                         </li>

@@ -7,7 +7,35 @@
     <link rel="stylesheet" type="text/css" href="{{asset('datatables/css/fixedHeader.bootstrap4.css')}}">
 
 @endsection
+
 @section('content')
+
+    <section class="container">
+        <h3 class="text-success">Attach Samples to this Product</h3>
+        @include('includes.message')
+       @if($product->category->sample->count()>0)
+           <div class="row">
+               @foreach($product->category->sample as $sample)
+                   <div class="col-3 col-sm-3 col-md-3 col-lg-2 text-center">
+                       <div class="card">
+                       {!!Form::open(['method'=>'POST', 'action'=>'AttachSampleController@store'])!!}
+                           {!! Form::hidden('sample_id', $sample->id) !!}
+                           {!! Form::hidden('product_id', $product->id) !!}
+                       <img src="{{asset($sample->getFirstMedia('sample_image')?$sample->getFirstMedia('sample_image')->getUrl('sample_card'):'/images/no-image.png')}}" class="img-fluid" title="{{$sample->title}}" style="height: 80px">
+
+                           <div class="card-footer m-0 p-0">
+                               <button type="submit" class="btn btn-block text-primary ">Attach</button>
+                           </div>
+                           {!!Form::close()!!}
+                       </div>
+                   </div>
+
+               @endforeach
+           </div>
+
+           @endif
+
+    </section>
    <div class="card">
        <div class="card-header">
            <h4><span class="text-primary">{{$product->category->name}}</span> | {{$product->name}}<a href="{{route('products.edit', $product->id)}}" class="float-right"><i class="fa fa-pencil-square-o mr-2" aria-hidden="true"></i>Edit Product</a> </h4>
@@ -30,8 +58,29 @@
                    <p>{!! $product->features !!}</p>
                </div>
                <div class="col-sm-10 col-md-6 col-lg-6 mx-auto">
-                   <h4>Branding Guideline</h4>
-                  <p>{!! $product->brand? $product->brand:'No branding guideline provided' !!}</p>
+                   <h4>Samples</h4>
+                   @if($product->sample->count()>0)
+                       <div class="row">
+                           @foreach($product->sample as $sample)
+                               <div class="col-4 col-sm-4 col-md-4 col-lg-4 text-center">
+                                   <div class="card">
+                                       {!!Form::model($product,['method'=>'PATCH', 'action'=>['AttachSampleController@update', $product->id]])!!}
+                                       {!! Form::hidden('sample_id', $sample->id) !!}
+                                       <img src="{{asset($sample->getFirstMedia('sample_image')?$sample->getFirstMedia('sample_image')->getUrl('sample_card'):'/images/no-image.png')}}" class="img-fluid" title="{{$sample->title}}" style="height: 80px">
+
+                                       <div class="card-footer m-0 p-0">
+                                           <button type="submit" class="btn btn-block text-danger ">Remove</button>
+                                       </div>
+                                       {!!Form::close()!!}
+                                   </div>
+                               </div>
+
+                           @endforeach
+                       </div>
+
+                   @endif
+
+
                    @if($product->getFirstMedia('product_video')
                    )
                    <div>

@@ -26,7 +26,7 @@ class AddColumnsToProducts extends Migration
             $table->text('features');
             $table->integer('price');
             $table->integer('stock');
-            $table->text('brand')->nullable();
+
 
             $table->foreign('category_id')->references('id')->on('product_categories')->onDelete('cascade');
 

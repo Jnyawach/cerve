@@ -54,6 +54,9 @@ Route::group(['middleware'=>'role','throttle:100,1'], function(){
     Route::resource('/admin/homepage/pricing','PricingController');
     Route::resource('/admin/homepage/mpesa', 'MpesaC2BController');
     Route::resource('admin/homepage/applicant', 'AdminJobApplicationController');
+    Route::resource('admin/homepage/sample', 'AdminSampleController');
+    Route::resource('sampling', 'AttachSampleController');
+
 
 
 });

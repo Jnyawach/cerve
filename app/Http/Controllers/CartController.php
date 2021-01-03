@@ -78,7 +78,9 @@ class CartController extends Controller
                 return redirect('cart');
             } else {
                 if ($request->branding == 'yes') {
-                    $printing = Branding::findOrFail($request->printing);
+                    if(!empty($request->printing)){
+
+                        $printing = Branding::findOrFail($request->printing);
                     $brand_price = $printing->cost_1;
                     //Branding Price
                     if ($product->category->name == 'Clothing/Apparel' && $quantity <= 15) {
@@ -173,6 +175,9 @@ class CartController extends Controller
 
                     Session::flash('cart_message', 'Product successfully added to cart');
                     return redirect('cart');
+                    }else{
+                        return redirect()->back()->with('message','Please ensure that you select printing type');
+                    }
 
                 } else {
 

@@ -48,14 +48,12 @@ class ProductAdminController extends Controller
     {
         //
         $input= $request->all();
+        dd($input);
         $product=Product::create($input);
         if($request->branding_id){
-            $product->branding()->sync($request->branding_id);
+          $product->branding()->sync($request->branding_id);
+
         }
-
-
-
-
 
         if($file=$request->file('video')) {
 

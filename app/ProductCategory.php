@@ -30,4 +30,8 @@ class ProductCategory extends Model
     public  function products(){
         return $this->hasMany('App\Product');
     }
+
+    public  function sample(){
+        return $this->hasMany('App\Sample');
+    }
 }
