@@ -29,9 +29,7 @@
 
                             <th>Price</th>
                             <th>Stock</th>
-                            <th>Color</th>
                             <th>Category</th>
-                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -41,22 +39,16 @@
                                 <tr>
                                     <td>{{$product->id}}</td>
                                     <td>{{$product->name}}
-                                        @if($product->branding->count()>0)
-                                            <i class="fa fa-print" aria-hidden="true"></i>
+                                        @if($product->sample->count()>0)
+                                            <i class="fa fa-info-circle text-success" aria-hidden="true"></i>
                                             @endif
                                     </td>
 
                                     <td>{{$product->price}}</td>
                                     <td>{{$product->stock}}</td>
-                                    <td>{{$product->color}}</td>
-                                    <td>{{$product->category->name}}</td>
-                                    <td>@if($product->is_active==1)
-                                            <p class="text-success">Active</p>
-                                        @else
-                                            <p class="text-danger">In-active</p>
-                                        @endif
 
-                                    </td>
+                                    <td>{{$product->category->name}}</td>
+
                                     <td>
                                         <div class="dropdown show">
                                             <a class="btn  dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -86,9 +78,7 @@
                             <th>Name</th>
                             <th>Price</th>
                             <th>Stock</th>
-                            <th>Color</th>
                             <th>Category</th>
-                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                         </tfoot>
