@@ -24,8 +24,17 @@
 
                         @if($category->sample->count()>0)
                             @foreach($category->sample as $sample)
-                            <div class="col-3 col-sm-3 col-md-2 col-lg-2">
-                                <img src="{{asset($sample->getFirstMedia('sample_image')?$sample->getFirstMedia('sample_image')->getUrl('sample_card'):'/images/no-image.png')}}" class="img-fluid" title="{{$sample->title}}" style="height: 80px">
+                            <div class="col-4 col-sm-4 col-md-2 col-lg-2 text-center">
+                                <div class="card">
+                                    {!!Form::open(['method'=>'DELETE', 'action'=>['AdminSampleController@destroy', $sample->id]])!!}
+
+                                    <img src="{{asset($sample->getFirstMedia('sample_image')?$sample->getFirstMedia('sample_image')->getUrl('sample_card'):'/images/no-image.png')}}" class="img-fluid" title="{{$sample->title}}" style="height: 80px">
+
+                                    <div class="card-footer m-0 p-0">
+                                        <button type="submit" class="btn btn-block text-danger ">Delete</button>
+                                    </div>
+                                    {!!Form::close()!!}
+                                </div>
                             </div>
                                 @endforeach
                         @else

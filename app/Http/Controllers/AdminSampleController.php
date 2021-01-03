@@ -95,5 +95,8 @@ class AdminSampleController extends Controller
     public function destroy($id)
     {
         //
+        $sample=Sample::findOrFail($id);
+        $sample->delete();
+        return  redirect('admin/homepage/sample')->with('message', 'sample successfully deleted');
     }
 }
