@@ -208,8 +208,8 @@
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
-                                            <div class="modal-body">
-                                                <img src="{{asset($sample->getFirstMedia('sample_image')?$sample->getFirstMedia('sample_image')->getUrl():'/images/no-image.png')}}" class="img-fluid"  title="{{$sample->title}}" >
+                                            <div class="modal-body" >
+                                                <img src="{{asset($sample->getFirstMedia('sample_image')?$sample->getFirstMedia('sample_image')->getUrl():'/images/no-image.png')}}" class="img-fluid"  title="{{$sample->title}}"  >
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -219,7 +219,7 @@
                                     </div>
                                 </div>
                             <div class="col-4 col-sm-4 col-md-2 col-lg-2 text-center">
-                                <div class="card " data-toggle="modal" data-target="#exampleModalCenter{{$sample->id}}">
+                                <div class="card " data-toggle="modal" data-target="#exampleModalCenter{{$sample->id}}" style="cursor: pointer">
 
                                     <img src="{{asset($sample->getFirstMedia('sample_image')?$sample->getFirstMedia('sample_image')->getUrl('sample_card'):'/images/no-image.png')}}" class="img-fluid" title="{{$sample->title}}" >
 
