@@ -45,7 +45,7 @@ class ProductRequest extends FormRequest
             'M'               => 'numeric',
             'L'               => 'numeric',
             'XL'               => 'numeric',
-            'branded'=>''
+
 
         ];
     }

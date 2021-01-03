@@ -97,10 +97,7 @@
                     {!!Form::label('video', 'ASSOCIATED VIDEO:')!!}
                     {!!Form::file('video',  ['class'=>'form-control-file'])!!}
                 </div>
-                <div class="col-sm-12 col-md-4 col-lg-4">
-                    {!!Form::label('branded', 'BRANDED PHOTO:')!!}
-                    {!!Form::file('branded',  ['class'=>'form-control-file'])!!}
-                </div>
+
 
 
             </div>

@@ -59,11 +59,6 @@ class ProductAdminController extends Controller
 
             $product->addMedia($request->video)->toMediaCollection('product_video');
         }
-        if($file=$request->file('branded')) {
-
-            $product->addMedia($request->branded)->toMediaCollection('branded_sample');
-        }
-
         if($files=$request->file('photos')) {
             foreach ($files as $file){
 
@@ -129,12 +124,6 @@ class ProductAdminController extends Controller
             $find->clearMediaCollection('product_video');
             $find->addMedia($request->video)->toMediaCollection('product_video');
         }
-        if($file=$request->file('branded')) {
-
-            $find->clearMediaCollection('branded_sample');
-            $find->addMedia($request->branded)->toMediaCollection('branded_sample');
-        }
-
         if($files=$request->file('photos')) {
             foreach ($files as $file){
                 $find->clearMediaCollection('product_photos');
