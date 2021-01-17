@@ -97,7 +97,7 @@ class PaymentController extends Controller
                            $message->subject('New Order');
 
                        });
-//                       \Cart::session(Auth::id())->clear();
+                      \Cart::session(Auth::id())->clear();
 
 
                        return view('account.payment.index', compact('order'));
