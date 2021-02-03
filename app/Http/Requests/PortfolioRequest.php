@@ -32,7 +32,7 @@ class PortfolioRequest extends FormRequest
             'description'=>'required',
             'video_id'=>'',
             'path'               => '',
-            'path.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            'path.*' => 'image|mimes:jpeg,png,jpg,gif,svg'
         ];
     }
 }

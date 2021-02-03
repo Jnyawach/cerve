@@ -2,8 +2,8 @@
 @section('title', $portfolio->title)
 @section('content')
     <section>
-        <div class="row">
-            <div class="col-12 mx-auto">
+        <div class="row m-3">
+            <div class="col-10 mx-auto">
                 <img src="{{asset($portfolio->getFirstMedia('portfolio_photos')->getUrl())}}" class="img-fluid" title="{{$portfolio->title}}" >
             </div>
         </div>
@@ -31,7 +31,7 @@
 
                     @endforeach
                     <div class="col-sm-10 col-md-4 col-lg-4 ">
-                        @if($portfolio->getFirstMedia('video_id')->getUrl())
+                        @if(!is_null($portfolio->getFirstMedia('video_id')))
                             <div>
 
                                 <div class="embed-responsive embed-responsive-16by9" data-toggle="modal" data-target="#exampleModal{{$portfolio->video_id}}">
